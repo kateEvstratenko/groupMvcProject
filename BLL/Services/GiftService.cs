@@ -9,7 +9,7 @@ using DAL.Models;
 
 namespace BLL.Services
 {
-    public class GiftService: BaseService, IGiftService
+    public class GiftService: BaseService, IService<DomainGift>
     {
         public GiftService(IUnitOfWork uow) : base(uow) { }
 
