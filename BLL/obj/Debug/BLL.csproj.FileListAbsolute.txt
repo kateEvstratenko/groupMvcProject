@@ -1,0 +1,13 @@
+E:\WishList\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\WishList\BLL\bin\Debug\AutoMapper.Net4.dll
+E:\WishList\BLL\bin\Debug\BLL.dll.config
+E:\WishList\BLL\bin\Debug\BLL.dll
+E:\WishList\BLL\bin\Debug\BLL.pdb
+E:\WishList\BLL\bin\Debug\AutoMapper.dll
+E:\WishList\BLL\bin\Debug\DAL.dll
+E:\WishList\BLL\bin\Debug\EntityFramework.dll
+E:\WishList\BLL\bin\Debug\DAL.pdb
+E:\WishList\BLL\bin\Debug\AutoMapper.xml
+E:\WishList\BLL\bin\Debug\EntityFramework.xml
+E:\WishList\BLL\obj\Debug\BLL.dll
+E:\WishList\BLL\obj\Debug\BLL.pdb

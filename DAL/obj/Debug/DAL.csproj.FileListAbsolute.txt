@@ -1,0 +1,10 @@
+E:\WishList\DAL\bin\Debug\DAL.dll.config
+E:\WishList\DAL\bin\Debug\DAL.dll
+E:\WishList\DAL\bin\Debug\DAL.pdb
+E:\WishList\DAL\bin\Debug\EntityFramework.dll
+E:\WishList\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\WishList\DAL\bin\Debug\EntityFramework.xml
+E:\WishList\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\WishList\DAL\obj\Debug\DAL.dll
+E:\WishList\DAL\obj\Debug\DAL.pdb

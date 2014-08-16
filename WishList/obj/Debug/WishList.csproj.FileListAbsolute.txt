@@ -1,0 +1,64 @@
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\WishList.dll.config
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\WishList.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\WishList.pdb
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\Antlr3.Runtime.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\EntityFramework.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\Newtonsoft.Json.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Net.Http.Formatting.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Http.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Http.WebHost.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Mvc.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Optimization.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Providers.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Razor.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.Razor.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\WebGrease.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\EntityFramework.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\Newtonsoft.Json.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Net.Http.Formatting.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Http.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Http.WebHost.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Mvc.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.Razor.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\bin\System.Web.WebPages.Razor.xml
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\obj\Debug\WishList.csprojResolveAssemblyReference.cache
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\obj\Debug\WishList.dll
+C:\Users\Asus\documents\visual studio 2013\Projects\WishList\WishList\obj\Debug\WishList.pdb
+E:\WishList\WishList\bin\WishList.dll.config
+E:\WishList\WishList\bin\WishList.dll
+E:\WishList\WishList\bin\WishList.pdb
+E:\WishList\WishList\bin\Antlr3.Runtime.dll
+E:\WishList\WishList\bin\EntityFramework.dll
+E:\WishList\WishList\bin\Microsoft.Web.Infrastructure.dll
+E:\WishList\WishList\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\WishList\WishList\bin\Newtonsoft.Json.dll
+E:\WishList\WishList\bin\System.Net.Http.Formatting.dll
+E:\WishList\WishList\bin\System.Web.Http.dll
+E:\WishList\WishList\bin\System.Web.Http.WebHost.dll
+E:\WishList\WishList\bin\System.Web.Mvc.dll
+E:\WishList\WishList\bin\System.Web.Optimization.dll
+E:\WishList\WishList\bin\System.Web.Providers.dll
+E:\WishList\WishList\bin\System.Web.Razor.dll
+E:\WishList\WishList\bin\System.Web.WebPages.Deployment.dll
+E:\WishList\WishList\bin\System.Web.WebPages.dll
+E:\WishList\WishList\bin\System.Web.WebPages.Razor.dll
+E:\WishList\WishList\bin\WebGrease.dll
+E:\WishList\WishList\bin\EntityFramework.xml
+E:\WishList\WishList\bin\Newtonsoft.Json.xml
+E:\WishList\WishList\bin\System.Net.Http.Formatting.xml
+E:\WishList\WishList\bin\System.Web.Http.xml
+E:\WishList\WishList\bin\System.Web.Http.WebHost.xml
+E:\WishList\WishList\bin\System.Web.Mvc.xml
+E:\WishList\WishList\bin\System.Web.Razor.xml
+E:\WishList\WishList\bin\System.Web.WebPages.xml
+E:\WishList\WishList\bin\System.Web.WebPages.Deployment.xml
+E:\WishList\WishList\bin\System.Web.WebPages.Razor.xml
+E:\WishList\WishList\obj\Debug\WishList.csprojResolveAssemblyReference.cache
+E:\WishList\WishList\obj\Debug\WishList.dll
+E:\WishList\WishList\obj\Debug\WishList.pdb
