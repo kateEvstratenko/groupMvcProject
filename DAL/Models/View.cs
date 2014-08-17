@@ -9,11 +9,8 @@ namespace DAL.Models
     public class View: Identity
     {
         public int UserId { get; set; }
-
         public int GiftId { get; set; }
-
         public int WishListId { get; set; }
-
         public virtual WishList WishList { get; set; }
     }
 }

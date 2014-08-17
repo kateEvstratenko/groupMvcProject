@@ -61,6 +61,10 @@
     <Compile Include="Models\DomainWishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\FriendService.cs" />
+    <Compile Include="Services\TagService.cs" />
+    <Compile Include="Services\WishListService.cs" />
     <Compile Include="Services\GiftService.cs" />
   </ItemGroup>
   <ItemGroup>

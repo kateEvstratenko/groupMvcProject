@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
@@ -13,7 +11,7 @@ namespace BLL.Services
     {
         public GiftService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainGift domainGift)//
+        public void Create(DomainGift domainGift)
         {
             var gift = Mapper.Map<Gift>(domainGift);
             Uow.GiftRepository.Insert(gift);   
