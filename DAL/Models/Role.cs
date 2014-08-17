@@ -9,6 +9,7 @@ namespace DAL.Models
 {
     public class Role: Identity
     {
+        [Required]
         public string Name { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }

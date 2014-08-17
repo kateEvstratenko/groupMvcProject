@@ -1,17 +1,25 @@
 ﻿using System;
-using DAL.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BLL.Models
 {
     public class DomainComment:DomainIdentity
     {
+        [Required]
+        [StringLength(256, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string Message { get; set; }
+
+        [Required]
         public DateTime Date { get; set; }
+
         public int UserId { get; set; }
+
         public int WishListId { get; set; }
+
         public int GiftId { get; set; }
-        public virtual DomainUser User { get; set; }
-        public virtual DomainWishList WishList { get; set; }
-        public virtual DomainGift Gift { get; set; }
+
+        public DomainUser User { get; set; }
+        public DomainWishList WishList { get; set; }
+        public DomainGift Gift { get; set; }
     }
 }
