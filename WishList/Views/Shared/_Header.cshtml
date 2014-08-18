@@ -1,0 +1,22 @@
+﻿
+<header class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Wish List</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Gift List</a></li>
+        </ul>
+        <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Enter Gift Name">
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</header>
