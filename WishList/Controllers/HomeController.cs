@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using BLL;
+using BLL.Services;
 
 namespace WishList.Controllers
 {
@@ -10,10 +8,16 @@ namespace WishList.Controllers
     {
         //
         // GET: /Home/
+        private readonly GiftService _giftService;
+        public HomeController(GiftService giftService)
+        {
+            _giftService = giftService;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            var gifts = _giftService.GetPopularGifts(Constants.PopularGiftsCount);
+            return View(gifts);
         }
 
     }

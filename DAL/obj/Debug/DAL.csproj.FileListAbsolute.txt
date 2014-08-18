@@ -8,3 +8,15 @@ E:\WishList\DAL\bin\Debug\EntityFramework.SqlServer.xml
 E:\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 E:\WishList\DAL\obj\Debug\DAL.dll
 E:\WishList\DAL\obj\Debug\DAL.pdb
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\DAL.dll.config
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\DAL.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\DAL.pdb
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\EntityFramework.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\EntityFramework.xml
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.dll
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.pdb
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.Migrations.first.resources
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache

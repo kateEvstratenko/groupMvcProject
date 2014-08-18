@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using AutoMapper;
-using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 
 namespace BLL.Services
 {
-    public class WishListService: BaseService, IService<DomainWishList>
+    public class WishListService: BaseService
     {
         public WishListService(IUnitOfWork uow) : base(uow) { }
 

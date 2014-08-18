@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using AutoMapper;
-using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 
 namespace BLL.Services
 {
-    public class TagService: BaseService, IService<DomainTag>
+    public class TagService: BaseService
     {
         public TagService(IUnitOfWork uow) : base(uow) { }
 

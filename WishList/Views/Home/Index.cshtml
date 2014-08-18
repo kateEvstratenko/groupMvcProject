@@ -1,6 +1,13 @@
-﻿@{
+﻿@using BLL.Models
+@model IQueryable<DomainGift>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
+@foreach (var gift in Model)
+{
+    <p>gift.Name</p>
+}

@@ -1,13 +1,13 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
-using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 
 namespace BLL.Services
 {
-    public class GiftService: BaseService, IService<DomainGift>
+    public class GiftService: BaseService
     {
         public GiftService(IUnitOfWork uow) : base(uow) { }
 
@@ -41,8 +41,15 @@ namespace BLL.Services
         public IQueryable<DomainGift> GetAll()
         {
             var gifts = Uow.GiftRepository.GetAll();
-            var domainGifts = Mapper.Map<IQueryable<DomainGift>>(gifts);
-            return domainGifts;
+            var domainGifts = Mapper.Map<IEnumerable<DomainGift>>(gifts);
+            return domainGifts.AsQueryable();
+        }
+
+        public IQueryable<DomainGift> GetPopularGifts(int count)
+        {
+            var gifts = Uow.GiftRepository.GetAll();
+            var domainGifts = Mapper.Map<IEnumerable<DomainGift>>(gifts);
+            return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable(); 
         } 
     }
 }
