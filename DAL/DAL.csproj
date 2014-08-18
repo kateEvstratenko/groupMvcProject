@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,16 +54,15 @@
   <ItemGroup>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201408180727002_first.cs" />
-    <Compile Include="Migrations\201408180727002_first.Designer.cs">
-      <DependentUpon>201408180727002_first.cs</DependentUpon>
+    <Compile Include="Migrations\201408182144409_first.cs" />
+    <Compile Include="Migrations\201408182144409_first.Designer.cs">
+      <DependentUpon>201408182144409_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\View.cs" />
@@ -72,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408180727002_first.resx">
-      <DependentUpon>201408180727002_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201408182144409_first.resx">
+      <DependentUpon>201408182144409_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

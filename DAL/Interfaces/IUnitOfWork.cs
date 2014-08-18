@@ -6,7 +6,6 @@ namespace DAL.Interfaces
     {
         void Commit();
         IRepository<User> UserRepository { get; }
-        IRepository<Role> RoleRepository { get; }
         IRepository<Friend> FriendRepository { get; }
         IRepository<WishList> WishListRepository { get; }
         IRepository<Gift> GiftRepository { get;}

@@ -3,10 +3,11 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using DAL.Interfaces;
 using DAL.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL
 {
-    public class UnitOfWork : DbContext, IUnitOfWork
+    public class UnitOfWork : IdentityDbContext<User, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim>, IUnitOfWork
     {
         public UnitOfWork()
             : base("DefaultConnection")
@@ -15,7 +16,6 @@ namespace DAL
         }
 
         private Repository<User> userRepository;
-        private Repository<Role> roleRepository;
         private Repository<Friend> friendRepository;
         private Repository<WishList> wishListRepository;
         private Repository<Gift> giftRepository;
@@ -24,8 +24,6 @@ namespace DAL
         private Repository<Vote> voteRepository;
         private Repository<Comment> commentRepository;
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Friend> Friends { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Gift> Gifts { get; set; }
@@ -38,34 +36,36 @@ namespace DAL
         {
             get { return userRepository ?? (userRepository = new Repository<User>(Users, this)); }
         }
-        public IRepository<Role> RoleRepository
-        {
-            get { return roleRepository ?? (roleRepository = new Repository<Role>(Roles, this)); }
-        }
         public IRepository<Friend> FriendRepository
         {
             get { return friendRepository ?? (friendRepository = new Repository<Friend>(Friends, this)); }
         }
+
         public IRepository<WishList> WishListRepository
         {
             get { return wishListRepository ?? (wishListRepository = new Repository<WishList>(WishLists, this)); }
         }
+
         public IRepository<Gift> GiftRepository
         {
             get { return giftRepository ?? (giftRepository = new Repository<Gift>(Gifts, this)); }
         }
+
         public IRepository<Tag> TagRepository
         {
             get { return tagRepository ?? (tagRepository = new Repository<Tag>(Tags, this)); }
         }
+
         public IRepository<View> ViewRepository
         {
             get { return viewRepository ?? (viewRepository = new Repository<View>(Views, this)); }
         }
+
         public IRepository<Vote> VoteRepository
         {
             get { return voteRepository ?? (voteRepository = new Repository<Vote>(Votes, this)); }
         }
+
         public IRepository<Comment> CommentRepository
         {
             get { return commentRepository ?? (commentRepository = new Repository<Comment>(Comments, this)); }

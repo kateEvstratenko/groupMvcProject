@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.Models
 {
-    public class User: Identity
+    public class User: IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
@@ -16,16 +14,6 @@ namespace DAL.Models
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string LastName { get; set; }
-
-        [Required]
-        [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
-        public string UserName { get; set; }
-
-        [Required]
-        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        public string Email { get; set; }
-
-        public bool EmailConfirmed { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -39,9 +27,17 @@ namespace DAL.Models
         [Required]
         public string Avatar { get; set; }
 
-        public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Friend> Friends { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
+
+    public class CustomRole : IdentityRole<int, CustomUserRole>
+    {
+        public CustomRole() { }
+        public CustomRole(string name) { Name = name; }
+    }
+    public class CustomUserRole : IdentityUserRole<int> { }
+    public class CustomUserClaim : IdentityUserClaim<int> { }
+    public class CustomUserLogin : IdentityUserLogin<int> { }
 }

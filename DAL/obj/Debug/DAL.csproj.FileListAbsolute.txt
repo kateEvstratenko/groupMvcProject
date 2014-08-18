@@ -30,3 +30,19 @@ D:\Kate Evstratenko\WishList - Copy\DAL\obj\Debug\DAL.Migrations.first.resources
 D:\Kate Evstratenko\WishList - Copy\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 D:\Kate Evstratenko\WishList - Copy\DAL\obj\Debug\DAL.dll
 D:\Kate Evstratenko\WishList - Copy\DAL\obj\Debug\DAL.pdb
+D:\Курсы\WishList\DAL\bin\Debug\DAL.dll.config
+D:\Курсы\WishList\DAL\bin\Debug\DAL.dll
+D:\Курсы\WishList\DAL\bin\Debug\DAL.pdb
+D:\Курсы\WishList\DAL\bin\Debug\EntityFramework.dll
+D:\Курсы\WishList\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Курсы\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Курсы\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Курсы\WishList\DAL\bin\Debug\EntityFramework.xml
+D:\Курсы\WishList\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Курсы\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Курсы\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Курсы\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Курсы\WishList\DAL\obj\Debug\DAL.dll
+D:\Курсы\WishList\DAL\obj\Debug\DAL.pdb
+D:\Курсы\WishList\DAL\obj\Debug\DAL.Migrations.first.resources
+D:\Курсы\WishList\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
