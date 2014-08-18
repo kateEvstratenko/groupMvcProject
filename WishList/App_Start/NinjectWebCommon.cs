@@ -1,19 +1,19 @@
+using System;
+using System.Web;
+using BLL.Interfaces;
+using BLL.Services;
 using DAL;
 using DAL.Interfaces;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using WishList;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(WishList.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(WishList.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 
-namespace WishList.App_Start
+namespace WishList
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,11 +65,11 @@ namespace WishList.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-            /*kernel.Bind<IService<DomainFriend>>().To<FriendService>();
-            kernel.Bind<IService<DomainGift>>().To<GiftService>();
-            kernel.Bind<IService<DomainTag>>().To<TagService>();
-            kernel.Bind<IService<DomainUser>>().To<UserService>();
-            kernel.Bind<IService<DomainWishList>>().To<WishListService>();*/
+            kernel.Bind<IFriendService>().To<FriendService>();
+            kernel.Bind<IGiftService>().To<GiftService>();
+            kernel.Bind<ITagService>().To<TagService>();
+            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IWishListService>().To<WishListService>();
         }
     }
 }

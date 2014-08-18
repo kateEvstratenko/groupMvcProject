@@ -49,6 +49,11 @@
   <ItemGroup>
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Interfaces\IWishListService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\ITag.cs" />
+    <Compile Include="Interfaces\IGiftService.cs" />
+    <Compile Include="Interfaces\IFriendService.cs" />
     <Compile Include="Models\DomainComment.cs" />
     <Compile Include="Models\DomainFriend.cs" />
     <Compile Include="Models\DomainGift.cs" />

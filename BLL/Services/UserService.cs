@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using AutoMapper;
+using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 
 namespace BLL.Services
 {
-    public class UserService: BaseService
+    public class UserService: BaseService, IUserService
     {
         public UserService(IUnitOfWork uow) : base(uow) { }
 

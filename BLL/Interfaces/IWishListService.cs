@@ -1,0 +1,14 @@
+﻿using System.Linq;
+using BLL.Models;
+
+namespace BLL.Interfaces
+{
+    public interface IWishListService
+    {
+        void Create(DomainWishList domainWishList);
+        void Delete(int id);
+        void Update(DomainWishList domainWishList);
+        DomainWishList Get(int id);
+        IQueryable<DomainWishList> GetAll();
+    }
+}

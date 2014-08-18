@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using AutoMapper;
+using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 
 namespace BLL.Services
 {
-    public class FriendService: BaseService
+    public class FriendService: BaseService, IFriendService
     {
         public FriendService(IUnitOfWork uow) : base(uow) { }
 

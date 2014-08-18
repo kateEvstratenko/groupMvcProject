@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using BLL;
+using BLL.Interfaces;
 using BLL.Services;
 
 namespace WishList.Controllers
@@ -8,15 +9,15 @@ namespace WishList.Controllers
     {
         //
         // GET: /Home/
-        private readonly GiftService _giftService;
-        public HomeController(GiftService giftService)
+        private readonly IGiftService _giftService;
+        public HomeController(IGiftService giftService)
         {
             _giftService = giftService;
         }
 
         public ActionResult Index()
         {
-            var gifts = _giftService.GetPopularGifts(Constants.PopularGiftsCount);
+            var gifts = _giftService.GetPolular(Constants.PopularGiftsCount);
             return View(gifts);
         }
 
