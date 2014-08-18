@@ -18,6 +18,8 @@ namespace WishList
         {
             AreaRegistration.RegisterAllAreas();
 
+            BLL.AutoMapper.AutoMapperConfiguration.RegisterMappings();
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -24,3 +24,16 @@ D:\Kate Evstratenko\WishList\BLL\bin\Debug\EntityFramework.xml
 D:\Kate Evstratenko\WishList\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\Kate Evstratenko\WishList\BLL\obj\Debug\BLL.dll
 D:\Kate Evstratenko\WishList\BLL\obj\Debug\BLL.pdb
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\AutoMapper.Net4.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\BLL.dll.config
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\BLL.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\BLL.pdb
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\AutoMapper.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\DAL.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\EntityFramework.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\DAL.pdb
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\AutoMapper.xml
+D:\Kate Evstratenko\WishList - Copy\BLL\bin\Debug\EntityFramework.xml
+D:\Kate Evstratenko\WishList - Copy\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\Kate Evstratenko\WishList - Copy\BLL\obj\Debug\BLL.dll
+D:\Kate Evstratenko\WishList - Copy\BLL\obj\Debug\BLL.pdb

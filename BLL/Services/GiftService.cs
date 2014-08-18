@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
@@ -42,14 +43,14 @@ namespace BLL.Services
         public IQueryable<DomainGift> GetAll()
         {
             var gifts = Uow.GiftRepository.GetAll();
-            var domainGifts = Mapper.Map<IEnumerable<DomainGift>>(gifts);
+            var domainGifts = gifts.Select(Mapper.Map<Gift, DomainGift>);
             return domainGifts.AsQueryable();
         }
 
         public IQueryable<DomainGift> GetPolular(int count)
         {
             var gifts = Uow.GiftRepository.GetAll();
-            var domainGifts = Mapper.Map<IEnumerable<DomainGift>>(gifts);
+            var domainGifts = gifts.Select(Mapper.Map<Gift, DomainGift>);
             return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable(); 
         } 
     }

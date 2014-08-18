@@ -6,12 +6,7 @@ namespace BLL.AutoMapper
 {
     public static class AutoMapperConfiguration
     {
-        public static void Configure()
-        {
-            ConfigureGiftMapping();
-        }
-
-        private static void ConfigureGiftMapping()
+        public static void RegisterMappings()
         {
             #region DAL to BLL
             Mapper.CreateMap<Gift, DomainGift>();

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using BLL;
 using BLL.Interfaces;
 using BLL.Services;
@@ -9,15 +10,15 @@ namespace WishList.Controllers
     {
         //
         // GET: /Home/
-        private readonly IGiftService _giftService;
+        private readonly IGiftService giftService;
         public HomeController(IGiftService giftService)
         {
-            _giftService = giftService;
+            this.giftService = giftService;
         }
 
         public ActionResult Index()
         {
-            var gifts = _giftService.GetPolular(Constants.PopularGiftsCount);
+            var gifts = giftService.GetPolular(10);
             return View(gifts);
         }
 
