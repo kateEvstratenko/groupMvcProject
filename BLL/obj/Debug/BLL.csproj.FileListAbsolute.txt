@@ -56,3 +56,9 @@ D:\Курсы\WishList\BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Курсы\WishList\BLL\obj\Debug\BLL.pdb
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

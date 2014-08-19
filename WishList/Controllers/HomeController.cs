@@ -11,9 +11,9 @@ namespace WishList.Controllers
         //
         // GET: /Home/
         private readonly IGiftService giftService;
-        public HomeController(IGiftService giftService)
+        public HomeController(IGiftService iGiftService)
         {
-            this.giftService = giftService;
+            giftService = iGiftService;
         }
 
         public ActionResult Index()

@@ -207,3 +207,7 @@ D:\Курсы\WishList\WishList\bin\System.Web.WebPages.xml
 D:\Курсы\WishList\WishList\bin\System.Web.WebPages.Deployment.xml
 D:\Курсы\WishList\WishList\bin\System.Web.WebPages.Razor.xml
 D:\Курсы\WishList\WishList\obj\Debug\WishList.pdb
+D:\Kate Evstratenko\WishList\WishList\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Kate Evstratenko\WishList\WishList\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kate Evstratenko\WishList\WishList\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Kate Evstratenko\WishList\WishList\bin\Microsoft.AspNet.Identity.EntityFramework.xml
