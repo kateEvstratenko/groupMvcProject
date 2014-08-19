@@ -10,7 +10,8 @@
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="#">Gift List</a></li>
+            <li>@Html.ActionLink("Gift List", "Catalog", "Gift")</li>
+            <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
             @if (User.Identity.IsAuthenticated)
             {
                 <li>@Html.ActionLink("My Wish Lists", "GetAllWishListsOfUser", "WishList")></li>

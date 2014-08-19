@@ -1,0 +1,10 @@
+﻿@model IQueryable<WishList.ViewModels.GiftViewModel>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+
+@foreach (var md in Model)
+{
+    <h1>@md.Name</h1>
+}

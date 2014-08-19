@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using AutoMapper;
+using BLL.Models;
+using WishList.ViewModels;
 
 namespace WishList
 {
@@ -12,9 +14,14 @@ namespace WishList
         public static void RegisterMappings()
         {
             #region BLL to WebUi
+            Mapper.CreateMap<DomainGift, CreateGiftViewModel>();
+            Mapper.CreateMap<DomainGift, GiftViewModel>();
             #endregion
 
             #region WebUI to BLL
+
+            Mapper.CreateMap<CreateUserViewModel, DomainUser>();
+            Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             #endregion
         }
     }
