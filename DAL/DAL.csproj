@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201408182144409_first.Designer.cs">
       <DependentUpon>201408182144409_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408190949292_GiftWishListManyToMany.cs" />
+    <Compile Include="Migrations\201408190949292_GiftWishListManyToMany.Designer.cs">
+      <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -79,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201408182144409_first.resx">
       <DependentUpon>201408182144409_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408190949292_GiftWishListManyToMany.resx">
+      <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

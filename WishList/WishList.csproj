@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,10 +267,19 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\WishList\Get.cshtml" />
+    <Content Include="Views\WishList\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
     <Folder Include="Content\GiftImages\" />
+=======
+<<<<<<< HEAD
+=======
+    <Folder Include="ViewModels\" />
+>>>>>>> 5b99c03f0b36d734beb269b4dd7723e411e201cf
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

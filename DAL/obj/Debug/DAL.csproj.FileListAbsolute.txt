@@ -46,6 +46,7 @@ D:\Курсы\WishList\DAL\obj\Debug\DAL.dll
 D:\Курсы\WishList\DAL\obj\Debug\DAL.pdb
 D:\Курсы\WishList\DAL\obj\Debug\DAL.Migrations.first.resources
 D:\Курсы\WishList\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+<<<<<<< HEAD
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\bin\Debug\DAL.dll.config
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\bin\Debug\DAL.dll
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\bin\Debug\DAL.pdb
@@ -62,3 +63,11 @@ C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\obj\De
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\obj\Debug\DAL.dll
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\DAL\obj\Debug\DAL.pdb
+=======
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.Migrations.GiftWishListManyToMany.resources
+>>>>>>> develop

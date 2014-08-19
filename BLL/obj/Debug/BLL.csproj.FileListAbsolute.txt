@@ -56,6 +56,7 @@ D:\Курсы\WishList\BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Курсы\WishList\BLL\obj\Debug\BLL.pdb
+<<<<<<< HEAD
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\AutoMapper.Net4.dll
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\BLL.dll.config
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\BLL.dll
@@ -75,3 +76,11 @@ C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\De
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.dll
 C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.pdb
+=======
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Kate Evstratenko\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+>>>>>>> develop
