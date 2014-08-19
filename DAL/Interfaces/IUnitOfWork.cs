@@ -1,10 +1,12 @@
 ﻿using DAL.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DAL.Interfaces
 {
     public interface IUnitOfWork
     {
         void Commit();
+        UserManager<User, int> UserManager { get; }
         IRepository<User> UserRepository { get; }
         IRepository<Friend> FriendRepository { get; }
         IRepository<WishList> WishListRepository { get; }

@@ -3,6 +3,7 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using DAL.Interfaces;
 using DAL.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL
@@ -12,9 +13,10 @@ namespace DAL
         public UnitOfWork()
             : base("DefaultConnection")
         {
-
+            UserManager = new UserManager<User, int>(new UserStore<User, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim>(this));
         }
 
+        public UserManager<User,int> UserManager { get; private set; }
         private Repository<User> userRepository;
         private Repository<Friend> friendRepository;
         private Repository<WishList> wishListRepository;

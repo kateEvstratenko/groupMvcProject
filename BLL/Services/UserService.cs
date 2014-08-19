@@ -1,9 +1,13 @@
-﻿using System.Linq;
+﻿using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace BLL.Services
 {
@@ -11,38 +15,75 @@ namespace BLL.Services
     {
         public UserService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainUser domainUser)
+        public async Task<DomainUser> LoginAsync(string userName, string password, bool isPersistent, IAuthenticationManager authenticationManager)
         {
-            var user = Mapper.Map<User>(domainUser);
-            Uow.UserRepository.Insert(user);   
-            Uow.Commit();
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            {
+                throw new NoNullAllowedException();
+            }
+
+            var user = await Uow.UserManager.FindAsync(userName, password);
+
+            if (user == null) return null;
+
+            await SignInAsync(user, isPersistent, authenticationManager);
+            var model = Mapper.Map<DomainUser>(user);
+
+            return model;
         }
 
-        public void Delete(int id)
+        public async Task<IdentityResult> RegisterAsync(string userName, string password, IAuthenticationManager authenticationManager)
         {
-            Uow.UserRepository.Delete(id);
-            Uow.Commit();
+            var user = new User { UserName = userName };
+            var result = await Uow.UserManager.CreateAsync(user, password);
+            if (result.Succeeded)
+            {
+                await SignInAsync(user, false, authenticationManager);
+            }
+
+            return result;
         }
 
-        public void Update(DomainUser domainUser)
+        public async Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
         {
-            var user = Mapper.Map<User>(domainUser);
-            Uow.UserRepository.Update(user);
-            Uow.Commit();
+            var result = await Uow.UserManager.ChangePasswordAsync(userId, currentPassword, newPassword);
+
+            return result;
         }
 
-        public DomainUser Get(int id)
+        public DomainUser GetUser(int userId)
         {
-            var user = Uow.UserRepository.Get(id);
-            var domainUser = Mapper.Map<DomainUser>(user);
-            return domainUser;
+            var user = Uow.UserManager.FindById(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var model = Mapper.Map<DomainUser>(user);
+
+            return model;
         }
 
-        public IQueryable<DomainUser> GetAll()
+        public async Task<IdentityResult> UpdateUserAsync(int userId, DomainUser model)
         {
-            var users = Uow.UserRepository.GetAll();
-            var domainUsers = Mapper.Map<IQueryable<DomainUser>>(users);
-            return domainUsers;
-        } 
+            var user = Uow.UserManager.FindById(userId);
+            user = Mapper.Map<User>(model);
+            var result = await Uow.UserManager.UpdateAsync(user);
+
+            return result;
+        }
+
+        public void SignOut(IAuthenticationManager authenticationManager)
+        {
+            authenticationManager.SignOut();
+        }
+
+        private async Task SignInAsync(User user, bool isPersistent, IAuthenticationManager authenticationManager)
+        {
+            authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            var identity = await Uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identity);
+        }
+
     }
 }
