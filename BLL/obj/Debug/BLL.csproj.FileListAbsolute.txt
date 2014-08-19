@@ -56,3 +56,22 @@ D:\Курсы\WishList\BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Курсы\WishList\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Курсы\WishList\BLL\obj\Debug\BLL.pdb
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\AutoMapper.Net4.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\BLL.dll.config
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\BLL.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\BLL.pdb
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\AutoMapper.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\DAL.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\DAL.pdb
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\AutoMapper.xml
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\EntityFramework.xml
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.dll
+C:\Users\Foxter\Documents\Visual Studio 2013\Projects\groupMvcProject\BLL\obj\Debug\BLL.pdb
