@@ -11,6 +11,5 @@ namespace WishList.ViewModels
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string Name { get; set; }
-
     }
 }
