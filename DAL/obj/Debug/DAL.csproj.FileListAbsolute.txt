@@ -46,3 +46,9 @@ D:\Курсы\WishList\DAL\obj\Debug\DAL.dll
 D:\Курсы\WishList\DAL\obj\Debug\DAL.pdb
 D:\Курсы\WishList\DAL\obj\Debug\DAL.Migrations.first.resources
 D:\Курсы\WishList\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Kate Evstratenko\WishList\DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Kate Evstratenko\WishList\DAL\obj\Debug\DAL.Migrations.GiftWishListManyToMany.resources

@@ -1,0 +1,23 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet Packages
+packages/*
+*.nupkg
+## TODO: If the tool you use requires repositories.config
+## uncomment the next line
+#!packages/repositories.config

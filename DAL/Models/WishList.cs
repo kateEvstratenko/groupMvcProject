@@ -20,9 +20,9 @@ namespace DAL.Models
 
         public virtual User User { get; set; }
 
-        public ICollection<Gift> Gifts { get; set; }
-        public ICollection<View> Views { get; set; }
-        public ICollection<Vote> Votes { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Gift> Gifts { get; set; }
+        public virtual ICollection<View> Views { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

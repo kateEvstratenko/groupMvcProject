@@ -3,7 +3,10 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
+//using DAL.Models;
+using System.Web.Mvc;
 using DAL.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BLL.Services
 {
@@ -38,11 +41,18 @@ namespace BLL.Services
             return domainWishList;
         }
 
-        public IQueryable<DomainWishList> GetAll()
+        /*public IQueryable<DomainWishList> GetAll()
         {
             var wishLists = Uow.WishListRepository.GetAll();
-            var domainWishLists = Mapper.Map<IQueryable<DomainWishList>>(wishLists);
-            return domainWishLists;
-        } 
+            var domainWishLists = wishLists.Select(Mapper.Map<WishList, DomainWishList>);
+            return domainWishLists.AsQueryable();
+        }*/
+
+        public IQueryable<DomainWishList> GetAllWishListsOfUser(int userId)
+        {
+            var wishLists = Uow.WishListRepository.GetAll().Where(x => x.UserId == userId);
+            var domainWishLists = wishLists.Select(Mapper.Map<WishList, DomainWishList>);
+            return domainWishLists.AsQueryable();
+        }
     }
 }
