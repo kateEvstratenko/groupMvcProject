@@ -9,12 +9,16 @@ namespace WishList.ViewModels
     public class CreateUserViewModel
     {
         [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string FirstName { get; set; }
 
         [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string LastName { get; set; }
 
         public string Avatar { get; set; }
+
+        public DateTime Birthday { get; set; }
 
         [Required]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
