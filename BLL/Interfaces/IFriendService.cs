@@ -5,8 +5,8 @@ namespace BLL.Interfaces
 {
     public interface IFriendService
     {
-        void Create(DomainFriend domainFriend);
-        void Delete(int id);
+        void Create(int userId, int friendId);
+        void Delete(int userId, int friendId);
         void Update(DomainFriend domainFriend);
         DomainFriend Get(int id);
         IQueryable<DomainFriend> GetAll();
