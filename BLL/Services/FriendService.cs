@@ -11,16 +11,40 @@ namespace BLL.Services
     {
         public FriendService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainFriend domainFriend)
+        public void Create(int userId, int friendId)
         {
-            var friend = Mapper.Map<Friend>(domainFriend);
-            Uow.FriendRepository.Insert(friend);   
+            var friend = new Friend()
+            {
+                UserId = userId,
+                FriendId = friendId
+            };
+            Uow.FriendRepository.Insert(friend);  
+
+            friend = new Friend()
+            {
+                UserId = friendId,
+                FriendId = userId
+            };
+            Uow.FriendRepository.Insert(friend);  
+            
             Uow.Commit();
         }
 
-        public void Delete(int id)
+        public void Delete(int userId, int friendId)
         {
-            Uow.FriendRepository.Delete(id);
+            var allFriends = Uow.FriendRepository.GetAll();
+            var friend = allFriends.Where(f => f.UserId == userId).SingleOrDefault(f => f.FriendId == friendId);
+
+            if (friend != null)
+            {
+                Uow.FriendRepository.Delete(friend.Id);
+            }
+
+            friend = allFriends.Where(f => f.UserId == friendId).SingleOrDefault(f => f.FriendId == userId);
+            if (friend != null)
+            {
+                Uow.FriendRepository.Delete(friend.Id);
+            }
             Uow.Commit();
         }
 
@@ -41,8 +65,9 @@ namespace BLL.Services
         public IQueryable<DomainFriend> GetAll()
         {
             var friends = Uow.FriendRepository.GetAll();
-            var domainFriends = Mapper.Map<IQueryable<DomainFriend>>(friends);
-            return domainFriends;
+            var domainFriends = friends.Select(Mapper.Map<Friend, DomainFriend>);
+
+            return domainFriends.AsQueryable();
         } 
     }
 }

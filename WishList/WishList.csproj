@@ -303,16 +303,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WishList\Get.cshtml" />
     <Content Include="Views\WishList\GetAll.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Gift\Catalog.cshtml" />
     <Content Include="Views\Gift\CreateGift.cshtml" />
     <Content Include="Views\Gift\_UdateGiftPartialView.cshtml" />
     <Content Include="Views\Shared\_Success.cshtml" />
-=======
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
->>>>>>> 6770845f2786c1d94c10b590cb1f18ddfc41d53f
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
