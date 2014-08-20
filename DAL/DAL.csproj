@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201408190949292_GiftWishListManyToMany.Designer.cs">
       <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408202043475_changeFriendModel.cs" />
+    <Compile Include="Migrations\201408202043475_changeFriendModel.Designer.cs">
+      <DependentUpon>201408202043475_changeFriendModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408190949292_GiftWishListManyToMany.resx">
       <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408202043475_changeFriendModel.resx">
+      <DependentUpon>201408202043475_changeFriendModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
