@@ -32,15 +32,10 @@ namespace BLL.Services
             return model;
         }
 
-        public async Task<IdentityResult> RegisterAsync(string userName, string password, IAuthenticationManager authenticationManager)
+        public async Task<IdentityResult> RegisterAsync(DomainUser model, string password, IAuthenticationManager authenticationManager)
         {
-            var user = new User { UserName = userName };
+            var user = Mapper.Map<User>(model);
             var result = await Uow.UserManager.CreateAsync(user, password);
-            if (result.Succeeded)
-            {
-                await SignInAsync(user, false, authenticationManager);
-            }
-
             return result;
         }
 

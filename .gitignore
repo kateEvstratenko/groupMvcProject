@@ -10,6 +10,7 @@
 [Rr]eleases/
 x64/
 x86/
+App_Data/
 build/
 bld/
 [Bb]in/

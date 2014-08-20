@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     {
         Task<DomainUser> LoginAsync(string userName, string password, bool isPersistent, IAuthenticationManager authenticationManager);
 
-        Task<IdentityResult> RegisterAsync(string userName, string password, IAuthenticationManager authenticationManager);
+        Task<IdentityResult> RegisterAsync(DomainUser model, string password, IAuthenticationManager authenticationManager);
 
         Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword);
 
