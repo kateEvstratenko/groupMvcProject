@@ -19,6 +19,10 @@ namespace WishList
             AreaRegistration.RegisterAllAreas();
             AutomapperConfig.RegisterMappings();
             BLL.AutoMapper.AutoMapperConfiguration.RegisterMappings();
+<<<<<<< HEAD
+            AutomapperConfig.RegisterMappings();
+=======
+>>>>>>> 6770845f2786c1d94c10b590cb1f18ddfc41d53f
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
