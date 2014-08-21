@@ -16,6 +16,7 @@ namespace WishList.ViewModels
         [Display(Name = "Surname")]
         public string LastName { get; set; }
 
-        public string Birthday1 { get; set; }
+        [Display(Name = "Birthday")]
+        public string FormattedBirthday { get; set; }
     }
 }

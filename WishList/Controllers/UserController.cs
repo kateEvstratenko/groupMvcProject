@@ -110,7 +110,7 @@ namespace WishList.Controllers
         public ActionResult ViewProfile(int id)
         {
             var user = userService.GetUser(id);
-            var userModel = Mapper.DynamicMap<ViewProfileViewModel>(user);
+            var userModel = Mapper.Map<ViewProfileViewModel>(user);
             return View(userModel);
         }
 

@@ -18,7 +18,8 @@ namespace WishList.ViewModels
 
         public string Avatar { get; set; }
 
-        public DateTime Birthday { get; set; }
+        [Display(Name = "Birthday")]
+        public string FormattedBirthday { get; set; }
 
         [Required]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]

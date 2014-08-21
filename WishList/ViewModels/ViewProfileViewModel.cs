@@ -20,7 +20,8 @@ namespace WishList.ViewModels
         [Required]
         public string LastName { get; set; }
 
-        public string Birthday { get; set; }
+        [Display(Name = "Birthday")]
+        public string FormattedBirthday { get; set; }
 
         public string Avatar { get; set; }
     }

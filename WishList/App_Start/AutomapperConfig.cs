@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI.WebControls;
 using AutoMapper;
@@ -25,14 +27,14 @@ namespace WishList
             {
                 CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-                viewmodel.Birthday1 = user.Birthday.ToShortDateString();
+                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
                 Thread.CurrentThread.CurrentCulture = originalCulture;
             });
             Mapper.CreateMap<DomainUser, ViewProfileViewModel>().AfterMap((user, viewmodel) =>
             {
                 CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-                viewmodel.Birthday = user.Birthday.ToShortDateString();
+                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
                 Thread.CurrentThread.CurrentCulture = originalCulture;
             });
             Mapper.CreateMap<DomainGift, GiftViewModel>();
@@ -43,9 +45,14 @@ namespace WishList
             {
                 IFormatProvider culture = new CultureInfo("fr-FR", true);
                 user.Birthday = new DateTime();
-                user.Birthday = DateTime.Parse(viewmodel.Birthday1, culture, DateTimeStyles.AssumeLocal);
+                user.Birthday = DateTime.Parse(viewmodel.FormattedBirthday, culture, DateTimeStyles.AssumeLocal);
             });
-            Mapper.CreateMap<CreateUserViewModel, DomainUser>();
+            Mapper.CreateMap<CreateUserViewModel, DomainUser>().AfterMap((viewmodel, user) =>
+            {
+                IFormatProvider culture = new CultureInfo("fr-FR", true);
+                user.Birthday = new DateTime();
+                user.Birthday = DateTime.Parse(viewmodel.FormattedBirthday, culture, DateTimeStyles.AssumeLocal);
+            });
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             Mapper.CreateMap<CreateUserViewModel, DomainUser>();
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
