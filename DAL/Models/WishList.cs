@@ -13,7 +13,6 @@ namespace DAL.Models
         [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string Name { get; set; }
 
-        [Required]
         public string Link { get; set; }
 
         public int UserId { get; set; }

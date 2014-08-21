@@ -17,7 +17,7 @@ namespace BLL.Services
         public void Create(DomainWishList domainWishList)
         {
             var wishList = Mapper.Map<WishList>(domainWishList);
-            Uow.WishListRepository.Insert(wishList);   
+            Uow.WishListRepository.Insert(wishList);
             Uow.Commit();
         }
 
