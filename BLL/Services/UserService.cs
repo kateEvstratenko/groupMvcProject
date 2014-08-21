@@ -41,11 +41,12 @@ namespace BLL.Services
         {
             var user = Mapper.Map<User>(model);
             var result = Uow.UserManager.Create(user, password);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return Mapper.Map<DomainUser>(user);
+                return null;
             }
-            return null;
+            Uow.UserManager.AddToRole(user.Id, "User");
+            return Mapper.Map<DomainUser>(user);
         }
 
         public async Task<String> GenerateEmailConfirmationTokenAsync(int id)

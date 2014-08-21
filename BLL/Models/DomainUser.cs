@@ -36,7 +36,6 @@ namespace BLL.Models
         [Required]
         public string Avatar { get; set; }
 
-        public ICollection<DomainRole> Roles { get; set; }
         public ICollection<DomainFriend> Friends { get; set; }
         public ICollection<DomainWishList> WishLists { get; set; }
         public ICollection<DomainComment> Comments { get; set; }
