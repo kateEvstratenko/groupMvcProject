@@ -22,6 +22,7 @@ namespace WishList
            /* {
                 model.Gifts = domain.Gifts;
             });*/
+            Mapper.CreateMap<DomainGift, GiftViewModel>();
             #endregion
 
             #region WebUI to BLL
@@ -32,6 +33,7 @@ namespace WishList
             Mapper.CreateMap<CreateUserViewModel, DomainUser>();
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             Mapper.CreateMap<CreateWishListViewModel, DomainWishList>();
+            Mapper.CreateMap<GiftViewModel, DomainGift>();
 
             #endregion
 

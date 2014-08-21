@@ -1,4 +1,5 @@
-﻿@model IQueryable<WishList.ViewModels.GiftViewModel>
+﻿@using WishList.ViewModels
+@model IQueryable<WishList.ViewModels.GiftViewModel>
 
 @{
     ViewBag.Title = "Catalog";
@@ -7,4 +8,5 @@
 @foreach (var md in Model)
 {
     <h1>@md.Name</h1>
+    <h3>@Html.ActionLink("more", "ViewGift", "Gift", new {id = md.Id}, null)</h3>
 }

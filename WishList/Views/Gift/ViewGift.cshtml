@@ -1,0 +1,48 @@
+﻿@using DAL.Models
+@using WishList.ViewModels
+@model GiftViewModel
+
+@{
+    ViewBag.Title = "ViewGift";
+}
+
+<h2>ViewGift</h2>
+<div id="gift">
+    <fieldset>
+        <legend>GiftViewModel</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Logo)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Logo)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.About)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.About)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.LikesCount)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LikesCount)
+        </div>
+
+    </fieldset>
+
+    <p>
+        @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

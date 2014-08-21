@@ -45,11 +45,13 @@ namespace WishList.Controllers
             return View(createGiftViewModel);
         }
 
-        public ActionResult UpdateGift()
+        public ActionResult UpdateGift(int id)
         {
             if (Request.IsAjaxRequest())
             {
-                return PartialView("_UdateGiftPartialView");
+                var gift = giftService.Get(id);
+
+                return PartialView("_UdateGiftPartialView", Mapper.Map<GiftViewModel>(gift));
             }
             else
             {
@@ -58,11 +60,11 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
-        public ActionResult UdateGift(CreateGiftViewModel createGiftViewModel)
+        public ActionResult UpdateGift(GiftViewModel giftViewModel)
         {
             if (ModelState.IsValid)
             {
-                var newGift = AutoMapper.Mapper.Map<DomainGift>(createGiftViewModel);
+                var newGift = Mapper.Map<DomainGift>(giftViewModel);
                 giftService.Update(newGift);
                 return PartialView("_Success");
             }
@@ -81,6 +83,13 @@ namespace WishList.Controllers
                 return PartialView("_Success");
             }
             return View();
+        }
+
+        public ActionResult ViewGift(GiftViewModel model)
+        {
+            var gift = giftService.Get(model.Id);
+            return View(Mapper.Map<GiftViewModel>(gift));
+
         }
     }
 }

@@ -62,11 +62,6 @@
     <Compile Include="Migrations\201408190949292_GiftWishListManyToMany.Designer.cs">
       <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Migrations\201408202043475_changeFriendModel.cs" />
-    <Compile Include="Migrations\201408202043475_changeFriendModel.Designer.cs">
-      <DependentUpon>201408202043475_changeFriendModel.cs</DependentUpon>
-=======
     <Compile Include="Migrations\201408202126581_changeFriendModel.cs" />
     <Compile Include="Migrations\201408202126581_changeFriendModel.Designer.cs">
       <DependentUpon>201408202126581_changeFriendModel.cs</DependentUpon>
@@ -74,7 +69,6 @@
     <Compile Include="Migrations\201408210747323_noRequiredLink.cs" />
     <Compile Include="Migrations\201408210747323_noRequiredLink.Designer.cs">
       <DependentUpon>201408210747323_noRequiredLink.cs</DependentUpon>
->>>>>>> f0c701407bd34d0235839c1f09dcf5a2b83742e9
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -101,16 +95,11 @@
     <EmbeddedResource Include="Migrations\201408190949292_GiftWishListManyToMany.resx">
       <DependentUpon>201408190949292_GiftWishListManyToMany.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201408202043475_changeFriendModel.resx">
-      <DependentUpon>201408202043475_changeFriendModel.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Migrations\201408202126581_changeFriendModel.resx">
       <DependentUpon>201408202126581_changeFriendModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408210747323_noRequiredLink.resx">
       <DependentUpon>201408210747323_noRequiredLink.cs</DependentUpon>
->>>>>>> f0c701407bd34d0235839c1f09dcf5a2b83742e9
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

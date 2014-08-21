@@ -314,8 +314,8 @@
     <Content Include="Views\WishList\ViewWishList.cshtml" />
     <Content Include="Views\WishList\_Create.cshtml" />
     <Content Include="Views\WishList\_UsersWishLists.cshtml" />
+    <Content Include="Views\Gift\ViewGift.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
