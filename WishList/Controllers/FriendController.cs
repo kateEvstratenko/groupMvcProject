@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using BLL.Interfaces;
+using BLL.Models;
 using Microsoft.AspNet.Identity;
+using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
@@ -26,14 +29,14 @@ namespace WishList.Controllers
         }
         public ActionResult DeleteFriend(int friendId)
         {
-            friendService.Create(Int32.Parse(User.Identity.GetUserId()), friendId);
+            friendService.Delete(Int32.Parse(User.Identity.GetUserId()), friendId);
             return PartialView("_Success");
         }
 
         public ActionResult FriendList()
         {
-            var friends = friendService.GetAll().Where(f => f.UserId == Int32.Parse(User.Identity.GetUserId()));
-            return PartialView("_FriendList", friends);
+            var friends = friendService.GetAll(Int32.Parse(User.Identity.GetUserId())).Select(Mapper.Map<DomainUser, UserViewModel>);
+            return PartialView("_FriendListPartial", friends);
         }
 
     }
