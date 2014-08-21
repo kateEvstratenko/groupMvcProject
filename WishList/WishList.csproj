@@ -321,6 +321,7 @@
     <Content Include="Views\User\ConfirmEmail.cshtml" />
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\User\ViewProfile.cshtml" />
+    <Content Include="Views\Friend\_FriendListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
