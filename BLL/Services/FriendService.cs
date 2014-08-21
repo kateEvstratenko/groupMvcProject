@@ -65,7 +65,7 @@ namespace BLL.Services
 
         public IQueryable<DomainUser> GetAll(int id)
         {
-            var friends = Uow.FriendRepository.GetAll().Where(f => f.UserId == id).AsQueryable();
+            var friends = Uow.FriendRepository.GetAll().Where(f => f.UserId == id).ToArray();
             var domainFriends = friends.Select(friend => Get(friend.FriendId).User).AsQueryable();
 
             return domainFriends;

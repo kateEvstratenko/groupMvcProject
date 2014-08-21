@@ -1,37 +1,12 @@
-﻿@model WishList.ViewModels.UserViewModel
+﻿@model IQueryable<WishList.ViewModels.UserViewModel>
 
-<fieldset>
-    <legend>UserViewModel</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FirstName)
+@foreach (var md in Model)
+{
+    <div id=@md.Id>
+        <h4>@md.FirstName</h4>
+        <h4>@md.LastName</h4>
+        <h4>@md.Birthday</h4>
+        <h4>@md.Avatar</h4>
+        @Ajax.ActionLink("delete", "DeleteFriend",  new { id = md.Id }, null)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FirstName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LastName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LastName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Birthday)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Birthday)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Avatar)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Avatar)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+}

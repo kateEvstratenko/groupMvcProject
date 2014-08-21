@@ -27,16 +27,16 @@ namespace WishList.Controllers
             friendService.Create(Int32.Parse(User.Identity.GetUserId()), friendId);
             return PartialView("_Success");
         }
-        public ActionResult DeleteFriend(int friendId)
+        public ActionResult DeleteFriend(int id)
         {
-            friendService.Delete(Int32.Parse(User.Identity.GetUserId()), friendId);
+            friendService.Delete(Int32.Parse(User.Identity.GetUserId()), id);
             return PartialView("_Success");
         }
 
         public ActionResult FriendList()
         {
             var friends = friendService.GetAll(Int32.Parse(User.Identity.GetUserId())).Select(Mapper.Map<DomainUser, UserViewModel>);
-            return PartialView("_FriendListPartial", friends);
+            return PartialView("_FriendListPartial", friends.AsQueryable());
         }
 
     }
