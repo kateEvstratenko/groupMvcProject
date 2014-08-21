@@ -199,6 +199,7 @@
     <Compile Include="ViewModels\GiftViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\ViewProfileViewModel.cs" />
     <Compile Include="ViewModels\WishListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +316,10 @@
     <Content Include="Views\WishList\_Create.cshtml" />
     <Content Include="Views\WishList\_UsersWishLists.cshtml" />
     <Content Include="Views\Gift\ViewGift.cshtml" />
+    <Content Include="Views\User\CheckEmail.cshtml" />
+    <Content Include="Views\User\ConfirmEmail.cshtml" />
+    <Content Include="Views\User\Success.cshtml" />
+    <Content Include="Views\User\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

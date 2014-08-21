@@ -46,16 +46,31 @@ namespace WishList.Controllers
                 return View(model);
             }
 
-            var user = await userService.LoginAsync(model.UserName, model.Password, model.RememberMe, AuthenticationManager);
+            var user = await userService.FindAsync(model.UserName, model.Password);
             if (user != null)
             {
-                return RedirectToLocal(returnUrl);
+                if (user.EmailConfirmed == true)
+                {
+                    await SignInAsync(user, model.RememberMe);
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Не подтвержден email.");
+                    return View(model);
+                }
             }
 
             ModelState.AddModelError("", "Invalid username or password.");
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private async Task SignInAsync(DomainUser user, bool isPersistent)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await userService.GenerateClaimAsync(user));
         }
 
         //
@@ -77,19 +92,43 @@ namespace WishList.Controllers
             {
                 return View(model);
             }
-            model.Avatar = "Content/avatars";
-            model.Birthday = DateTime.Now;
+            model.Avatar = "Content/UserAvatars/delault_avatar.gif";
             var domainModel = Mapper.Map<DomainUser>(model);
-            var result = await userService.RegisterAsync(domainModel, model.Password, AuthenticationManager);
-            if (result.Succeeded)
+            var result = userService.Register(domainModel, model.Password, AuthenticationManager);
+            if (result != null)
             {
-                return RedirectToAction("Index", "Home");
+                string code = await userService.GenerateEmailConfirmationTokenAsync(result.Id);
+                var callbackUrl = Url.Action("ConfirmEmail", "User", new { userId = result.Id, code = code }, protocol: Request.Url.Scheme);
+                await userService.SendEmailAsync(result.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return View("CheckEmail");
             }
-
-            AddErrors(result);
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public ActionResult ViewProfile(int id)
+        {
+            var user = userService.GetUser(id);
+            var userModel = Mapper.Map<ViewProfileViewModel>(user);
+            return View(userModel);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> ConfirmEmail(int userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+
+            IdentityResult result = await userService.ConfirmEmailAsync(userId, code);
+            if (result.Succeeded)
+            {
+                return View("ConfirmEmail");
+            }
+            AddErrors(result);
+            return View();
         }
 
         //
@@ -97,7 +136,7 @@ namespace WishList.Controllers
         public ActionResult EditProfile(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.EditProfileSuccess? "You profile data has been updated"
+                message == ManageMessageId.EditProfileSuccess ? "You profile data has been updated"
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
             var user = userService.GetUser(Int32.Parse(User.Identity.GetUserId()));
@@ -112,17 +151,25 @@ namespace WishList.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditProfile(EditUserViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
             var user = userService.GetUser(Int32.Parse(User.Identity.GetUserId()));
             user = Mapper.Map<DomainUser>(model);
             var result = await userService.UpdateUserAsync(Int32.Parse(User.Identity.GetUserId()), user);
             if (result.Succeeded)
             {
-                return RedirectToAction("EditProfile", new { Message = ManageMessageId.EditProfileSuccess });
+                return RedirectToAction("Success");
             }
             AddErrors(result);
             return View(model);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
         }
 
         //
@@ -132,7 +179,7 @@ namespace WishList.Controllers
         public ActionResult LogOff()
         {
             userService.SignOut(AuthenticationManager);
-            
+
             return RedirectToAction("Index", "Home");
         }
 
