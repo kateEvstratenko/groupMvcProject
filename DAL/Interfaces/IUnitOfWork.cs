@@ -6,7 +6,7 @@ namespace DAL.Interfaces
     public interface IUnitOfWork
     {
         void Commit();
-        UserManager<User, int> UserManager { get; }
+        UserManager<User, int> UserManager { get; set; }
         IRepository<User> UserRepository { get; }
         IRepository<Friend> FriendRepository { get; }
         IRepository<WishList> WishListRepository { get; }

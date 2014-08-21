@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity
+@model WishList.ViewModels.ViewProfileViewModel
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewProfile</h2>
+<h4>@Model.UserName</h4>
+@if (Model.Id == Int32.Parse(User.Identity.GetUserId()))
+{
+    @Html.ActionLink("Edit", "EditProfile")
+}
+<hr />
+<dl class="dl-horizontal avatar">
+    <img alt="photo" src="@Model.Avatar" class="avatar" />
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Firstname)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Firstname)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.LastName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.LastName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Birthday)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Birthday)
+    </dd>
+</dl>

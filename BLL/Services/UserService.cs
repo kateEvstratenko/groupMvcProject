@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
@@ -7,36 +9,67 @@ using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
 namespace BLL.Services
 {
     public class UserService: BaseService, IUserService
     {
-        public UserService(IUnitOfWork uow) : base(uow) { }
-
-        public async Task<DomainUser> LoginAsync(string userName, string password, bool isPersistent, IAuthenticationManager authenticationManager)
+        public UserService(IUnitOfWork uow) : base(uow)
         {
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            {
-                throw new NoNullAllowedException();
-            }
-
-            var user = await Uow.UserManager.FindAsync(userName, password);
-
-            if (user == null) return null;
-
-            await SignInAsync(user, isPersistent, authenticationManager);
-            var model = Mapper.Map<DomainUser>(user);
-
-            return model;
+            Uow.UserManager = InitUserManager(Uow.UserManager);
         }
 
-        public async Task<IdentityResult> RegisterAsync(DomainUser model, string password, IAuthenticationManager authenticationManager)
+        private UserManager<User, int> InitUserManager(UserManager<User, int> manager)
+        {
+            manager.EmailService = new EmailService();
+            manager.SmsService = new SmsService();
+            var provider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("Wishlist");
+            manager.UserTokenProvider = new DataProtectorTokenProvider<User, int>(provider.Create("EmailConfirmation"));
+            return manager;
+        }
+
+        public async Task<DomainUser> FindAsync(string userName, string password)
+        {
+            var user = await Uow.UserManager.FindAsync(userName, password);
+            var applicationUserDomainModel = Mapper.Map<DomainUser>(user);
+            return applicationUserDomainModel;
+        }
+
+        public DomainUser Register(DomainUser model, string password, IAuthenticationManager authenticationManager)
         {
             var user = Mapper.Map<User>(model);
-            var result = await Uow.UserManager.CreateAsync(user, password);
+            var result = Uow.UserManager.Create(user, password);
+            if (result.Succeeded)
+            {
+                return Mapper.Map<DomainUser>(user);
+            }
+            return null;
+        }
+
+        public async Task<String> GenerateEmailConfirmationTokenAsync(int id)
+        {
+            string code = await Uow.UserManager.GenerateEmailConfirmationTokenAsync(id);
+            return code;
+        }
+
+        public async Task SendEmailAsync(int userId, string message, string body)
+        {
+            await Uow.UserManager.SendEmailAsync(userId, message, body);
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(int userId, string code)
+        {
+            IdentityResult result = await Uow.UserManager.ConfirmEmailAsync(userId, code);
             return result;
+        }
+
+        public async Task<bool> IsEmailConfirmedAsync(int userId)
+        {
+            bool isEmailConfirmed = await Uow.UserManager.IsEmailConfirmedAsync(userId);
+
+            return isEmailConfirmed;
         }
 
         public async Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
@@ -59,12 +92,21 @@ namespace BLL.Services
             return model;
         }
 
+        public async Task<ClaimsIdentity> GenerateClaimAsync(DomainUser userDomainModel)
+        {
+            var user = Mapper.Map<User>(userDomainModel);
+            var claimsIdentity = await Uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+            return claimsIdentity;
+        }
+
         public async Task<IdentityResult> UpdateUserAsync(int userId, DomainUser model)
         {
             var user = Uow.UserManager.FindById(userId);
-            user = Mapper.Map<User>(model);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Birthday = model.Birthday;
             var result = await Uow.UserManager.UpdateAsync(user);
-
             return result;
         }
 
@@ -72,13 +114,5 @@ namespace BLL.Services
         {
             authenticationManager.SignOut();
         }
-
-        private async Task SignInAsync(User user, bool isPersistent, IAuthenticationManager authenticationManager)
-        {
-            authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            var identity = await Uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-            authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identity);
-        }
-
     }
 }

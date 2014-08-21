@@ -9,14 +9,13 @@ namespace WishList.ViewModels
     public class EditUserViewModel
     {
         [Required]
-        public string Firstname { get; set; }
+        [Display(Name = "Firstame")]
+        public string FirstName { get; set; }
 
         [Required]
-        public string Surname { get; set; }
+        [Display(Name = "Surname")]
+        public string LastName { get; set; }
 
-        [Required]
-        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        public string Email { get; set; }
-
+        public string Birthday1 { get; set; }
     }
 }

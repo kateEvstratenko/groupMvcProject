@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BLL.Models;
 using Microsoft.AspNet.Identity;
@@ -8,13 +10,23 @@ namespace BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<DomainUser> LoginAsync(string userName, string password, bool isPersistent, IAuthenticationManager authenticationManager);
-
-        Task<IdentityResult> RegisterAsync(DomainUser model, string password, IAuthenticationManager authenticationManager);
+        DomainUser Register(DomainUser model, string password, IAuthenticationManager authenticationManager);
 
         Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword);
 
         DomainUser GetUser(int userId);
+
+        Task<ClaimsIdentity> GenerateClaimAsync(DomainUser userDomainModel);
+
+        Task<DomainUser> FindAsync(string userName, string password);
+
+        Task<String> GenerateEmailConfirmationTokenAsync(int id);
+
+        Task<bool> IsEmailConfirmedAsync(int userId);
+
+        Task SendEmailAsync(int userId, string message, string body);
+
+        Task<IdentityResult> ConfirmEmailAsync(int userId, string code);
 
         Task<IdentityResult> UpdateUserAsync(int userId, DomainUser model);
 

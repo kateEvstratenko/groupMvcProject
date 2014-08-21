@@ -16,21 +16,26 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Firstname, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Firstname)
-                @Html.ValidationMessageFor(model => model.Firstname)
+                @Html.EditorFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Surname)
-                @Html.ValidationMessageFor(model => model.Surname)
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
             </div>
         </div>
-
+        <div class="form-group">
+        @Html.LabelFor(m => m.Birthday1, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Birthday1, new { @class = "form-control cat_textbox", @id = "datepicker" })
+        </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -38,3 +43,5 @@
         </div>
     </div>
 }
+
+<script src="/Scripts/datepicker.js"></script>
