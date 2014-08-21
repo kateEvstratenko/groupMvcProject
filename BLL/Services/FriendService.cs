@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
@@ -62,12 +63,12 @@ namespace BLL.Services
             return domainFriend;
         }
 
-        public IQueryable<DomainFriend> GetAll()
+        public IQueryable<DomainUser> GetAll(int id)
         {
-            var friends = Uow.FriendRepository.GetAll();
-            var domainFriends = friends.Select(Mapper.Map<Friend, DomainFriend>);
+            var friends = Uow.FriendRepository.GetAll().Where(f => f.UserId == id).AsQueryable();
+            var domainFriends = friends.Select(friend => Get(friend.FriendId).User).AsQueryable();
 
-            return domainFriends.AsQueryable();
+            return domainFriends;
         } 
     }
 }
