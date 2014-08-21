@@ -1,0 +1,20 @@
+﻿@using WishList.ViewModels;
+@model WishListViewModel
+
+@{
+    ViewBag.Title = "Get";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    @Model.Name
+</h3>
+@Html.ActionLink("Edit", "Edit", "WishList", new { id = Model.Id }, null)
+@Model.Link
+
+@foreach (var gift in Model.Gifts)
+{
+    <div>
+        gift.Name
+    </div>
+}

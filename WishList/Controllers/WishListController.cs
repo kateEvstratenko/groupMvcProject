@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using BLL.Interfaces;
+using BLL.Models;
 using Microsoft.AspNet.Identity;
+using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
@@ -16,46 +19,58 @@ namespace WishList.Controllers
             wishListService = iWishListService;
         }
 
-        /*public ActionResult Create(WishListViewModel model)
+        [HttpGet]
+        public ActionResult Create()
         {
+            /*var domainWishList = Mapper.Map<DomainWishList>(model);
+            wishListService.Create(domainWishList);
+            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile*/
+            var model = new CreateWishListViewModel()
+            {
+                UserId = Int32.Parse(User.Identity.GetUserId())
+            };
+            return PartialView("_Create",  model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateWishListViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_Create", model);
+            }
+
             var domainWishList = Mapper.Map<DomainWishList>(model);
             wishListService.Create(domainWishList);
-            return RedirectToAction("GetAll");
-        }*/
+            return RedirectToAction("GetAllWishListsOfUser");
+        }
 
-        /*public ActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             wishListService.Delete(id);
-            return RedirectToAction("GetAll");
-        }*/
+            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile
+        }
 
-        /*public ActionResult Update(WishListViewModel model)
+        public ActionResult Update(WishListViewModel model)
         {
             var domainWishList = Mapper.Map<DomainWishList>(model);
             wishListService.Update(domainWishList);
-            return RedirectToAction("GetAll");
-        }*/
+            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile
+        }
 
-        /*public ActionResult Get(int id)
+        public ActionResult ViewWishList(int id)
         {
             var wishList = wishListService.Get(id);
             var wishListViewModel = Mapper.Map<WishListViewModel>(wishList);
             return View(wishListViewModel);
-        }*/
+        }
 
-        /*public ActionResult GetAll()
-        {
-            var wishLists = wishListService.GetAll();
-            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-            return View(model);
-        }*/
-
-        /*public ActionResult GetAllWishListsOfUser()
+        public ActionResult GetAllWishListsOfUser()
         {
             var userId = Int32.Parse(User.Identity.GetUserId());
-            var wishLists = wishListService.GetAllWishListsOfUser(userId);
+            var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
             var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-            return View(model);
-        }*/
+            return View("_UsersWishLists", model);
+        }
     }
 }
