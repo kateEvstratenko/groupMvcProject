@@ -9,6 +9,6 @@ namespace BLL.Interfaces
         void Delete(int userId, int friendId);
         void Update(DomainFriend domainFriend);
         DomainFriend Get(int id);
-        IQueryable<DomainFriend> GetAll();
+        IQueryable<DomainUser> GetAll(int id);
     }
 }

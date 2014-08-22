@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using AutoMapper;
 using BLL.Models;
+using DAL.Models;
 using WishList.ViewModels;
 
 namespace WishList
@@ -23,6 +24,7 @@ namespace WishList
            /* {
                 model.Gifts = domain.Gifts;
             });*/
+            Mapper.CreateMap<DomainUser, UserViewModel>();
             Mapper.CreateMap<DomainUser, EditUserViewModel>().AfterMap((user, viewmodel) =>
             {
                 CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
@@ -58,6 +60,7 @@ namespace WishList
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             Mapper.CreateMap<CreateWishListViewModel, DomainWishList>();
             Mapper.CreateMap<GiftViewModel, DomainGift>();
+            Mapper.CreateMap<UserViewModel, DomainUser>();
 
             #endregion
 
