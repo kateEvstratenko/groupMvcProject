@@ -14,8 +14,10 @@ namespace DAL
             : base("DefaultConnection")
         {
             UserManager = new UserManager<User, int>(new UserStore<User, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim>(this));
+            RolesManager = new RoleManager<CustomRole, int>(new RoleStore<CustomRole, int, CustomUserRole>(this));
         }
 
+        public RoleManager<CustomRole,int>  RolesManager { get; set; }
         public UserManager<User,int> UserManager { get; set; }
         private Repository<User> userRepository;
         private Repository<Friend> friendRepository;

@@ -9,6 +9,7 @@ using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
@@ -41,11 +42,12 @@ namespace BLL.Services
         {
             var user = Mapper.Map<User>(model);
             var result = Uow.UserManager.Create(user, password);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return Mapper.Map<DomainUser>(user);
+                return null;
             }
-            return null;
+            Uow.UserManager.AddToRole(user.Id, "User");
+            return Mapper.Map<DomainUser>(user);
         }
 
         public async Task<String> GenerateEmailConfirmationTokenAsync(int id)
@@ -96,7 +98,6 @@ namespace BLL.Services
         {
             var user = Mapper.Map<User>(userDomainModel);
             var claimsIdentity = await Uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-
             return claimsIdentity;
         }
 

@@ -40,6 +40,13 @@ namespace WishList
                 Thread.CurrentThread.CurrentCulture = originalCulture;
             });
             Mapper.CreateMap<DomainGift, GiftViewModel>();
+            Mapper.CreateMap<DomainUser, UserViewModel>().AfterMap((user, viewmodel) =>
+            {
+                CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
+                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
+                Thread.CurrentThread.CurrentCulture = originalCulture;
+            });
             #endregion
 
             #region WebUI to BLL
