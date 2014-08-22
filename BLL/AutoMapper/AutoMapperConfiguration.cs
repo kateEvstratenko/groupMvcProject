@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using BLL.Models;
 using DAL.Models;
 
@@ -14,7 +15,10 @@ namespace BLL.AutoMapper
             Mapper.CreateMap<Comment,DomainComment>();
             Mapper.CreateMap<Friend, DomainFriend>();
             Mapper.CreateMap<Tag, DomainTag>();
-            Mapper.CreateMap<User, DomainUser>();
+            Mapper.CreateMap<User, DomainUser>().AfterMap((user, domain) =>
+            {
+                domain.RoleId = user.Roles.First().RoleId;
+            });
             Mapper.CreateMap<View, DomainView>();
             Mapper.CreateMap<Vote, DomainVote>();
             #endregion

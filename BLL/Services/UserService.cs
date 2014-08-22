@@ -9,6 +9,7 @@ using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
@@ -97,7 +98,6 @@ namespace BLL.Services
         {
             var user = Mapper.Map<User>(userDomainModel);
             var claimsIdentity = await Uow.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-
             return claimsIdentity;
         }
 

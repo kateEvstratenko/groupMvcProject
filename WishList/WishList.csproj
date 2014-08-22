@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -321,6 +322,7 @@
     <Content Include="Views\User\ConfirmEmail.cshtml" />
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\User\ViewProfile.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using DAL.Models;
 
 namespace WishList.ViewModels
@@ -18,13 +19,16 @@ namespace WishList.ViewModels
         public string LastName { get; set; }
 
         [Required]
-        public DateTime Birthday { get; set; }
-
-        [Required]
         public string Avatar { get; set; }
 
-        public virtual ICollection<Friend> Friends { get; set; }
-        public virtual ICollection<DAL.Models.WishList> WishLists { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
+
+        public string FormattedBirthday { get; set; }
+
+        public List<SelectListItem> Roles { get; set; } 
+        
+        public int RoleId { get; set; }
     }
 }
