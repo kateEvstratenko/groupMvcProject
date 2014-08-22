@@ -22,9 +22,6 @@ namespace WishList.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            /*var domainWishList = Mapper.Map<DomainWishList>(model);
-            wishListService.Create(domainWishList);
-            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile*/
             var model = new CreateWishListViewModel()
             {
                 UserId = Int32.Parse(User.Identity.GetUserId())
@@ -70,7 +67,22 @@ namespace WishList.Controllers
             var userId = Int32.Parse(User.Identity.GetUserId());
             var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
             var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-            return View("_UsersWishLists", model);
+            return PartialView("_UsersWishLists", model);
+        }
+
+        public ActionResult GenerateLink(int id, string url)
+        {
+            wishListService.GenerateLink(id, url);
+            return RedirectToAction("ViewWishList", new { id = id });
+        }
+
+        public ActionResult AddGiftToWishList(int giftId)
+        {
+            var userId = Int32.Parse(User.Identity.GetUserId());
+            var wishList = wishListService.GetAllWishListsOfUser(userId).ToList().First();
+
+            wishListService.AddGiftToWishList(giftId, wishList.Id);
+            return RedirectToAction("GetAllWishListsOfUser");
         }
     }
 }

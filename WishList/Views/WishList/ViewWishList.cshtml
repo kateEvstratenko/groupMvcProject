@@ -1,4 +1,4 @@
-﻿@using WishList.ViewModels;
+﻿@using WishList.ViewModels
 @model WishListViewModel
 
 @{
@@ -9,12 +9,26 @@
 <h3>
     @Model.Name
 </h3>
-@Html.ActionLink("Edit", "Edit", "WishList", new { id = Model.Id }, null)
-@Model.Link
+
+@if (Model.Link != null)
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Link, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.ActionLink("Generate link", "GenerateLink", "WishList", new { id = Model.Id, url = Request.Url.ToString() }, null)
+}
 
 @foreach (var gift in Model.Gifts)
 {
     <div>
-        gift.Name
+        @gift.Name
     </div>
 }

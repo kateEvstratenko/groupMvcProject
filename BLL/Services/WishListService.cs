@@ -29,8 +29,10 @@ namespace BLL.Services
 
         public void Update(DomainWishList domainWishList)
         {
-            var wishList = Mapper.Map<WishList>(domainWishList);
-            Uow.WishListRepository.Update(wishList);
+            var currentWishList = Uow.WishListRepository.Get(domainWishList.Id);
+            Mapper.Map<DomainWishList, WishList>(domainWishList, currentWishList);
+            //currentWishList.Link = domainWishList.Link;
+            Uow.WishListRepository.Update(currentWishList);
             Uow.Commit();
         }
 
@@ -53,6 +55,25 @@ namespace BLL.Services
             var wishLists = Uow.WishListRepository.GetAll().Where(x => x.UserId == userId);
             var domainWishLists = wishLists.Select(Mapper.Map<WishList, DomainWishList>);
             return domainWishLists.AsQueryable();
+        }
+
+        public void GenerateLink(int id, string url)
+        {
+            var wishList = Get(id);
+            wishList.Link = url;
+            Update(wishList);
+        }
+
+        public void AddGiftToWishList(int giftId, int wishListId)
+        {
+            var gift = Uow.GiftRepository.Get(giftId);
+            var wishList = Uow.WishListRepository.Get(wishListId);
+            wishList.Gifts.Add(gift);
+
+            //Mapper.Map<DomainWishList, WishList>(domainWishList, currentWishList);
+
+            Uow.WishListRepository.Update(wishList);
+            Uow.Commit();
         }
     }
 }

@@ -1,14 +1,16 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using DAL.Interfaces;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DAL.Models;
 
 namespace DAL
 {
     public class Repository<T> : IRepository<T> where T : class
     {
         internal IDbSet<T> DbSet;
-        internal DbContext Context;
-        public Repository(IDbSet<T> dbSet, DbContext context)
+        internal IdentityDbContext<User, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim> Context;
+        public Repository(IDbSet<T> dbSet, IdentityDbContext<User, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim> context)
         {
             DbSet = dbSet;
             Context = context;
@@ -35,7 +37,6 @@ namespace DAL
         public T Get(int id)
         {
             var result = DbSet.Find(id);
-            
             return result;
         }
 

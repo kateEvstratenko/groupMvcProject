@@ -10,5 +10,7 @@ namespace BLL.Interfaces
         void Update(DomainWishList domainWishList);
         DomainWishList Get(int id);
         IQueryable<DomainWishList> GetAllWishListsOfUser(int userId);
+        void GenerateLink(int id, string url);
+        void AddGiftToWishList(int giftId, int wishListId);
     }
 }

@@ -45,4 +45,6 @@
         @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
         @Html.ActionLink("Back to List", "Index")
     </p>
+
+    @Html.ActionLink("Add to my wish list", "AddGiftToWishList", "WishList", new { giftId = Model.Id}, null)
 </div>

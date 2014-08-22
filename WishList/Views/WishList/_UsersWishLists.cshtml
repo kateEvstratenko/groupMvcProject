@@ -1,26 +1,28 @@
 ﻿@using WishList.ViewModels;
 @model IEnumerable<WishListViewModel>
 
-<h2>My wish lists</h2>
 
-<div id="newWishList" class="modal fade">
-    <div id="contentId"></div>
-</div>
-
-@Ajax.ActionLink("Add new", "Create", "WishList", null,
+<div id="contentId">
+    <h2>My wish lists</h2>
+    @Ajax.ActionLink("Add new", "Create", "WishList",
     new AjaxOptions
     {
         UpdateTargetId = "contentId",
-        InsertionMode = InsertionMode.Replace,
-        HttpMethod = "GET"
-    }, new { data_toggle = "modal", data_target = "#newWishList" })
+    }, new { @class = "btn btn-success"})
 
-@foreach (var wishList in Model)
-{
-    <div>
-        @Html.ActionLink(wishList.Name, "ViewWishList", "WishList", new {id = wishList.Id}, null)
-        Count of gifts: @wishList.Gifts.Count
-    </div>
-}
+    @foreach (var wishList in Model)
+    {
+        <div>
+            <h3>
+                @Html.ActionLink(wishList.Name, "ViewWishList", "WishList", new { id = wishList.Id }, null)
+            </h3>
+            Count of gifts: @wishList.Gifts.Count
 
-
+            @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = wishList.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "contentId",
+            }, null)
+        </div>
+    }
+</div>
