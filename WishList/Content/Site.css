@@ -73,3 +73,12 @@ img.avatar {
     width: 100px;
     height: 100px;
 }
+
+.createButton {
+    margin-top: 3%;
+}
+
+.formButton {
+    padding: 0;
+    border-width: 0;
+}

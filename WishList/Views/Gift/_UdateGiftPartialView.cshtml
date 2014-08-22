@@ -12,38 +12,40 @@
 
         <fieldset>
             <legend>CreateGiftViewModel</legend>
-            @Html.HiddenFor(model => model.Id )
+            @Html.HiddenFor(model => model.Id)
             <div class="editor-label">
-                @Html.LabelFor(model => model.Name)
+                @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Name)
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(model => model.Logo)
+                @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Logo)
+                @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Logo)
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(model => model.About)
+                @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.About)
+                @Html.EditorFor(model => model.About, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.About)
             </div>
 
-            <p>
-                <input type="submit" value="Save" />
-            </p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary createButton" value="Save" />
+                </div>
+            </div>
         </fieldset>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Go to catalog", "Catalog")
     </div>
 </div>
