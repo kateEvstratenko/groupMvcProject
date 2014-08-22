@@ -60,6 +60,7 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpdateGift(GiftViewModel giftViewModel)
         {
             if (ModelState.IsValid)
@@ -79,8 +80,9 @@ namespace WishList.Controllers
         {
             if (Request.IsAjaxRequest())
             {
+                var giftName = giftService.Get(id).Name;
                 giftService.Delete(id);
-                return PartialView("_Success");
+                return PartialView("_DeleteGiftSuccessPartial", giftName);
             }
             return View();
         }
