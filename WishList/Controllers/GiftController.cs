@@ -27,6 +27,10 @@ namespace WishList.Controllers
 
         public ActionResult CreateGift()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_CreateGiftPartial");
+            }
             return View();
         }
 
@@ -37,12 +41,11 @@ namespace WishList.Controllers
             {
                 var newGift = Mapper.Map<DomainGift>(createGiftViewModel);
                 giftService.Create(newGift);
+                return PartialView("_CreateGiftSuccessPartial", createGiftViewModel.Name);
             }
-            else
-            {
-                ModelState.AddModelError("", "Invalid model");
-            }
-            return View(createGiftViewModel);
+
+            ModelState.AddModelError("", "Invalid model");
+            return View();
         }
 
         public ActionResult UpdateGift(int id)
@@ -53,10 +56,7 @@ namespace WishList.Controllers
 
                 return PartialView("_UdateGiftPartialView", Mapper.Map<GiftViewModel>(gift));
             }
-            else
-            {
                 return View();
-            }
         }
 
         [HttpPost]
@@ -67,7 +67,7 @@ namespace WishList.Controllers
             {
                 var newGift = Mapper.Map<DomainGift>(giftViewModel);
                 giftService.Update(newGift);
-                return PartialView("_Success");
+                return PartialView("_UpdateGiftSuccessPartial", giftViewModel.Name);
             }
             else
             {

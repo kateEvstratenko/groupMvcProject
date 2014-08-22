@@ -12,31 +12,31 @@
         <legend>GiftViewModel</legend>
         @Html.HiddenFor(model => model.Id)
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Name, new { @class = "form-control" })
         </div>
 
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.Logo)
+            @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.Logo)
+            @Html.DisplayFor(model => model.Logo, new { @class = "form-control" })
         </div>
 
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.About)
+            @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.About)
+            @Html.DisplayFor(model => model.About, new { @class = "form-control" })
         </div>
 
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.LikesCount)
+            @Html.LabelFor(model => model.LikesCount, new { @class = "col-md-2 control-label" })
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.LikesCount)
+            @Html.DisplayFor(model => model.LikesCount, new { @class = "form-control" })
         </div>
 
     </fieldset>

@@ -9,7 +9,7 @@
 {
     <div id="@md.Id">
         <h1>@md.Name</h1>
-        <span><h5>@Html.ActionLink("more", "ViewGift", "Gift", new { id = md.Id }, null)</h5></span>
-        <span><h5>@Ajax.ActionLink("del", "DeleteGift", "Gift", new { id = md.Id }, new AjaxOptions { UpdateTargetId = md.Id.ToString() })</h5></span>
+        <button class="formButton">@Html.ActionLink("More", "ViewGift", "Gift", new { id = md.Id }, new {@class = "btn btn-info"})</button>
+        <button class="formButton">@Ajax.ActionLink("del", "DeleteGift", "Gift", new { id = md.Id }, new AjaxOptions { UpdateTargetId = md.Id.ToString() }, new {@class = "btn btn-danger"})</button>
     </div>
 }
