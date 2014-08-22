@@ -322,6 +322,10 @@
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\User\ViewProfile.cshtml" />
     <Content Include="Views\Friend\_FriendListPartial.cshtml" />
+    <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
+    <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

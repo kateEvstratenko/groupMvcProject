@@ -1,0 +1,9 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Success!</h3>
+    </div>
+    <div class="panel-body">
+        <h5>Gift "@Model" added.</h5>
+    </div>
+</div> 
+@Ajax.ActionLink("Add one more gift", "CreateGift", "Gift", new AjaxOptions{UpdateTargetId = "gift"})

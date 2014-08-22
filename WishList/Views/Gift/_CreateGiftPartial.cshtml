@@ -1,0 +1,39 @@
+﻿@model WishList.ViewModels.CreateGiftViewModel
+@using (Ajax.BeginForm("CreateGift", new AjaxOptions { UpdateTargetId = "gift" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Create New Gift</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Logo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.About, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.About)
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary createButton" value="Create" />
+            </div>
+        </div>
+    </fieldset>
+}
