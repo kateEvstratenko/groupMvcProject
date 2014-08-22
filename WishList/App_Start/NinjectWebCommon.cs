@@ -70,6 +70,7 @@ namespace WishList
             kernel.Bind<ITagService>().To<TagService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IWishListService>().To<WishListService>();
+            kernel.Bind<IAdminService>().To<AdminService>();
         }
     }
 }

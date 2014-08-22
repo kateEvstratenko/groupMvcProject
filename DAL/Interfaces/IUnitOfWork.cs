@@ -7,6 +7,7 @@ namespace DAL.Interfaces
     {
         void Commit();
         UserManager<User, int> UserManager { get; set; }
+        RoleManager<CustomRole, int> RolesManager { get; set; }
         IRepository<User> UserRepository { get; }
         IRepository<Friend> FriendRepository { get; }
         IRepository<WishList> WishListRepository { get; }
