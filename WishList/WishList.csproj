@@ -200,6 +200,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\ViewProfileViewModel.cs" />
+    <Compile Include="ViewModels\WishListDropDownViewModel.cs" />
     <Compile Include="ViewModels\WishListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -324,11 +325,16 @@
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\User\ViewProfile.cshtml" />
     <Content Include="Views\Friend\_FriendListPartial.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
     <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
+=======
+    <Content Include="Views\WishList\_GetDropDownWishLists.cshtml" />
+    <Content Include="Views\WishList\_GetAllUsersWishListsOfGift.cshtml" />
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
