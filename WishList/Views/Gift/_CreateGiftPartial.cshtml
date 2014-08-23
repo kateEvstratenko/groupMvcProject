@@ -1,39 +1,34 @@
 ﻿@model WishList.ViewModels.CreateGiftViewModel
-@using (Ajax.BeginForm("CreateGift", new AjaxOptions { UpdateTargetId = "gift" }))
+@using (Ajax.BeginForm("CreateGift", new { @class = "form-horizontal", role = "form" }, new AjaxOptions { UpdateTargetId = "gift" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    <h4>Create a new gift</h4>
+    <hr />
+    @Html.ValidationSummary()
+    <div class="gift-form-group form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="gift-form-group form-group">
+        @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Logo, new { @class = "form-control" })
+        </div>
+    </div>
 
-    <fieldset>
-        <legend>Create New Gift</legend>
+    <div class="gift-form-group form-group">
+        @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.About, new { @class = "form-control" })
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Create" />
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Logo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.About, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.About)
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-primary createButton" value="Create" />
-            </div>
-        </div>
-    </fieldset>
+    </div>
 }

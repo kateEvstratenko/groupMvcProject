@@ -1,15 +1,13 @@
-﻿@using WishList.ViewModels
+﻿@using WishList.Helpers
+@using WishList.ViewModels
 @model IQueryable<GiftViewModel>
 
 @{
     ViewBag.Title = "Catalog";
 }
 
-@foreach (var md in Model)
-{
-    <div id="@md.Id">
-        <h1>@md.Name</h1>
-        <button class="formButton">@Html.ActionLink("More", "ViewGift", "Gift", new { id = md.Id }, new {@class = "btn btn-info"})</button>
-        <button class="formButton">@Ajax.ActionLink("del", "DeleteGift", "Gift", new { id = md.Id }, new AjaxOptions { UpdateTargetId = md.Id.ToString() }, new {@class = "btn btn-danger"})</button>
-    </div>
+@foreach (var gift in Model)
+{ 
+        @Html.Gift(gift, true)
 }
+<script src="/Scripts/LikesManager.js"></script>
