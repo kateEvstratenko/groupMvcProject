@@ -22,11 +22,5 @@ namespace WishList.ViewModels
         public string About { get; set; }
 
         public int LikesCount { get; set; }
-
-        public int WishListId { get; set; }
-
-        public virtual DAL.Models.WishList WishList { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

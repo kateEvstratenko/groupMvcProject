@@ -52,6 +52,6 @@ namespace BLL.Services
             var gifts = Uow.GiftRepository.GetAll();
             var domainGifts = gifts.Select(Mapper.Map<Gift, DomainGift>);
             return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable(); 
-        } 
+        }
     }
 }

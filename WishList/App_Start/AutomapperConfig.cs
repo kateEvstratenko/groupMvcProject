@@ -20,7 +20,9 @@ namespace WishList
             Mapper.CreateMap<DomainGift, CreateGiftViewModel>();
             Mapper.CreateMap<DomainGift, GiftViewModel>();
             Mapper.CreateMap<DomainWishList, CreateWishListViewModel>();
-            Mapper.CreateMap<DomainWishList, WishListViewModel>();//.AfterMap((domain, model) =>
+            Mapper.CreateMap<DomainWishList, WishListViewModel>();
+            Mapper.CreateMap<DomainWishList, WishListDropDownViewModel>();
+            //.AfterMap((domain, model) =>
            /* {
                 model.Gifts = domain.Gifts;
             });*/
@@ -59,6 +61,7 @@ namespace WishList
             Mapper.CreateMap<CreateUserViewModel, DomainUser>();
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             Mapper.CreateMap<CreateWishListViewModel, DomainWishList>();
+            Mapper.CreateMap<DomainWishList, WishListViewModel>();
             Mapper.CreateMap<GiftViewModel, DomainGift>();
             Mapper.CreateMap<UserViewModel, DomainUser>();
 

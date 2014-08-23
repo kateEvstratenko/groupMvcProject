@@ -12,10 +12,6 @@
         <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Gift List", "Catalog", "Gift")</li>
             <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <li>@Html.ActionLink("My Wish Lists", "GetAllWishListsOfUser", "WishList")</li>
-            }
         </ul>
         <form class="navbar-form navbar-left">
             <input type="text" class="form-control col-lg-8" placeholder="Enter Gift Name">

@@ -1,5 +1,4 @@
-﻿@using DAL.Models
-@using WishList.ViewModels
+﻿@using WishList.ViewModels
 @model GiftViewModel
 
 @{
@@ -38,7 +37,6 @@
         <div class="display-field">
             @Html.DisplayFor(model => model.LikesCount)
         </div>
-
     </fieldset>
 
     <p>
@@ -46,5 +44,12 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 
-    @Html.ActionLink("Add to my wish list", "AddGiftToWishList", "WishList", new { giftId = Model.Id}, null)
+    <div id="wishListsOfUser">
+        @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
+    </div>
+    <div id="addGiftToWishListForm">
+        @Ajax.ActionLink("Add to my wish list", "GetDropDownWishLists", "WishList",
+            new { giftId = Model.Id },
+            new AjaxOptions { UpdateTargetId = "addGiftToWishListForm" })
+    </div>
 </div>
