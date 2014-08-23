@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
@@ -31,7 +32,6 @@ namespace BLL.Services
         {
             var currentWishList = Uow.WishListRepository.Get(domainWishList.Id);
             Mapper.Map<DomainWishList, WishList>(domainWishList, currentWishList);
-            //currentWishList.Link = domainWishList.Link;
             Uow.WishListRepository.Update(currentWishList);
             Uow.Commit();
         }
@@ -43,12 +43,12 @@ namespace BLL.Services
             return domainWishList;
         }
 
-        /*public IQueryable<DomainWishList> GetAll()
+        public void GenerateLink(int id, string url)
         {
-            var wishLists = Uow.WishListRepository.GetAll();
-            var domainWishLists = wishLists.Select(Mapper.Map<WishList, DomainWishList>);
-            return domainWishLists.AsQueryable();
-        }*/
+            var wishList = Get(id);
+            wishList.Link = url;
+            Update(wishList);
+        }
 
         public IQueryable<DomainWishList> GetAllWishListsOfUser(int userId)
         {
@@ -57,11 +57,10 @@ namespace BLL.Services
             return domainWishLists.AsQueryable();
         }
 
-        public void GenerateLink(int id, string url)
+        public IQueryable<DomainWishList> GetAllUsersWishListsOfGift(int giftId, int userId)
         {
-            var wishList = Get(id);
-            wishList.Link = url;
-            Update(wishList);
+            var wishLists = GetAllWishListsOfUser(userId).Where(x => x.Gifts.Any(g => g.Id == giftId));
+            return wishLists;
         }
 
         public void AddGiftToWishList(int giftId, int wishListId)
@@ -70,10 +69,31 @@ namespace BLL.Services
             var wishList = Uow.WishListRepository.Get(wishListId);
             wishList.Gifts.Add(gift);
 
-            //Mapper.Map<DomainWishList, WishList>(domainWishList, currentWishList);
+            Uow.WishListRepository.Update(wishList);
+            Uow.Commit();
+        }
+
+        public void DeleteGiftFromWishList(int giftId, int wishListId)
+        {
+            var gift = Uow.GiftRepository.Get(giftId);
+            var wishList = Uow.WishListRepository.Get(wishListId);
+            wishList.Gifts.Remove(gift);
 
             Uow.WishListRepository.Update(wishList);
             Uow.Commit();
+        }
+
+        public IQueryable<DomainWishList> GetUsersWishListsWithoutGift(int giftId, int userId)
+        {
+            var usersWishListsOfGift = GetAllUsersWishListsOfGift(giftId, userId).ToList();
+            var allUsersWishLists = GetAllWishListsOfUser(userId).ToList();
+
+            foreach (var item in usersWishListsOfGift)
+            {
+                allUsersWishLists.RemoveAll(x => x.Id == item.Id);
+            }
+
+            return allUsersWishLists.AsQueryable();
         }
     }
 }

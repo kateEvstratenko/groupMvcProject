@@ -62,6 +62,12 @@ namespace WishList.Controllers
             return View(wishListViewModel);
         }
 
+        public ActionResult GenerateLink(int id, string url)
+        {
+            wishListService.GenerateLink(id, url);
+            return RedirectToAction("ViewWishList", new { id = id });
+        }
+
         public ActionResult GetAllWishListsOfUser()
         {
             var userId = Int32.Parse(User.Identity.GetUserId());
@@ -70,19 +76,42 @@ namespace WishList.Controllers
             return PartialView("_UsersWishLists", model);
         }
 
-        public ActionResult GenerateLink(int id, string url)
-        {
-            wishListService.GenerateLink(id, url);
-            return RedirectToAction("ViewWishList", new { id = id });
-        }
-
-        public ActionResult AddGiftToWishList(int giftId)
+        public ActionResult GetAllUsersWishListsOfGift(int giftId)
         {
             var userId = Int32.Parse(User.Identity.GetUserId());
-            var wishList = wishListService.GetAllWishListsOfUser(userId).ToList().First();
+            var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
+            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishListsOfGift);
+            return PartialView("_GetAllUsersWishListsOfGift", model);
+        }
 
-            wishListService.AddGiftToWishList(giftId, wishList.Id);
-            return RedirectToAction("GetAllWishListsOfUser");
+        public ActionResult AddGiftToWishList(WishListDropDownViewModel model)
+        {
+            //var userId = Int32.Parse(User.Identity.GetUserId());
+            //var wishList = wishListService.GetAllWishListsOfUser(userId).ToList().First();
+
+            wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
+            return GetAllUsersWishListsOfGift(model.GiftId);
+            //return PartialView("_GetAllUsersWishListsOfGift");
+        }
+
+        public ActionResult DeleteGiftFromWishList(int giftId, int wishListId)
+        {
+            wishListService.DeleteGiftFromWishList(giftId, wishListId);
+            return RedirectToAction("ViewWishList", new {id = wishListId});
+        }
+
+        public ActionResult GetDropDownWishLists(int giftId)
+        {
+            var userId = Int32.Parse(User.Identity.GetUserId());
+
+            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId);
+
+            var model = new WishListDropDownViewModel()
+            {
+                GiftId = giftId,
+                DropDownList = new SelectList(wishLists, "Id", "Name")
+            };
+            return PartialView("_GetDropDownWishLists", model);
         }
     }
 }

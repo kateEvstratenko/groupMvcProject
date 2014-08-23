@@ -30,5 +30,7 @@ else
 {
     <div>
         @gift.Name
+
+        @Html.ActionLink("Delete", "DeleteGiftFromWishList", "WishList", new { giftId = gift.Id, wishListId = Model.Id }, null)
     </div>
 }
