@@ -8,6 +8,7 @@
 }
 .gift h2, .gift h4 {
     margin: 0;
+    display: inline-block;
 }
 .gift h2 {
     color: #ffffff;
@@ -27,3 +28,22 @@
     display: table;
     width: 100%;
 }
+
+.myCustomLikeButton {
+    display: inline-block;
+    float: right;
+    left: 95%;
+    min-width: 3%;
+    padding: 0;
+}
+
+.myCustomLikeButton img, .limyCustomLikeButtonke p, .myCustomLikeButton p {
+    color: #05bb03;
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 0;
+}
+
+.myCustomLikeButton:hover { background-color: #87cefa; }
+
+.myCustomLikeButton:active { background-color: #649eed; }

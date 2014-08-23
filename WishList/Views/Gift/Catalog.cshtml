@@ -7,8 +7,7 @@
 }
 
 @foreach (var gift in Model)
-{
-    <div id="@gift.Id">
+{ 
         @Html.Gift(gift, true)
-    </div>
 }
+<script src="/Scripts/LikesManager.js"></script>

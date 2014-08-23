@@ -93,5 +93,11 @@ namespace WishList.Controllers
             return View(Mapper.Map<GiftViewModel>(gift));
 
         }
+
+        [HttpPost]
+        public int ChangeLikesCount(string id)
+        {
+            return giftService.ChangeLikesCount(id);
+        }
     }
 }
