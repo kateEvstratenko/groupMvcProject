@@ -1,0 +1,14 @@
+﻿@using WishList.ViewModels
+@model WishListDropDownViewModel
+
+@using (Ajax.BeginForm("AddGiftToWishList", "WishList", new { giftId = Model.GiftId }, new AjaxOptions { UpdateTargetId = "wishListsOfUser" }))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.WishListId, Model.DropDownList, new {@class = "form-control"})
+        </div>
+    </div>
+    
+    @Ajax.ActionLink("Close", "GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.GiftId }, new AjaxOptions { UpdateTargetId = "wishListsOfUser" }, new { @class = "btn" })
+    <input type="submit" value="Add to wish list">
+}

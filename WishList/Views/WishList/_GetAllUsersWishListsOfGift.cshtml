@@ -1,0 +1,7 @@
+﻿@using WishList.ViewModels
+@model IEnumerable<WishListViewModel>
+
+@foreach (var item in Model)
+{
+    <p>@item.Name</p>
+}
