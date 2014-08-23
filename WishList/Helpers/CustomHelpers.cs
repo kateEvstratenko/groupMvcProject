@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WishList.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace WishList.Helpers
 {
@@ -13,7 +13,7 @@ namespace WishList.Helpers
         {
             var tag = new TagBuilder("div");
             tag.AddCssClass("panel panel-primary gift");
-
+            
             var innerTag = new TagBuilder("div");
             innerTag.AddCssClass("panel-heading");
             var innerTagH = new TagBuilder("h2");
@@ -21,6 +21,21 @@ namespace WishList.Helpers
             innerTag.InnerHtml += innerTagH.ToString();
             tag.InnerHtml += innerTag.ToString();
 
+            innerTag = new TagBuilder("button");
+            innerTag.AddCssClass("myCustomLikeButton");
+            innerTag.Attributes.Add("name", gift.Id.ToString());
+
+            innerTagH = new TagBuilder("img");
+            innerTagH.Attributes.Add("src", "/Content/images/like.png");
+            innerTagH.Attributes.Add("width", "10px");
+            innerTagH.Attributes.Add("height", "10px");
+            innerTag.InnerHtml += innerTagH;
+
+            innerTagH = new TagBuilder("p");
+            innerTagH.Attributes.Add("id", gift.Id.ToString());
+            innerTagH.SetInnerText(gift.LikesCount.ToString());
+            innerTag.InnerHtml += innerTagH;
+            var likeTag = innerTag;
             
             innerTag = new TagBuilder("div");
             innerTag.AddCssClass("panel-body");
@@ -38,9 +53,10 @@ namespace WishList.Helpers
             infoTag.InnerHtml += innerTagH.ToString();
 
             innerTag.InnerHtml += infoTag.ToString();
-
+            innerTag.InnerHtml += likeTag.ToString();
             tag.InnerHtml += innerTag.ToString();
 
+            
             if (!moreButton) return new MvcHtmlString(tag.ToString());
 
             innerTag = new TagBuilder("span");

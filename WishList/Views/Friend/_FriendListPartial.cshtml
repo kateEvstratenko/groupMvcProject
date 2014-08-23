@@ -5,7 +5,7 @@
     <div id=@md.Id>
         <h4>@md.FirstName</h4>
         <h4>@md.LastName</h4>
-        <h4>@md.Birthday</h4>
+        <h4>@md.FormattedBirthday</h4>
         <h4>@md.Avatar</h4>
         @Ajax.ActionLink("delete", "DeleteFriend",  new { id = md.Id }, null)
     </div>
