@@ -22,7 +22,7 @@ namespace WishList.Helpers
             tag.InnerHtml += innerTag.ToString();
 
             innerTag = new TagBuilder("button");
-            innerTag.AddCssClass("myCustomLikeButton");
+            innerTag.AddCssClass("myCustomLikeButton btn-default");
             innerTag.Attributes.Add("name", "giftLikeId-" + gift.Id);
 
             innerTagH = new TagBuilder("img");

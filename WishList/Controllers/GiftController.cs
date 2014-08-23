@@ -95,9 +95,16 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public int ChangeLikesCount(string id)
         {
             return giftService.ChangeLikesCount(id);
+        }
+
+        [HttpPost]
+        public bool EnableLikes()
+        {
+            return User.Identity.IsAuthenticated;
         }
     }
 }

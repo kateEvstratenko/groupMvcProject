@@ -11,5 +11,18 @@
     });
 };
 var SetLikesEvents = function () {
-    $('.myCustomLikeButton').bind('click', UpdateLikes);
+    $.ajax({
+        type: "POST",
+        url: "/Gift/EnableLikes/",
+        success: function (data) {
+            if (data == true) {
+                $('.myCustomLikeButton').bind('click', UpdateLikes);
+            }
+            else {
+                $('.myCustomLikeButton')._addClass("disabled");
+            }
+            
+        }
+    });
+    
 }();
