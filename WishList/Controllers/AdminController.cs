@@ -19,15 +19,21 @@ namespace WishList.Controllers
             adminService = iAdminService;
         }
 
-        public ActionResult Users()
+        public ActionResult ShowAllUsers()
         {
             var users = adminService.GetUsers();
-            var viewmodels = users.Select(Mapper.Map<DomainUser,UserViewModel>).ToList();
+            var viewmodels = users.Select(Mapper.Map<DomainUser, UserViewModel>).ToList();
             foreach (var item in viewmodels)
             {
                 item.Roles = adminService.GetRoles(item.RoleId);
             }
             return View(viewmodels);
+        }
+
+        public ActionResult SwitchRole(int userId, int roleId)
+        {
+            adminService.SwitchRole(userId, roleId);
+            return RedirectToAction("ShowAllUsers");
         }
 
     }

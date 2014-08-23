@@ -9,6 +9,7 @@ using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
 using DAL.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BLL.Services
 {
@@ -26,24 +27,16 @@ namespace BLL.Services
         public List<SelectListItem> GetRoles(int roleId)
         {
             var roles = Uow.RolesManager.Roles.Take(3).AsEnumerable();
-            var items = new List<SelectListItem>();
-            foreach (var role in roles)
-            {
-                if (role.Id == roleId)
-                {
-                    items.Add(new SelectListItem {Text = role.Name, Value = role.Id.ToString(), Selected = true});
-                }
-                else
-                {
-                    items.Add(new SelectListItem { Text = role.Name, Value = role.Id.ToString() });
-                }
-            }
-            return items;
+            return roles.Select(role => role.Id == roleId ? new SelectListItem {Text = role.Name, Value = role.Id.ToString(), Selected = true} : new SelectListItem {Text = role.Name, Value = role.Id.ToString()}).ToList();
         }
 
-        public void SwitchRole(DomainUser user)
+        public void SwitchRole(int userId, int roleId)
         {
-            throw new NotImplementedException();
+            var user = Uow.UserRepository.Get(userId);
+            var f = Uow.UserManager.GetRoles(userId);
+            Uow.UserManager.RemoveFromRole(userId, f[0]);
+            var role = Uow.RolesManager.FindById(roleId);
+            Uow.UserManager.AddToRole(userId, role.Name);
         }
 
         public void DeleteUser(DomainUser user)
