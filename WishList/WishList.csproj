@@ -190,6 +190,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CustomHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CommentViewModel.cs" />
@@ -207,6 +208,7 @@
   <ItemGroup>
     <Content Include="App_Data\aspnet-WishList-20140816162216.mdf" />
     <Content Include="App_Data\aspnet-WishList-20140816162216_log.ldf" />
+    <Content Include="Content\Gift.css" />
     <Content Include="Content\GiftImages\LavaLampa.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

@@ -75,12 +75,13 @@ img.avatar {
 }
 
 .createButton {
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .formButton {
     padding: 0;
     border-width: 0;
+}
 
 .cat_textbox {
     display: block;

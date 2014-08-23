@@ -1,14 +1,10 @@
-﻿@using BLL.Models
-@model IQueryable<DomainGift>
+﻿@using WishList.Helpers
+@model IEnumerable<WishList.ViewModels.GiftViewModel>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
+<h2>Most Popular Gifts</h2>
 @foreach (var gift in Model)
 {
-    <p>@gift.Name</p>
+    <div id="@gift.Id">
+        @Html.Gift(gift, true)
+    </div>
 }
-@Html.ActionLink("Friends", "FriendList", "Friend");
