@@ -23,7 +23,7 @@ namespace WishList.Helpers
 
             innerTag = new TagBuilder("button");
             innerTag.AddCssClass("myCustomLikeButton");
-            innerTag.Attributes.Add("name", gift.Id.ToString());
+            innerTag.Attributes.Add("name", "giftLikeId-" + gift.Id);
 
             innerTagH = new TagBuilder("img");
             innerTagH.Attributes.Add("src", "/Content/images/like.png");
@@ -32,7 +32,7 @@ namespace WishList.Helpers
             innerTag.InnerHtml += innerTagH;
 
             innerTagH = new TagBuilder("p");
-            innerTagH.Attributes.Add("id", gift.Id.ToString());
+            innerTagH.Attributes.Add("id", "giftLikeId-" + gift.Id);
             innerTagH.SetInnerText(gift.LikesCount.ToString());
             innerTag.InnerHtml += innerTagH;
             var likeTag = innerTag;
