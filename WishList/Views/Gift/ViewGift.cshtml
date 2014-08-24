@@ -1,10 +1,13 @@
-﻿@using WishList.ViewModels
+
+﻿@using WishList.Helpers
+@using WishList.ViewModels
 @model GiftViewModel
 
 @{
-    ViewBag.Title = "ViewGift";
+    ViewBag.Title = "View Gift";
 }
 
+@Html.Gift(Model)
 <h2>ViewGift</h2>
 <div id="gift">
     <fieldset>
@@ -41,8 +44,11 @@
 
     <p>
         @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to Catalog", "Catalog")
     </p>
+
+    @Html.ActionLink("Add to my wish list", "AddGiftToWishList", "WishList", new { giftId = Model.Id}, null)
+<script src="/Scripts/LikesManager.js"></script>
 
     <div id="wishListsOfUser">
         @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })

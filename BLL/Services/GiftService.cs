@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BLL.Interfaces;
@@ -53,5 +55,17 @@ namespace BLL.Services
             var domainGifts = gifts.Select(Mapper.Map<Gift, DomainGift>);
             return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable(); 
         }
+
+        public int ChangeLikesCount(string id)
+        {
+            var getId = new Regex("[0-9]+");
+            var m = getId.Match(id);
+            var gift = Uow.GiftRepository.Get(Int32.Parse(m.Value));
+            gift.LikesCount++;
+            Uow.GiftRepository.Update(gift);
+            Uow.Commit();
+            return gift.LikesCount;
+        }
+
     }
 }
