@@ -9,8 +9,11 @@ namespace BLL.Interfaces
         void Delete(int id);
         void Update(DomainWishList domainWishList);
         DomainWishList Get(int id);
-        IQueryable<DomainWishList> GetAllWishListsOfUser(int userId);
         void GenerateLink(int id, string url);
         void AddGiftToWishList(int giftId, int wishListId);
+        void DeleteGiftFromWishList(int giftId, int wishListId);
+        IQueryable<DomainWishList> GetAllWishListsOfUser(int userId);
+        IQueryable<DomainWishList> GetAllUsersWishListsOfGift(int giftId, int userId);
+        IQueryable<DomainWishList> GetUsersWishListsWithoutGift(int giftId, int userId);
     }
 }
