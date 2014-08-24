@@ -70,11 +70,16 @@
     <Compile Include="Migrations\201408210747323_noRequiredLink.Designer.cs">
       <DependentUpon>201408210747323_noRequiredLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408242002556_addLikeTable.cs" />
+    <Compile Include="Migrations\201408242002556_addLikeTable.Designer.cs">
+      <DependentUpon>201408242002556_addLikeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\View.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408210747323_noRequiredLink.resx">
       <DependentUpon>201408210747323_noRequiredLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408242002556_addLikeTable.resx">
+      <DependentUpon>201408242002556_addLikeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
