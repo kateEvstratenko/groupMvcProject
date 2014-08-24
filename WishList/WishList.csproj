@@ -200,6 +200,7 @@
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\ViewProfileViewModel.cs" />
     <Compile Include="ViewModels\WishListDropDownViewModel.cs" />
+    <Compile Include="ViewModels\UsersWishListsOfGiftViewModel.cs" />
     <Compile Include="ViewModels\WishListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

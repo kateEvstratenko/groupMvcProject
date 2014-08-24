@@ -1,7 +1,23 @@
 ﻿@using WishList.ViewModels
-@model IEnumerable<WishListViewModel>
+@model IEnumerable<UsersWishListsOfGiftViewModel>
 
+<h3>This gift is in my wish lists:</h3>
 @foreach (var item in Model)
 {
-    <p>@item.Name</p>
+    @Ajax.ActionLink(@item.Name, "DeleteGiftFromWishList", "WishList", 
+    new
+    {
+        giftId = item.GiftId, wishListId = item.Id
+    }, 
+    new AjaxOptions
+    {
+        UpdateTargetId = "wishListsOfUser"
+    }, 
+    new
+    {
+        @class = "badge",
+        data_togle = "tooltip",
+        data_placement = "bottom",
+        title = "Remove from wish list"
+    })
 }
