@@ -1,74 +1,34 @@
-
 ﻿@using WishList.Helpers
 @using WishList.ViewModels
 @model GiftViewModel
-
 @{
     ViewBag.Title = "View Gift";
 }
 
-<<<<<<< HEAD
 @Html.Gift(Model)
-=======
+
 <div id="newWishList" class="modal fade">
     <div id="contentId"></div>
 </div>
 
->>>>>>> develop
-<h2>ViewGift</h2>
-<div id="gift">
-    <fieldset>
-        <legend>GiftViewModel</legend>
-        @Html.HiddenFor(model => model.Id)
-        <div class="display-label">
-            @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Name, new { @class = "form-control" })
-        </div>
+<p>
+    @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
+    @Html.ActionLink("Back to Catalog", "Catalog")
+</p>
 
-        <div class="display-label">
-            @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Logo, new { @class = "form-control" })
-        </div>
-
-        <div class="display-label">
-            @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.About, new { @class = "form-control" })
-        </div>
-
-        <div class="display-label">
-            @Html.LabelFor(model => model.LikesCount, new { @class = "col-md-2 control-label" })
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.LikesCount, new { @class = "form-control" })
-        </div>
-    </fieldset>
-
-    <p>
-        @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
-        @Html.ActionLink("Back to Catalog", "Catalog")
-    </p>
-
-    @Html.ActionLink("Add to my wish list", "AddGiftToWishList", "WishList", new { giftId = Model.Id}, null)
-<script src="/Scripts/LikesManager.js"></script>
-
-    <div id="wishListsOfUser">
-        @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
-    </div>
-
-    <div id="addGiftToWishListForm">
-        @Ajax.ActionLink("Add to my wish list", "GetDropDownWishLists", "WishList",
-            new { giftId = Model.Id },
-            new AjaxOptions
-            {
-                UpdateTargetId = "contentId",
-                InsertionMode = InsertionMode.Replace,
-                HttpMethod = "GET"
-            }, new { data_toggle = "modal", data_target = "#newWishList"})
-    </div>
+<div id="wishListsOfUser">
+    @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
 </div>
+
+<div id="addGiftToWishListForm">
+    @Ajax.ActionLink("Add to my wish list", "GetDropDownWishLists", "WishList",
+        new { giftId = Model.Id },
+        new AjaxOptions
+        {
+            UpdateTargetId = "contentId",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET"
+        }, new { data_toggle = "modal", data_target = "#newWishList" })
+</div>
+
+<script src="/Scripts/LikesManager.js"></script>
