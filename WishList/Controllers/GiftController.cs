@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
+using Microsoft.AspNet.Identity;
 using WishList.ViewModels;
 
 namespace WishList.Controllers
@@ -98,7 +99,7 @@ namespace WishList.Controllers
         [Authorize]
         public int ChangeLikesCount(string id)
         {
-            return giftService.ChangeLikesCount(id);
+            return giftService.ChangeLikesCount(id, Int32.Parse(User.Identity.GetUserId()));
         }
 
         [HttpPost]

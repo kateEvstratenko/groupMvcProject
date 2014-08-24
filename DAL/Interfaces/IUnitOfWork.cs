@@ -16,5 +16,6 @@ namespace DAL.Interfaces
         IRepository<View> ViewRepository { get; }
         IRepository<Vote> VoteRepository { get; }
         IRepository<Comment> CommentRepository { get; }
+        IRepository<Like> LikeRepository { get; }
     }
 }

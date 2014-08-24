@@ -11,6 +11,6 @@ namespace BLL.Interfaces
         DomainGift Get(int id);
         IQueryable<DomainGift> GetAll();
         IQueryable<DomainGift> GetPolular(int count);
-        int ChangeLikesCount(string id);
+        int ChangeLikesCount(string id, int userId);
     }
 }

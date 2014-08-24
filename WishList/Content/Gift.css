@@ -43,7 +43,7 @@
     margin: 0 0 0 5px;
     padding: 0;
 }
-
-.myCustomLikeButton:hover { background-color: #87cefa; }
-
-.myCustomLikeButton:active { background-color: #649eed; }
+button.myCustomLikeButton {
+    border: 1px solid #c0d4f0;
+}
+.myCustomLikeButton:active { background-color: #c0d4f0; }
