@@ -22,10 +22,9 @@ namespace WishList
             Mapper.CreateMap<DomainWishList, CreateWishListViewModel>();
             Mapper.CreateMap<DomainWishList, WishListViewModel>();
             Mapper.CreateMap<DomainWishList, WishListDropDownViewModel>();
-            //.AfterMap((domain, model) =>
-           /* {
-                model.Gifts = domain.Gifts;
-            });*/
+
+            Mapper.CreateMap<DomainWishList, UsersWishListsOfGiftViewModel>();
+
             Mapper.CreateMap<DomainUser, UserViewModel>();
             Mapper.CreateMap<DomainUser, EditUserViewModel>().AfterMap((user, viewmodel) =>
             {

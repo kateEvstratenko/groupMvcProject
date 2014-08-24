@@ -6,6 +6,7 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNet.Identity;
+using WebGrease.Css.Extensions;
 using WishList.ViewModels;
 
 namespace WishList.Controllers
@@ -80,24 +81,24 @@ namespace WishList.Controllers
         {
             var userId = Int32.Parse(User.Identity.GetUserId());
             var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
-            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishListsOfGift);
+            var model = Mapper.Map<IEnumerable<UsersWishListsOfGiftViewModel>>(wishListsOfGift);
+
+            model.ForEach(x => x.GiftId = giftId);
             return PartialView("_GetAllUsersWishListsOfGift", model);
         }
 
         public ActionResult AddGiftToWishList(WishListDropDownViewModel model)
         {
-            //var userId = Int32.Parse(User.Identity.GetUserId());
-            //var wishList = wishListService.GetAllWishListsOfUser(userId).ToList().First();
 
             wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
-            return GetAllUsersWishListsOfGift(model.GiftId);
-            //return PartialView("_GetAllUsersWishListsOfGift");
+            //return GetAllUsersWishListsOfGift(model.GiftId);
+            return Json(new {success= true});
         }
 
         public ActionResult DeleteGiftFromWishList(int giftId, int wishListId)
         {
             wishListService.DeleteGiftFromWishList(giftId, wishListId);
-            return RedirectToAction("ViewWishList", new {id = wishListId});
+            return RedirectToAction("GetAllUsersWishListsOfGift", new { giftId = giftId });
         }
 
         public ActionResult GetDropDownWishLists(int giftId)
