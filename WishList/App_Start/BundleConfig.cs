@@ -24,8 +24,8 @@ namespace WishList
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css",
-                        "~/Content/Gift.css",
                         "~/Content/bootstrap.css",
+                        "~/Content/Gift.css",
                         "~/Content/jquery-ui.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
