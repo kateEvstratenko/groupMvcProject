@@ -7,7 +7,14 @@
     ViewBag.Title = "View Gift";
 }
 
+<<<<<<< HEAD
 @Html.Gift(Model)
+=======
+<div id="newWishList" class="modal fade">
+    <div id="contentId"></div>
+</div>
+
+>>>>>>> develop
 <h2>ViewGift</h2>
 <div id="gift">
     <fieldset>
@@ -53,9 +60,15 @@
     <div id="wishListsOfUser">
         @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
     </div>
+
     <div id="addGiftToWishListForm">
         @Ajax.ActionLink("Add to my wish list", "GetDropDownWishLists", "WishList",
             new { giftId = Model.Id },
-            new AjaxOptions { UpdateTargetId = "addGiftToWishListForm" })
+            new AjaxOptions
+            {
+                UpdateTargetId = "contentId",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET"
+            }, new { data_toggle = "modal", data_target = "#newWishList"})
     </div>
 </div>

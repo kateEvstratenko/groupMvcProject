@@ -1,14 +1,42 @@
 ﻿@using WishList.ViewModels
 @model WishListDropDownViewModel
 
-@using (Ajax.BeginForm("AddGiftToWishList", "WishList", new { giftId = Model.GiftId }, new AjaxOptions { UpdateTargetId = "wishListsOfUser" }))
-{
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.WishListId, Model.DropDownList, new {@class = "form-control"})
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>add gift to wish list</h3>
         </div>
+        @using (Ajax.BeginForm("AddGiftToWishList", "WishList", new {giftId = Model.GiftId}, new AjaxOptions
+        {
+            UpdateTargetId = "contentId",
+            HttpMethod = "POST",
+            OnSuccess = "closeModalWindow"
+        }, new {@class = "form-horizontal"}))
+        {
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.WishListId, Model.DropDownList, new {@class = "form-control"})
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+                <input type="submit" class="btn btn-success" value="Save"  />
+            </div>
+        }
     </div>
-    
-    @Ajax.ActionLink("Close", "GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.GiftId }, new AjaxOptions { UpdateTargetId = "wishListsOfUser" }, new { @class = "btn" })
-    <input type="submit" value="Add to wish list">
-}
+</div>
+
+
+<script>
+    function closeModalWindow(data) {
+        if (data.success) {
+            $('#newWishList').modal('hide');
+            location.reload();
+        }
+    }
+</script>
