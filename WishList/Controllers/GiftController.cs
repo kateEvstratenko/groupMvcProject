@@ -26,6 +26,11 @@ namespace WishList.Controllers
             return View(gifts);
         }
 
+        public ActionResult TagPartial()
+        {
+            return PartialView();
+        }
+
         public ActionResult CreateGift()
         {
             if (Request.IsAjaxRequest())
