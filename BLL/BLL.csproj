@@ -88,6 +88,7 @@
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Interfaces\IAdminService.cs" />
+    <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IWishListService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\ITag.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\FriendService.cs" />

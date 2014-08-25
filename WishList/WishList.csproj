@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -352,6 +353,9 @@
     <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_GiftAddSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Comment\_DisplayCommentsPartial.cshtml" />
+    <Content Include="Views\Comment\_DisplaySingleCommentPartial.cshtml" />
+    <Content Include="Views\Comment\_CreateCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
