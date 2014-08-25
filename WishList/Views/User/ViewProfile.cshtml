@@ -5,40 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ViewProfile</h2>
-<h4>@Model.UserName</h4>
-@if (Model.Id == Int32.Parse(User.Identity.GetUserId()))
-{
-    @Html.ActionLink("Edit", "EditProfile")
-}
-<hr />
-<dl class="dl-horizontal avatar">
-    <img alt="photo" src="@Model.Avatar" class="avatar" />
-</dl>
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Firstname)
-    </dt>
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <h2>ViewProfile</h2>
+            <h4>@Model.UserName</h4>
 
-    <dd>
-        @Html.DisplayFor(model => model.Firstname)
-    </dd>
+            @if (Model.Id == Int32.Parse(User.Identity.GetUserId()))
+            {
+                @Html.ActionLink("Edit", "EditProfile")
+            }
+            <hr />
 
-    <dt>
-        @Html.DisplayNameFor(model => model.LastName)
-    </dt>
+            <dl class="dl-horizontal avatar">
+                <img alt="photo" src="@Model.Avatar" class="avatar" />
+            </dl>
 
-    <dd>
-        @Html.DisplayFor(model => model.LastName)
-    </dd>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </dt>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.FormattedBirthday)
-    </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Firstname)
+                </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.FormattedBirthday)
-    </dd>
-</dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
 
-@Html.Action("GetAllWishListsOfUser", "WishList")
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FormattedBirthday)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FormattedBirthday)
+                </dd>
+            </dl>
+            <hr />
+
+            @Html.Action("GetAllWishListsOfUser", "WishList")
+        </div>
+    </div>
+</div>

@@ -7,7 +7,46 @@
 }
 
 @foreach (var gift in Model)
-{ 
-        @Html.Gift(gift, true)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            @gift.Name
+        </div>
+
+        <div class="panel-body">
+            <table class="widthTable">
+                <tr>
+                    <td class="tdGiftImage">
+                        <img class="giftImage" src="@gift.Logo" />
+                    </td>
+                    <td>
+                        <div class="aboutGift">
+                            @gift.About
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.ActionLink("More", "ViewGift", "Gift",
+                        new
+                        {
+                            id = gift.Id
+                        },
+                        new
+                        {
+                            @class = "btn btn-info"
+                        })
+                    </td>
+                    <td>
+                        <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
+                            <img src="/Content/images/like.png" width="10px" height="10px" />
+                            <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 }
 <script src="/Scripts/LikesManager.js"></script>

@@ -87,11 +87,11 @@ namespace WishList.Controllers
             return View();
         }
 
-        public ActionResult ViewGift(GiftViewModel model)
+        public ActionResult ViewGift(int id)
         {
-            var gift = giftService.Get(model.Id);
-            return View(Mapper.Map<GiftViewModel>(gift));
-
+            var gift = giftService.Get(id);
+            var model = Mapper.Map<GiftViewModel>(gift);
+            return View(model);
         }
 
         [HttpPost]
