@@ -9,8 +9,8 @@ namespace BLL.Services
         public Task SendAsync(IdentityMessage message)
         {
             // настройка логина, пароля отправителя
-            var from = "claifer123@gmail.com";
-            var pass = "Qw3WAr56";
+            var from = "wishlistsendemail@gmail.com";
+            var pass = "piwsdn2w";
 
             // адрес и порт smtp-сервера, с которого мы и будем отправлять письмо
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
