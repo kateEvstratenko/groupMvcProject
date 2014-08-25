@@ -6,31 +6,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>
-    @Model.Name
-</h3>
+<div class="container">
+    <div class="row">
+        <div class="alert alert-info">
+            <h3>
+                @Model.Name
 
-@if (Model.Link != null)
-{
-    <div class="form-horizontal">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Link, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @readonly = "readonly" })
+                @if (Model.Link != null)
+                {
+                    <span class="label label-primary pull-right">@Model.Link</span>
+                }
+                else
+                {
+                    @Html.ActionLink("Generate link", "GenerateLink", "WishList",
+                    new
+                    {
+                        id = Model.Id,
+                        url = Request.Url.ToString()
+                    },
+                    new
+                    {
+                        @class = "btn btn-primary"
+                    })
+                }
+        </h3>
+    </div>
+
+   
+        @foreach (var gift in Model.Gifts)
+        {
+            <div id="deleteResult-@gift.Id">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        @gift.Name
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="widthTable">
+                            <tr>
+                                <td class="tdGiftImage">
+                                    <img class="giftImage" src="@gift.Logo" />
+                                </td>
+                                <td>
+                                    <div class="aboutGift">
+                                        @gift.About
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Ajax.ActionLink("Delete", "DeleteGiftFromWishList", "WishList",
+                                        new
+                                        {
+                                            giftId = @gift.Id,
+                                            wishListId = Model.Id,
+                                            actionName = "ViewWishList"
+                                        }, new AjaxOptions
+                                        {
+                                            UpdateTargetId = "deleteResult-" + @gift.Id
+                                        },
+                                        new
+                                        {
+                                            @class = "label label-danger",
+                                        })
+                                </td>
+                                <td>
+                                    <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
+                                        <img src="/Content/images/like.png" width="10px" height="10px" />
+                                        <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
-else
-{
-    @Html.ActionLink("Generate link", "GenerateLink", "WishList", new { id = Model.Id, url = Request.Url.ToString() }, null)
-}
+</div>
 
-@foreach (var gift in Model.Gifts)
-{
-    <div>
-        @gift.Name
-
-        @Html.ActionLink("Delete", "DeleteGiftFromWishList", "WishList", new { giftId = gift.Id, wishListId = Model.Id }, null)
-    </div>
-}

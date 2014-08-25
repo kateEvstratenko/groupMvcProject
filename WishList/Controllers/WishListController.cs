@@ -27,7 +27,7 @@ namespace WishList.Controllers
             {
                 UserId = Int32.Parse(User.Identity.GetUserId())
             };
-            return PartialView("_Create",  model);
+            return PartialView("_Create", model);
         }
 
         [HttpPost]
@@ -81,9 +81,13 @@ namespace WishList.Controllers
         {
             var userId = Int32.Parse(User.Identity.GetUserId());
             var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
-            var model = Mapper.Map<IEnumerable<UsersWishListsOfGiftViewModel>>(wishListsOfGift);
 
+            if (wishListsOfGift.Count < 1)
+                return new EmptyResult();
+
+            var model = Mapper.Map<IEnumerable<UsersWishListsOfGiftViewModel>>(wishListsOfGift);
             model.ForEach(x => x.GiftId = giftId);
+
             return PartialView("_GetAllUsersWishListsOfGift", model);
         }
 
@@ -92,13 +96,20 @@ namespace WishList.Controllers
 
             wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
             //return GetAllUsersWishListsOfGift(model.GiftId);
-            return Json(new {success= true});
+            return Json(new { success = true });
         }
 
-        public ActionResult DeleteGiftFromWishList(int giftId, int wishListId)
+        public ActionResult DeleteGiftFromWishList(int giftId, int wishListId, string actionName)
         {
             wishListService.DeleteGiftFromWishList(giftId, wishListId);
-            return RedirectToAction("GetAllUsersWishListsOfGift", new { giftId = giftId });
+
+            if (actionName == "GetAllUsersWishListsOfGift")
+            {
+                return RedirectToAction("GetAllUsersWishListsOfGift", new { giftId = giftId });
+            }
+
+            return new EmptyResult();
+            //return RedirectToAction("ViewWishList", new { id = wishListId });
         }
 
         public ActionResult GetDropDownWishLists(int giftId)

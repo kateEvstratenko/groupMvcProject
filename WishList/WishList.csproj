@@ -349,6 +349,7 @@
     <Content Include="Views\Friend\_FriendListPartial.cshtml" />
     <Content Include="Views\WishList\_GetDropDownWishLists.cshtml" />
     <Content Include="Views\WishList\_GetAllUsersWishListsOfGift.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
@@ -356,6 +357,13 @@
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
+=======
+    <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
+    <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_GiftAddSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

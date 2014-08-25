@@ -4,20 +4,16 @@
 <h3>This gift is in my wish lists:</h3>
 @foreach (var item in Model)
 {
-    @Ajax.ActionLink(@item.Name, "DeleteGiftFromWishList", "WishList", 
-    new
-    {
-        giftId = item.GiftId, wishListId = item.Id
-    }, 
-    new AjaxOptions
-    {
-        UpdateTargetId = "wishListsOfUser"
-    }, 
-    new
-    {
-        @class = "badge",
-        data_togle = "tooltip",
-        data_placement = "bottom",
-        title = "Remove from wish list"
-    })
+    <h4 class="inlineElement">
+        @Html.ActionLink(@item.Name, "ViewWishList", "WishList",
+         new
+         {
+             id = item.Id
+         },
+         new
+         {
+             @class = "label label-primary"
+         })
+    </h4>
 }
+
