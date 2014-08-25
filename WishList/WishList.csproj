@@ -329,6 +329,8 @@
     <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
     <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
