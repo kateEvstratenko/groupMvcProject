@@ -36,5 +36,23 @@ namespace WishList.Controllers
             return RedirectToAction("ShowAllUsers");
         }
 
+        public ActionResult DeleteUser(int userId)
+        {
+            ViewBag.user = userId;
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUserConfirm(int userId)
+        {
+            adminService.DeleteUser(userId);
+            return PartialView("Success");
+        }
+
+        public ActionResult DeleteWishlist(int wishlistId)
+        {
+            adminService.DeleteWishlist(wishlistId);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -39,14 +39,14 @@ namespace BLL.Services
             Uow.UserManager.AddToRole(userId, role.Name);
         }
 
-        public void DeleteUser(DomainUser user)
+        public void DeleteUser(int userId)
         {
-            throw new NotImplementedException();
+            Uow.UserManager.Delete(Uow.UserRepository.Get(userId));
         }
 
-        public void DeleteWishlist(DomainWishList wishlist)
+        public void DeleteWishlist(int id)
         {
-            throw new NotImplementedException();
+            Uow.WishListRepository.Delete(id);
         }
     }
 }

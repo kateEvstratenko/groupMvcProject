@@ -14,7 +14,7 @@ namespace BLL.Interfaces
         IQueryable<DomainUser> GetUsers();
         List<SelectListItem> GetRoles(int roleId);
         void SwitchRole(int userId, int roleId);
-        void DeleteUser(DomainUser user);
-        void DeleteWishlist(DomainWishList wishlist);
+        void DeleteUser(int userId);
+        void DeleteWishlist(int id);
     }
 }
