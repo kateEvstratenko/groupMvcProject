@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
+using Microsoft.AspNet.Identity;
 using WishList.ViewModels;
 
 namespace WishList.Controllers
@@ -25,12 +26,13 @@ namespace WishList.Controllers
             var comments = commentService.GetAll().Where(c => c.GiftId == id).Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable();
             return PartialView("_DisplayCommentsPartial", comments);
         }
+
         [HttpPost]
         public ActionResult CreateComment(CreateCommentViewModel model)
         {
             if (ModelState.IsValid)
             {
-                commentService.Create(Mapper.Map<DomainComment>(model));
+                commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()));
                 return PartialView("_DisplayCommentsPartial", commentService.GetAll().Where(c => c.GiftId == model.GiftId)
                     .Select(Mapper.Map<DomainComment,CommentViewModel>).AsEnumerable());
             }

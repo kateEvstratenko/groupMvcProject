@@ -15,8 +15,11 @@ namespace BLL.Services
     {
         public CommentService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainComment domainComment)
+        public void Create(DomainComment domainComment, int userId)
         {
+            
+            domainComment.Date = DateTime.Now;
+            domainComment.UserId = userId;
             var comment = Mapper.Map<Comment>(domainComment);
             Uow.CommentRepository.Insert(comment);   
             Uow.Commit();

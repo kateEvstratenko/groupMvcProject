@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface ICommentService
     {
-        void Create(DomainComment domainTag);
+        void Create(DomainComment domainTag, int userId);
         void Delete(int id);
         void Update(DomainComment domainTag);
         DomainComment Get(int id);
