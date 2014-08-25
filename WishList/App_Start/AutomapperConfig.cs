@@ -17,6 +17,8 @@ namespace WishList
         public static void RegisterMappings()
         {
             #region BLL to WebUi
+            Mapper.CreateMap<DomainComment, CreateCommentViewModel>();
+            Mapper.CreateMap<DomainComment, CommentViewModel>();
             Mapper.CreateMap<DomainGift, CreateGiftViewModel>();
             Mapper.CreateMap<DomainGift, GiftViewModel>();
             Mapper.CreateMap<DomainWishList, CreateWishListViewModel>();
@@ -51,6 +53,8 @@ namespace WishList
             #endregion
 
             #region WebUI to BLL
+
+            
             Mapper.CreateMap<EditUserViewModel, DomainUser>().AfterMap((viewmodel, user) =>
             {
                 IFormatProvider culture = new CultureInfo("fr-FR", true);
@@ -66,14 +70,16 @@ namespace WishList
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
             Mapper.CreateMap<CreateUserViewModel, DomainUser>();
             Mapper.CreateMap<CreateGiftViewModel, DomainGift>();
+            Mapper.CreateMap<CreateCommentViewModel, DomainComment>();
             Mapper.CreateMap<CreateWishListViewModel, DomainWishList>();
             Mapper.CreateMap<DomainWishList, WishListViewModel>();
             Mapper.CreateMap<GiftViewModel, DomainGift>();
             Mapper.CreateMap<UserViewModel, DomainUser>();
-
+            Mapper.CreateMap<CommentViewModel, DomainComment>();
             #endregion
 
-
+            Mapper.CreateMap<CommentViewModel, CreateCommentViewModel>();
+            Mapper.CreateMap<CreateCommentViewModel, CommentViewModel>();
         }
     }
 }

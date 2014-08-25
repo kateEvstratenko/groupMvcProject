@@ -10,6 +10,8 @@ namespace BLL.AutoMapper
         public static void RegisterMappings()
         {
             #region DAL to BLL
+
+            Mapper.CreateMap<Comment, DomainComment>();
             Mapper.CreateMap<Gift, DomainGift>();
             Mapper.CreateMap<WishList, DomainWishList>().ForMember(c => c.User, opt => opt.Ignore());
             Mapper.CreateMap<Comment,DomainComment>();
@@ -24,6 +26,8 @@ namespace BLL.AutoMapper
             #endregion
 
             #region BLL to DAL
+
+            Mapper.CreateMap<DomainComment, Comment>();
             Mapper.CreateMap<DomainGift, Gift>();
             Mapper.CreateMap<DomainVote, Vote>();
             Mapper.CreateMap<DomainWishList, WishList>().ForMember(c => c.User, opt => opt.Ignore());

@@ -5,16 +5,18 @@
     ViewBag.Title = "View Gift";
 }
 
-@Html.Gift(Model)
-
+<div id="gift">
+    @Html.Gift(Model)
+    <p>
+        @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
+        @Html.ActionLink("Back to Catalog", "Catalog")
+    </p>
+</div>
 <div id="newWishList" class="modal fade">
     <div id="contentId"></div>
-</div>
 
-<p>
-    @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
-    @Html.ActionLink("Back to Catalog", "Catalog")
-</p>
+</div>
+<script src="/Scripts/LikesManager.js"></script>
 
 <div id="wishListsOfUser">
     @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
@@ -31,4 +33,6 @@
         }, new { data_toggle = "modal", data_target = "#newWishList" })
 </div>
 
-<script src="/Scripts/LikesManager.js"></script>
+@Html.Action("DisplayComments", "Comment", new { id = Model.Id })
+
+@Html.Action("CreateComment", "Comment", new { id = Model.Id })

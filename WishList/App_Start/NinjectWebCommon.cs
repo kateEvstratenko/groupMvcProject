@@ -71,6 +71,7 @@ namespace WishList
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IWishListService>().To<WishListService>();
             kernel.Bind<IAdminService>().To<AdminService>();
+            kernel.Bind<ICommentService>().To<CommentService>();
         }
     }
 }
