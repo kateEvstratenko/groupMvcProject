@@ -347,6 +347,11 @@
     <Content Include="Views\Friend\_FriendListPartial.cshtml" />
     <Content Include="Views\WishList\_GetDropDownWishLists.cshtml" />
     <Content Include="Views\WishList\_GetAllUsersWishListsOfGift.cshtml" />
+    <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
+    <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_GiftAddSuccessPartial.cshtml" />
+    <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

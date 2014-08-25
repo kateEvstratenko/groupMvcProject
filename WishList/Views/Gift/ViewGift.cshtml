@@ -5,16 +5,16 @@
     ViewBag.Title = "View Gift";
 }
 
-@Html.Gift(Model)
-
+<div id="gift">
+    @Html.Gift(Model)
+</div>
 <div id="newWishList" class="modal fade">
     <div id="contentId"></div>
+    <p>
+        @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
+        @Html.ActionLink("Back to Catalog", "Catalog")
+    </p>
 </div>
-
-<p>
-    @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
-    @Html.ActionLink("Back to Catalog", "Catalog")
-</p>
 
 <div id="wishListsOfUser">
     @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
