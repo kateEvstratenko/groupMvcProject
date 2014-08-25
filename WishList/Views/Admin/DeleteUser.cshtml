@@ -1,0 +1,7 @@
+﻿<td id="deleteUser">
+    @using (Ajax.BeginForm("DeleteUserConfirm",new {userId = ViewBag.user} , new AjaxOptions { UpdateTargetId = "deleteUsermessagehere" + ViewBag.user }))
+    {
+        <input type="submit" value="Confirm" class="btn btn-primary" />
+        @Html.ActionLink("Back","ShowAllUsers",null,new {@class = "btn btn-danger"})
+    }
+</td>
