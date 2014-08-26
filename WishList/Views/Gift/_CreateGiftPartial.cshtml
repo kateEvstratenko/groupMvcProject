@@ -1,8 +1,16 @@
 ﻿@model WishList.ViewModels.CreateGiftViewModel
-@using (Ajax.BeginForm("CreateGift", new { @class = "form-horizontal", role = "form" }, new AjaxOptions { UpdateTargetId = "gift" }))
+@using (Html.BeginForm("CreateGift", "Gift", FormMethod.Post,
+
+    new
+    {
+        @class = "form-horizontal",
+        role = "form",
+        enctype = "multipart/form-data"
+    }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+
     <h4>Create a new gift</h4>
     <hr />
     @Html.ValidationSummary()
@@ -15,13 +23,12 @@
     <div class="gift-form-group form-group">
         @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Logo, new { @class = "form-control" })
+            <input type="file" name="file" id="file" accept="image/*" class="form-control" />
         </div>
     </div>
 
     <div class="gift-form-group form-group">
         @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
-
         <div class="col-md-10">
             @Html.TextAreaFor(model => model.About, new { @class = "form-control" })
         </div>

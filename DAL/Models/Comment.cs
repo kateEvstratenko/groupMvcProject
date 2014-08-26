@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
@@ -13,7 +14,6 @@ namespace DAL.Models
         public DateTime Date { get; set; }
 
         public int UserId { get; set; }
-
         public int WishListId { get; set; }
 
         public int GiftId { get; set; }

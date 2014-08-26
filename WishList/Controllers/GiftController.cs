@@ -45,13 +45,21 @@ namespace WishList.Controllers
         {
             if (ModelState.IsValid)
             {
+                var file = Request.Files["file"];
+                //createGiftViewModel.Logo = file;
+
                 var newGift = Mapper.Map<DomainGift>(createGiftViewModel);
                 giftService.Create(newGift);
-                return PartialView("_CreateGiftSuccessPartial", createGiftViewModel.Name);
+                return RedirectToAction("CreateGiftSuccess", new {name = createGiftViewModel.Name});
             }
 
             ModelState.AddModelError("", "Invalid model");
             return View();
+        }
+
+        public ActionResult CreateGiftSuccess(string name)
+        {
+            return View("CreateGiftSuccess", name);
         }
 
         public ActionResult UpdateGift(int id)

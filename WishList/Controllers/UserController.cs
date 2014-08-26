@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -92,7 +93,26 @@ namespace WishList.Controllers
             {
                 return View(model);
             }
-            model.Avatar = "Content/UserAvatars/delault_avatar.gif";
+
+            var file = Request.Files["file"];
+
+            var avatarPath = "";
+
+            if (file != null && file.ContentLength > 0)
+            {
+                avatarPath = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                var path = Path.Combine(Server.MapPath(StringResources.UsersAvatarsPath), avatarPath);
+                file.SaveAs(path);
+            }
+            else
+            {
+                avatarPath = StringResources.NoUserAvatarPath;
+            }
+
+            //advertisement.MainImagePath = StringResources.UsersAvatarsPath + advPath;
+
+            model.Avatar = StringResources.UsersAvatarsPath + avatarPath; //"Content/UserAvatars/delault_avatar.gif";
+
             var domainModel = Mapper.Map<DomainUser>(model);
             var result = userService.Register(domainModel, model.Password, AuthenticationManager);
             if (result != null)
