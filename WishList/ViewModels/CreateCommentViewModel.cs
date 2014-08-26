@@ -8,6 +8,7 @@ namespace WishList.ViewModels
 {
     public class CreateCommentViewModel
     {
+        public int WishListId { get; set; }
         public int GiftId { get; set; }
         [Required]
         [Display(Name = "Message text")]

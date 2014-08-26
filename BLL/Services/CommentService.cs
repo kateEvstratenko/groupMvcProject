@@ -15,13 +15,26 @@ namespace BLL.Services
     {
         public CommentService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainComment domainComment, int userId)
+        public void Create(DomainComment domainComment, int userId, string kind)
         {
             
             domainComment.Date = DateTime.Now;
             domainComment.UserId = userId;
             var comment = Mapper.Map<Comment>(domainComment);
-            comment.WishListId = null;
+            switch (kind)
+            {
+                case "gift":
+                {
+                    comment.WishListId = null;
+                    break;
+                }
+                case "wishList":
+                {
+                    comment.GiftId = null;
+                    break;
+                }
+            }
+            
             Uow.CommentRepository.Insert(comment);   
             Uow.Commit();
         }

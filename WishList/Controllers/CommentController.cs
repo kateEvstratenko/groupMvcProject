@@ -21,10 +21,25 @@ namespace WishList.Controllers
         {
             commentService = iCommentService;
         }
-        public ActionResult DisplayComments(int id)
+        public ActionResult DisplayComments(int id, string kind)
         {
-            var comments = commentService.GetAll().Where(c => c.GiftId == id).Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable();
-            return PartialView("_DisplayCommentsPartial", comments);
+
+            if (kind == "gift")
+            {
+                return PartialView("_DisplayCommentsPartial",
+                    commentService.GetAll()
+                        .Where(c => c.GiftId == id)
+                        .Select(Mapper.Map<DomainComment, CommentViewModel>)
+                        .AsEnumerable());
+            }
+
+            return PartialView("_DisplayCommentsPartial",
+               commentService.GetAll()
+                   .Where(c => c.WishListId == id)
+                   .Select(Mapper.Map<DomainComment, CommentViewModel>)
+                   .AsEnumerable());
+
+
         }
 
         [HttpPost]
@@ -32,20 +47,42 @@ namespace WishList.Controllers
         {
             if (ModelState.IsValid)
             {
-                commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()));
-                return PartialView("_DisplayCommentsPartial", commentService.GetAll().Where(c => c.GiftId == model.GiftId)
-                    .Select(Mapper.Map<DomainComment,CommentViewModel>).AsEnumerable());
+                if (model.GiftId != 0)
+                {
+                    commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()),
+                        "gift");
+                    return PartialView("_DisplayCommentsPartial",
+                        commentService.GetAll().Where(c => c.GiftId == model.GiftId)
+                            .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
+                }
+                else
+                {
+                    commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()),
+                        "wishList");
+                    return PartialView("_DisplayCommentsPartial",
+                        commentService.GetAll().Where(c => c.WishListId == model.WishListId)
+                            .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
+                }
             }
-            ModelState.AddModelError("","invalid comment");
+            ModelState.AddModelError("", "invalid comment");
             return PartialView("_CreateCommentPartial");
         }
 
-        public ActionResult CreateComment(int id)
+        public ActionResult CreateComment(int id, string kind)
         {
-            return PartialView("_CreateCommentPartial", new CreateCommentViewModel
+            if (kind == "gift")
             {
-                GiftId = id
-            });
+                return PartialView("_CreateCommentPartial", new CreateCommentViewModel
+                {
+                    GiftId = id
+                });
+            }
+
+            return PartialView("_CreateCommentPartial", new CreateCommentViewModel
+                    {
+                        WishListId = id
+                    });
         }
+
     }
 }

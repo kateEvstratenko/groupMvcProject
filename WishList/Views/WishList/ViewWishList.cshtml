@@ -85,4 +85,6 @@
         }
     </div>
 </div>
+@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "wishList" })
 
+@Html.Action("CreateComment", "Comment", new { id = Model.Id, kind="wishList" })

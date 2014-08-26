@@ -70,8 +70,8 @@
     </div>
 }
 
-@Html.Action("DisplayComments", "Comment", new { id = Model.Id })
+@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "gift" })
 
-@Html.Action("CreateComment", "Comment", new { id = Model.Id })
+@Html.Action("CreateComment", "Comment", new { id = Model.Id, kind="gift" })
 
 <script src="/Scripts/LikesManager.js"></script>
