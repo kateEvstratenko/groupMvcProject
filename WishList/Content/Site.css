@@ -3,6 +3,7 @@
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
+    padding-bottom: 2%;
 }
 
 header, footer, nav, section {
@@ -104,4 +105,8 @@ transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
 .custom-button {
     width: 86px;
+}
+
+.deletedUSer {
+    text-align: center;
 }

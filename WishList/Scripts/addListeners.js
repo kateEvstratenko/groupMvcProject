@@ -1,10 +1,9 @@
 ﻿(function () {
     'use strict';
-    $('button.btn').each(function () {
-        $(this).on('click', function () {
+
+        $('button.btn').on('click', function () {
             callController($(this).attr('id'));
         });
-    });
 
     function callController(userId) {
         $.ajax({

@@ -8,6 +8,6 @@ namespace BLL
 {
     public static class Constants
     {
-        public static int PopularGiftsCount = 10;
+        public const int PopularGiftsCount = 10;
     }
 }

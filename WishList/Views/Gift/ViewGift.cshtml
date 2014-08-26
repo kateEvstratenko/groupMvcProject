@@ -1,38 +1,77 @@
-﻿@using WishList.Helpers
-@using WishList.ViewModels
+﻿@using WishList.ViewModels
 @model GiftViewModel
 @{
     ViewBag.Title = "View Gift";
 }
 
-<div id="gift">
-    @Html.Gift(Model)
-    <p>
-        @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
-        @Html.ActionLink("Back to Catalog", "Catalog")
-    </p>
-</div>
 <div id="newWishList" class="modal fade">
     <div id="contentId"></div>
-
-</div>
-<script src="/Scripts/LikesManager.js"></script>
-
-<div id="wishListsOfUser">
-    @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
 </div>
 
-<div id="addGiftToWishListForm">
-    @Ajax.ActionLink("Add to my wish list", "GetDropDownWishLists", "WishList",
-        new { giftId = Model.Id },
-        new AjaxOptions
-        {
-            UpdateTargetId = "contentId",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "GET"
-        }, new { data_toggle = "modal", data_target = "#newWishList" })
+<div class="panel panel-primary">
+    <div class="panel-heading">
+            @Model.Name
+    </div>
+
+    <div class="panel-body">
+        <table class="widthTable">
+            <tr>
+                <td class="tdGiftImage">
+                    <img class="giftImage" src="@Model.Logo" />
+                </td>
+                <td>
+                    <div class="aboutGift">
+                        @Model.About
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button class="myCustomLikeButton btn-default" name="giftLikeId-@Model.Id">
+                        <img src="/Content/images/like.png" width="10px" height="10px" />
+                        <p id="giftLikeId-@Model.Id">@Model.LikesCount</p>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
+
+<p>
+    @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
+    @Html.ActionLink("Back to Catalog", "Catalog")
+</p>
+@if (Request.IsAuthenticated)
+{
+    <div id="wishListsOfUser">
+        @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })
+    </div>
+
+    <div id="addGiftToWishListForm">
+        <hr />
+        @Ajax.ActionLink("Add to wish list", "GetDropDownWishLists", "WishList",
+            new
+            {
+                giftId = Model.Id
+            },
+            new AjaxOptions
+            {
+                UpdateTargetId = "contentId",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "GET"
+            },
+            new
+            {
+                data_toggle = "modal",
+                data_target = "#newWishList",
+                @class = "btn btn-info"
+            })
+    </div>
+}
 
 @Html.Action("DisplayComments", "Comment", new { id = Model.Id })
 
 @Html.Action("CreateComment", "Comment", new { id = Model.Id })
+
+<script src="/Scripts/LikesManager.js"></script>

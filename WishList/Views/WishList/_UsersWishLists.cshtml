@@ -1,28 +1,54 @@
 ﻿@using WishList.ViewModels;
 @model IEnumerable<WishListViewModel>
 
-
 <div id="contentId">
     <h2>My wish lists</h2>
-    @Ajax.ActionLink("Add new", "Create", "WishList",
-    new AjaxOptions
-    {
-        UpdateTargetId = "contentId",
-    }, new { @class = "btn btn-success"})
+    <p>
+        @Ajax.ActionLink("Add new", "Create", "WishList",
+                    new AjaxOptions
+                    {
+                        UpdateTargetId = "contentId",
+                    }, new { @class = "btn btn-info" })
+    </p>
 
-    @foreach (var wishList in Model)
-    {
-        <div>
-            <h3>
-                @Html.ActionLink(wishList.Name, "ViewWishList", "WishList", new { id = wishList.Id }, null)
-            </h3>
-            Count of gifts: @wishList.Gifts.Count
-
-            @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = wishList.Id },
-            new AjaxOptions
+    <div class="row">
+        <table class="table-condensed table-hover customTable">
+            @foreach (var wishList in Model)
             {
-                UpdateTargetId = "contentId",
-            }, new { @class = "btn btn-danger" })
-        </div>
-    }
+                <tr>
+                    <td>
+                        <h4>
+                            @Html.ActionLink(wishList.Name, "ViewWishList", "WishList",
+                            new
+                            {
+                                id = wishList.Id
+                            },
+                            new
+                            {
+                                @class = "btn btn-lg"
+                            })
+                        </h4>
+                    </td>
+                    <td>
+                        <h4>
+                            Gifts:
+                            <span class="badge">
+                                @wishList.Gifts.Count
+                            </span>
+                        </h4>
+                    </td>
+                    <td>
+                        <div class="col-md-offset-5">
+                            @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = wishList.Id },
+                                        new AjaxOptions
+                                        {
+                                            UpdateTargetId = "contentId",
+                                        }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>
+

@@ -9,6 +9,6 @@ namespace BLL.Models
 
         public int WishListId { get; set; }
 
-        public virtual DomainWishList WishList { get; set; }
+        public DomainWishList WishList { get; set; }
     }
 }

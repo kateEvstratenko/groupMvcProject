@@ -16,7 +16,7 @@ namespace WishList.Helpers
             
             var innerTag = new TagBuilder("div");
             innerTag.AddCssClass("panel-heading");
-            var innerTagH = new TagBuilder("h2");
+            var innerTagH = new TagBuilder("h3");
             innerTagH.SetInnerText(gift.Name);
             innerTag.InnerHtml += innerTagH.ToString();
             tag.InnerHtml += innerTag.ToString();
@@ -54,17 +54,18 @@ namespace WishList.Helpers
 
             innerTag.InnerHtml += infoTag.ToString();
             innerTag.InnerHtml += likeTag.ToString();
-            tag.InnerHtml += innerTag.ToString();
 
-            
             if (!moreButton) return new MvcHtmlString(tag.ToString());
 
-            innerTag = new TagBuilder("span");
-            innerTag.AddCssClass("giftMoreButton");
-            innerTagH = new TagBuilder("a");
-            innerTagH.Attributes.Add("href", "/Gift/ViewGift/" + gift.Id);
-            innerTagH.SetInnerText("More...");
-            innerTag.InnerHtml += innerTagH.ToString();
+            var innerTagDivLink = new TagBuilder("div");
+            var innerTagLink = new TagBuilder("a");
+            innerTagLink.AddCssClass("btn btn-primary");
+            innerTagLink.Attributes.Add("href", "/Gift/ViewGift/" + gift.Id);
+            innerTagLink.SetInnerText("More...");
+            innerTagDivLink.InnerHtml += innerTagLink.ToString();
+
+            innerTag.InnerHtml += innerTagDivLink.ToString();
+
             tag.InnerHtml += innerTag.ToString();
 
             return new MvcHtmlString(tag.ToString());
