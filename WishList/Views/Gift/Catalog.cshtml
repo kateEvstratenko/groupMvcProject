@@ -1,6 +1,5 @@
-﻿@using WishList.Helpers
-@using WishList.ViewModels
-@model IQueryable<GiftViewModel>
+﻿@using WishList.ViewModels
+@model IEnumerable<GiftViewModel>
 
 @{
     ViewBag.Title = "Catalog";
@@ -8,7 +7,7 @@
 
 @foreach (var gift in Model)
 {
-    <div class="panel panel-primary">
+    <div class="panel panel-primary mostPopular">
         <div class="panel-heading">
             @gift.Name
         </div>
@@ -17,12 +16,10 @@
             <table class="widthTable">
                 <tr>
                     <td class="tdGiftImage">
-                        <img class="giftImage" src="@gift.Logo" />
+                        <img class="giftImage" src="@Url.Content(@gift.Logo)" alt="image" />
                     </td>
                     <td>
-                        <div class="aboutGift">
-                            @gift.About
-                        </div>
+                        <textarea class="form-control aboutGift" readonly="readonly">@gift.About</textarea>
                     </td>
                 </tr>
 
@@ -39,7 +36,7 @@
                         })
                     </td>
                     <td>
-                        <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
+                        <button class="myCustomLikeButton btn" name="giftLikeId-@gift.Id">
                             <img src="/Content/images/like.png" width="10px" height="10px" />
                             <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
                         </button>

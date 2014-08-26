@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using BLL;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNet.Identity;
 using WishList.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace WishList.Controllers
 {
@@ -23,8 +24,15 @@ namespace WishList.Controllers
 
         public ActionResult Catalog()
         {
-            var gifts = giftService.GetAll().Select(Mapper.Map < DomainGift, GiftViewModel>).AsQueryable();
-            return View(gifts);
+            var gifts = giftService.GetAll().ToList();
+            var model = Mapper.Map<IEnumerable<GiftViewModel>>(gifts);
+
+            model.ForEach(x => x.About =
+               x.About.Length < CustomConstants.AboutGiftsLettersCount ?
+               x.About :
+               x.About.Substring(0, CustomConstants.AboutGiftsLettersCount) + CustomConstants.Dots);
+
+            return View(model);
         }
 
         public ActionResult TagPartial()
