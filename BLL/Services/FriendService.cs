@@ -12,23 +12,31 @@ namespace BLL.Services
     {
         public FriendService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(int userId, int friendId)
+        public bool Create(int userId, int friendId)
         {
+            if (
+                Uow.FriendRepository.GetAll().Where(u => u.UserId == userId).FirstOrDefault(u => u.FriendId == friendId)
+                != null)
+            {
+                return false;
+            }
+
             var friend = new Friend()
             {
                 UserId = userId,
                 FriendId = friendId
             };
-            Uow.FriendRepository.Insert(friend);  
+            Uow.FriendRepository.Insert(friend);
 
             friend = new Friend()
             {
                 UserId = friendId,
                 FriendId = userId
             };
-            Uow.FriendRepository.Insert(friend);  
-            
+            Uow.FriendRepository.Insert(friend);
+
             Uow.Commit();
+            return true;
         }
 
         public void Delete(int userId, int friendId)

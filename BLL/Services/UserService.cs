@@ -117,5 +117,12 @@ namespace BLL.Services
         {
             authenticationManager.SignOut();
         }
+
+        public IQueryable<DomainUser> GetAll()
+        {
+            var users = Uow.UserRepository.GetAll();
+            var domainUsers = users.Select(Mapper.Map<User, DomainUser>);
+            return domainUsers.OrderBy(u => u.UserName).AsQueryable();
+        }
     }
 }

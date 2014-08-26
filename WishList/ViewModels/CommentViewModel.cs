@@ -9,21 +9,15 @@ namespace WishList.ViewModels
 {
     public class CommentViewModel
     {
+        public int Id;
         [Required]
-        [StringLength(256, ErrorMessage = "The {0} must be maximum {1} characters long.")]
+        [StringLength(512, ErrorMessage = "The {0} must be maximum {1} characters long.")]
         public string Message { get; set; }
 
-        [Required]
         public DateTime Date { get; set; }
 
         public int UserId { get; set; }
 
-        public int WishListId { get; set; }
-
         public int GiftId { get; set; }
-
-        public virtual User User { get; set; }
-        public virtual DAL.Models.WishList WishList { get; set; }
-        public virtual Gift Gift { get; set; }
     }
 }

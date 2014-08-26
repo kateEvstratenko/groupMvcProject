@@ -21,18 +21,22 @@ namespace WishList.Controllers
         {
             friendService = iFriendService;
         }
-
+        [Authorize]
         public ActionResult AddFriend(int friendId)
         {
-            friendService.Create(Int32.Parse(User.Identity.GetUserId()), friendId);
-            return PartialView("_Success");
+            var check = friendService.Create(Int32.Parse(User.Identity.GetUserId()), friendId);
+            if (check)
+            {
+                return PartialView("_AddedFriendSuccessPartial", friendId);
+            }
+            return PartialView("_FriendAlredyInYourListPartial", friendId);
         }
         public ActionResult DeleteFriend(int id)
         {
             friendService.Delete(Int32.Parse(User.Identity.GetUserId()), id);
-            return PartialView("_Success");
+            return PartialView("_DeleteFriendSuccessPartial", id);
         }
-
+        [Authorize]
         public ActionResult FriendList()
         {
             var friends = friendService.GetAll(Int32.Parse(User.Identity.GetUserId())).Select(Mapper.Map<DomainUser, UserViewModel>);

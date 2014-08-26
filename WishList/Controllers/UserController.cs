@@ -236,5 +236,10 @@ namespace WishList.Controllers
         }
         #endregion
 
+        public ActionResult UsersList()
+        {
+            var users = userService.GetAll().Select(Mapper.Map < DomainUser, UserViewModel>).AsEnumerable();
+            return View(users);
+        }
     }
 }

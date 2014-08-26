@@ -32,5 +32,7 @@ namespace BLL.Interfaces
         Task<IdentityResult> UpdateUserAsync(int userId, DomainUser model);
 
         void SignOut(IAuthenticationManager authenticationManager);
+
+        IQueryable<DomainUser> GetAll();
     }
 }

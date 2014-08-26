@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201408242002556_addLikeTable.Designer.cs">
       <DependentUpon>201408242002556_addLikeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408260927067_setNullWishlistIdInCommentModel.cs" />
+    <Compile Include="Migrations\201408260927067_setNullWishlistIdInCommentModel.Designer.cs">
+      <DependentUpon>201408260927067_setNullWishlistIdInCommentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408242002556_addLikeTable.resx">
       <DependentUpon>201408242002556_addLikeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408260927067_setNullWishlistIdInCommentModel.resx">
+      <DependentUpon>201408260927067_setNullWishlistIdInCommentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
