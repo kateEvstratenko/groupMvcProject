@@ -357,7 +357,6 @@
     <Content Include="Views\WishList\_GetDropDownWishLists.cshtml" />
     <Content Include="Views\WishList\_GetAllUsersWishListsOfGift.cshtml" />
     <Content Include="Views\Gift\_CreateGiftPartial.cshtml" />
-    <Content Include="Views\Gift\_CreateGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_GiftAddSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
@@ -368,6 +367,10 @@
     <Content Include="Views\Gift\_DeleteGiftSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_GiftAddSuccessPartial.cshtml" />
     <Content Include="Views\Gift\_UpdateGiftSuccessPartial.cshtml" />
+    <Content Include="Views\User\UsersList.cshtml" />
+    <Content Include="Views\Friend\_AddedFriendSuccessPartial.cshtml" />
+    <Content Include="Views\Friend\_FriendAlredyInYourListPartial.cshtml" />
+    <Content Include="Views\Friend\_DeleteFriendSuccessPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
