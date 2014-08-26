@@ -42,14 +42,14 @@ namespace BLL.Services
         public void Delete(int userId, int friendId)
         {
             var allFriends = Uow.FriendRepository.GetAll();
-            var friend = allFriends.Where(f => f.UserId == userId).SingleOrDefault(f => f.FriendId == friendId);
+            var friend = allFriends.Where(f => f.UserId == userId).FirstOrDefault(f => f.FriendId == friendId);
 
             if (friend != null)
             {
                 Uow.FriendRepository.Delete(friend.Id);
             }
 
-            friend = allFriends.Where(f => f.UserId == friendId).SingleOrDefault(f => f.FriendId == userId);
+            friend = allFriends.Where(f => f.UserId == friendId).FirstOrDefault(f => f.FriendId == userId);
             if (friend != null)
             {
                 Uow.FriendRepository.Delete(friend.Id);
@@ -74,9 +74,13 @@ namespace BLL.Services
         public IQueryable<DomainUser> GetAll(int id)
         {
             var friends = Uow.FriendRepository.GetAll().Where(f => f.UserId == id).ToArray();
-            var domainFriends = friends.Select(friend => Get(friend.FriendId).User).AsQueryable();
+            var domainFriends = new List<DomainUser>();
+            foreach (var friend in friends)
+            {
+                domainFriends.Add(Mapper.Map<DomainUser>(Uow.UserRepository.Get(friend.FriendId)));
+            }
 
-            return domainFriends;
+            return domainFriends.AsQueryable();
         } 
     }
 }
