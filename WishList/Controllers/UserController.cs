@@ -109,9 +109,7 @@ namespace WishList.Controllers
                 avatarPath = StringResources.NoUserAvatarPath;
             }
 
-            //advertisement.MainImagePath = StringResources.UsersAvatarsPath + advPath;
-
-            model.Avatar = StringResources.UsersAvatarsPath + avatarPath; //"Content/UserAvatars/delault_avatar.gif";
+            model.Avatar = StringResources.UsersAvatarsPath + avatarPath;
 
             var domainModel = Mapper.Map<DomainUser>(model);
             var result = userService.Register(domainModel, model.Password, AuthenticationManager);

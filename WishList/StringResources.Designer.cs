@@ -61,6 +61,24 @@ namespace WishList {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/Content/GiftImages/.
+        /// </summary>
+        internal static string GiftsLogoPath {
+            get {
+                return ResourceManager.GetString("GiftsLogoPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to noImage.png.
+        /// </summary>
+        internal static string NoGiftLogoPath {
+            get {
+                return ResourceManager.GetString("NoGiftLogoPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to default_avatar.gif.
         /// </summary>
         internal static string NoUserAvatarPath {

@@ -44,6 +44,8 @@
     padding: 0;
 }
 button.myCustomLikeButton {
+    background-color: #ffffff;
+    padding: 3px;
     border: 1px solid #c0d4f0;
 }
 .myCustomLikeButton:active { background-color: #c0d4f0; }

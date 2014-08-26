@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -46,20 +47,34 @@ namespace WishList.Controllers
             if (ModelState.IsValid)
             {
                 var file = Request.Files["file"];
-                //createGiftViewModel.Logo = file;
+
+                var logoPath = "";
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    logoPath = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var path = Path.Combine(Server.MapPath(StringResources.GiftsLogoPath), logoPath);
+                    file.SaveAs(path);
+                }
+                else
+                {
+                    logoPath = StringResources.NoGiftLogoPath;
+                }
+
+                createGiftViewModel.Logo = StringResources.GiftsLogoPath + logoPath;
 
                 var newGift = Mapper.Map<DomainGift>(createGiftViewModel);
                 giftService.Create(newGift);
-                return RedirectToAction("CreateGiftSuccess", new {name = createGiftViewModel.Name});
+                return RedirectToAction("CreateGiftSuccess");
             }
 
             ModelState.AddModelError("", "Invalid model");
             return View();
         }
 
-        public ActionResult CreateGiftSuccess(string name)
+        public ActionResult CreateGiftSuccess()
         {
-            return View("CreateGiftSuccess", name);
+            return View("CreateGiftSuccess");
         }
 
         public ActionResult UpdateGift(int id)

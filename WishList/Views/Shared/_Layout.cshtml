@@ -12,6 +12,12 @@
 </head>
     <body>
         @RenderPage("~/Views/Shared/_Header.cshtml")
+        
+        @if (IsSectionDefined("banner"))
+        {
+            @RenderSection("banner")
+        }
+        
         <div class="content">
             @RenderBody()
         </div>
