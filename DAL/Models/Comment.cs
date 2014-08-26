@@ -14,7 +14,7 @@ namespace DAL.Models
 
         public int UserId { get; set; }
 
-        public int WishListId { get; set; }
+        public int? WishListId { get; set; }
 
         public int GiftId { get; set; }
 

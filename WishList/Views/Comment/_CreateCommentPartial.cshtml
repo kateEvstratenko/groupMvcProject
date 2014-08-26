@@ -3,25 +3,29 @@
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
-    @using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "allMessages" }))
+<script type="text/javascript">
+    function onComplete() {
+        document.getElementById("Message").value = "";
+    }
+</script>
+<div class="createMesageForm">
+    @using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "allMessages", OnComplete = "onComplete" }))
     {
         @Html.AntiForgeryToken()
+        <h4>Create a new message</h4>
+        <hr />
         @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>CreateCommentViewModel</legend>
-            @Html.HiddenFor(model => model.GiftId )
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Message)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Message)
-                @Html.ValidationMessageFor(model => model.Message)
-            </div>
+        @Html.HiddenFor(model => model.GiftId)
 
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.Message, new { @class = "col-md-2 control-label" })
+            @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
     }
+</div>

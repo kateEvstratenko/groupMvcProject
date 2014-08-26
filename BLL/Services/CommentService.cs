@@ -21,6 +21,7 @@ namespace BLL.Services
             domainComment.Date = DateTime.Now;
             domainComment.UserId = userId;
             var comment = Mapper.Map<Comment>(domainComment);
+            comment.WishListId = null;
             Uow.CommentRepository.Insert(comment);   
             Uow.Commit();
         }
