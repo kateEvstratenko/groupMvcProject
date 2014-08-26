@@ -1,12 +1,12 @@
-﻿@model IQueryable<WishList.ViewModels.UserViewModel>
+﻿@model System.Collections.Generic.IEnumerable<WishList.ViewModels.UserViewModel>
 
 @foreach (var md in Model)
 {
-    <div id=@md.Id>
+    <div id="UsersList-@md.Id">
         <h4>@md.FirstName</h4>
         <h4>@md.LastName</h4>
         <h4>@md.FormattedBirthday</h4>
         <h4>@md.Avatar</h4>
-        @Ajax.ActionLink("delete", "DeleteFriend",  new { id = md.Id }, null)
+        @Ajax.ActionLink("delete", "DeleteFriend", "Friend",  new { id = md.Id }, new AjaxOptions{ UpdateTargetId = "UsersList-" + md.Id})
     </div>
 }

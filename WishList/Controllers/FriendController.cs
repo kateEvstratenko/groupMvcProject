@@ -40,7 +40,7 @@ namespace WishList.Controllers
         public ActionResult FriendList()
         {
             var friends = friendService.GetAll(Int32.Parse(User.Identity.GetUserId())).Select(Mapper.Map<DomainUser, UserViewModel>);
-            return PartialView("_FriendListPartial", friends.AsQueryable());
+            return PartialView("_FriendListPartial", friends.AsEnumerable());
         }
 
     }

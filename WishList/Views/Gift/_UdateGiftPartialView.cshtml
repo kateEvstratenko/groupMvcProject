@@ -10,31 +10,29 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
-        <fieldset>
-            <legend>CreateGiftViewModel</legend>
             @Html.HiddenFor(model => model.Id)
-            <div class="editor-label">
+            <div class="form-group">
                 @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
             </div>
 
-            <div class="editor-label">
+            <div class="form-group">
                 @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Logo)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Logo)
+                </div>
             </div>
 
-            <div class="editor-label">
+            <div class="form-group">
                 @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.About, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.About)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.About, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.About)
+                </div>
             </div>
 
             <div class="form-group">
@@ -42,7 +40,6 @@
                     <input type="submit" class="btn btn-primary createButton" value="Save" />
                 </div>
             </div>
-        </fieldset>
     }
 
     <div>
