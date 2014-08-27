@@ -9,36 +9,40 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>User</h4>
         <hr />
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control cat_textbox"})
-                @Html.ValidationMessageFor(model => model.FirstName)
-            </div>
-        </div>
+        <img alt="photo" src="@Url.Content(Model.Avatar)" class="avatar" />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control cat_textbox"})
-                @Html.ValidationMessageFor(model => model.LastName)
+        <div class="rightBlock">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control cat_textbox" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-        @Html.LabelFor(m => m.FormattedBirthday, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FormattedBirthday, new { @class = "form-control cat_textbox", @id = "datepicker" })
-        </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control cat_textbox" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FormattedBirthday, new { @class = "col-md-3 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.FormattedBirthday, new { @class = "form-control cat_textbox", @id = "datepicker" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-7 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>

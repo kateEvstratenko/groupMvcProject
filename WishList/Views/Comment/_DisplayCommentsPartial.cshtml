@@ -1,10 +1,13 @@
 ﻿@using WishList.ViewModels
 @model IEnumerable<CommentViewModel>
 <div id="allMessages">
-@{
-    foreach (var comment in Model)
-    {   
-        @Html.Partial("_DisplaySingleCommentPartial", comment)
-    }
-}
+    <h2>Comments:</h2>
+    <ul class="list-group">
+        @{
+            foreach (var comment in Model)
+            {
+                @Html.Partial("_DisplaySingleCommentPartial", comment)
+            }
+        }
+    </ul>
 </div>

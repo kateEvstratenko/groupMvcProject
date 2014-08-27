@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace BLL.Services
             domainComment.Date = DateTime.Now;
             domainComment.UserId = userId;
             var comment = Mapper.Map<Comment>(domainComment);
-            switch (kind)
+            /*switch (kind)
             {
                 case "gift":
                 {
@@ -33,7 +34,7 @@ namespace BLL.Services
                     comment.GiftId = null;
                     break;
                 }
-            }
+            }*/
             
             Uow.CommentRepository.Insert(comment);   
             Uow.Commit();
@@ -62,7 +63,7 @@ namespace BLL.Services
         public IQueryable<DomainComment> GetAll()
         {
             var comments = Uow.CommentRepository.GetAll();
-            var domainComments = comments.Select(Mapper.Map<Comment, DomainComment>).AsQueryable();
+            var domainComments = comments.Include(c => c.User).Select(Mapper.Map<Comment, DomainComment>).AsQueryable();
             return domainComments;
         } 
     }

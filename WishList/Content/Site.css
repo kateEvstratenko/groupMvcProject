@@ -62,11 +62,11 @@ textarea {
 }
 
 .banner {
-background-image: url(../Content/Images/startImage.jpg);
-background-position: top;
-background-repeat: no-repeat;
-height: 500px;
-background-size: 100%;
+    background-image: url(../Content/Images/startImage.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-size: 100%;
 }
 
 .content {
@@ -80,8 +80,12 @@ background-size: 100%;
 }
 
 img.avatar {
+    width: 200px;
+    vertical-align: top;
+}
+
+.commentUserAvatar {
     width: 100px;
-    height: 100px;
 }
 
 .createButton {
@@ -135,6 +139,15 @@ table td {
 
 .inlineElement {
     display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+
+.commentUserName {
+    font-size: 24px;
+    font-family: serif;
+    color: rgb(0, 53, 100);
+    font-weight: bold;
 }
 
 .aboutGift {
@@ -181,6 +194,15 @@ span.link {
     box-shadow: rgba(150, 143, 143, 1)2px 2px 3px 1px;
 }
 
+.panel.giftInfo {
+    margin-bottom: 20px;
+    background-color: #ECECEC;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: rgba(150, 143, 143, 1)2px 2px 3px 1px;
+}
+
 .title {
     /* background-color: red; */
     text-align: center;
@@ -189,4 +211,26 @@ span.link {
     padding: 20px;
     border-radius: 7px;
     margin: 20px;
+}
+
+.rightBlock {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+    .rightBlock label.control-label {
+        margin-bottom: 10px;
+    }
+
+#contentId .modal-content {
+    background: rgb(238, 238, 238);
+}
+
+textarea.noResizable {
+    resize: none;
+}
+
+a.editButton {
+    padding-left: 20px;
+    padding-right: 20px;
 }

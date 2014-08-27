@@ -18,6 +18,8 @@ namespace WishList.ViewModels
 
         public int UserId { get; set; }
 
-        public int GiftId { get; set; }
+        public string UserName { get; set; }
+        public string UserAvatar { get; set; }
+        public int? GiftId { get; set; }
     }
 }

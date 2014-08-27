@@ -179,7 +179,7 @@ namespace WishList.Controllers
             var result = await userService.UpdateUserAsync(Int32.Parse(User.Identity.GetUserId()), user);
             if (result.Succeeded)
             {
-                return RedirectToAction("Success");
+                return RedirectToAction("ViewProfile", new { id = model.Id});
             }
             AddErrors(result);
             return View(model);

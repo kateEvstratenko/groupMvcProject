@@ -18,7 +18,11 @@ namespace WishList
         {
             #region BLL to WebUi
             Mapper.CreateMap<DomainComment, CreateCommentViewModel>();
-            Mapper.CreateMap<DomainComment, CommentViewModel>();
+            Mapper.CreateMap<DomainComment, CommentViewModel>().AfterMap((domainModel, viewModel) =>
+            {
+                viewModel.UserName = domainModel.User.UserName;
+                viewModel.UserAvatar = domainModel.User.Avatar;
+            });
             Mapper.CreateMap<DomainGift, CreateGiftViewModel>();
             Mapper.CreateMap<DomainGift, GiftViewModel>();
             Mapper.CreateMap<DomainWishList, CreateWishListViewModel>();

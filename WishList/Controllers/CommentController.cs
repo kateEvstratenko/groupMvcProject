@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -51,9 +52,10 @@ namespace WishList.Controllers
                 {
                     commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()),
                         "gift");
-                    return PartialView("_DisplayCommentsPartial",
-                        commentService.GetAll().Where(c => c.GiftId == model.GiftId)
-                            .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
+
+                    var ccc = commentService.GetAll().Where(c => c.GiftId == model.GiftId).Include(c => c.User).ToList();
+                    var commentViewModel = Mapper.Map<IEnumerable<CommentViewModel>>(ccc);
+                    return PartialView("_DisplayCommentsPartial", commentViewModel);
                 }
                 else
                 {

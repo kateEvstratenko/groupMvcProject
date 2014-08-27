@@ -1,3 +1,9 @@
 ﻿@model WishList.ViewModels.CommentViewModel
 
-<div>@Model.Message</div>
+<li class="list-group-item">
+    <img alt="photo" src="@Url.Content(Model.UserAvatar)" class="commentUserAvatar" />
+    <div class="inlineElement">
+        <p class="commentUserName">@Model.UserName</p>
+        <div>@Model.Message</div>
+    </div>
+</li>

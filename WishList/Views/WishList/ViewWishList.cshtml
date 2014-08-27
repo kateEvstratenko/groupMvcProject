@@ -19,20 +19,20 @@
                 else
                 {
                     @Html.ActionLink("Generate link", "GenerateLink", "WishList",
-                    new
-                    {
-                        id = Model.Id,
-                        url = Request.Url.ToString()
-                    },
-                    new
-                    {
-                        @class = "btn btn-primary"
-                    })
+                        new
+                        {
+                            id = Model.Id,
+                            url = Request.Url.ToString()
+                        },
+                        new
+                        {
+                            @class = "btn btn-primary"
+                        })
                 }
-        </h3>
-    </div>
+            </h3>
+        </div>
 
-   
+
         @foreach (var gift in Model.Gifts)
         {
             <div id="deleteResult-@gift.Id">
@@ -45,7 +45,7 @@
                         <table class="widthTable">
                             <tr>
                                 <td class="tdGiftImage">
-                                    <img class="giftImage" src="@gift.Logo" />
+                                    <img class="giftImage" src="@Url.Content(@gift.Logo)" alt="image" />
                                 </td>
                                 <td>
                                     <div class="aboutGift">
@@ -72,7 +72,7 @@
                                         })
                                 </td>
                                 <td>
-                                    <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
+                                    <button class="myCustomLikeButton btn" name="giftLikeId-@gift.Id">
                                         <img src="/Content/images/like.png" width="10px" height="10px" />
                                         <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
                                     </button>
@@ -85,6 +85,7 @@
         }
     </div>
 </div>
-@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "wishList" })
 
-@Html.Action("CreateComment", "Comment", new { id = Model.Id, kind="wishList" })
+@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "wishList" })
+@Html.Action("CreateComment", "Comment", new { id = Model.Id, kind = "wishList" })
+

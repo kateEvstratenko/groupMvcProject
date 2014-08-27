@@ -12,22 +12,21 @@
     @using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "allMessages", OnComplete = "onComplete" }))
     {
         @Html.AntiForgeryToken()
-        <h4>Create a new message</h4>
-        <hr />
+        <h3>New comment</h3>
+
         @Html.ValidationSummary(true)
 
         @Html.HiddenFor(model => model.GiftId)
         @Html.HiddenFor(model => model.WishListId)
         <div class="form-group">
-            @Html.LabelFor(model => model.Message, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control noResizable"})
                 @Html.ValidationMessageFor(model => model.Message)
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <input type="submit" class="btn btn-primary createButton" value="Create" />
             </div>
         </div>
