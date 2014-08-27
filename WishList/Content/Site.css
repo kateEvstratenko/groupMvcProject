@@ -62,11 +62,11 @@ textarea {
 }
 
 .banner {
-    background-image: url(../Content/Images/startImage.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 500px;
-    background-size: 100%;
+background-image: url(../Content/Images/startImage.jpg);
+background-position: top;
+background-repeat: no-repeat;
+height: 500px;
+background-size: 100%;
 }
 
 .content {

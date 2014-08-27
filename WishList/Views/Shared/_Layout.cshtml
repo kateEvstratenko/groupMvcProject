@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html><html>
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -8,21 +9,21 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/Scripts/bootstrap.js")
     @Scripts.Render("~/bundles/modernizr")
-    
+
 </head>
-    <body>
-        @RenderPage("~/Views/Shared/_Header.cshtml")
-        
+<body>
+    @RenderPage("~/Views/Shared/_Header.cshtml")
+
+    <div class="content">
         @if (IsSectionDefined("banner"))
         {
             @RenderSection("banner")
         }
-        
-        <div class="content">
-            @RenderBody()
-        </div>
-       
-        @Scripts.Render("~/bundles/jqueryval")
-        @RenderSection("scripts", required: false)
-    </body>
+
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
 </html>
