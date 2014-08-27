@@ -11,6 +11,7 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
+    [Authorize]
     public class WishListController : BaseController
     {
         private readonly IWishListService wishListService;

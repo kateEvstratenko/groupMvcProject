@@ -183,6 +183,16 @@ namespace WishList.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult NoAccess()
+        {
+            return View();
+        }
+
+        public ActionResult RedirectToMain()
+        {
+            return RedirectToAction("Index","Home");
+        }
+
         #region Helpers
         public enum ManageMessageId
         {

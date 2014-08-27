@@ -11,6 +11,7 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
+    [Authorize]
     public class CommentController : BaseController
     {
         //
@@ -21,7 +22,7 @@ namespace WishList.Controllers
         {
             commentService = iCommentService;
         }
-
+        [AllowAnonymous]
         public ActionResult DisplayComments(int id, string kind)
         {
 

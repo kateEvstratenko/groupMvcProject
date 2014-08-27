@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using DAL.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -18,31 +19,61 @@ namespace DAL
 
         public void Insert(T entity)
         {
-            DbSet.Add(entity);
+            if (entity != null)
+            {
+                DbSet.Add(entity);
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public void Delete(int id)
         {
             var entity = DbSet.Find(id);
-            DbSet.Attach(entity);
-            DbSet.Remove(entity);
+            if (entity != null)
+            {
+                DbSet.Attach(entity);
+                DbSet.Remove(entity);
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public void Update(T entity)
         {
-            DbSet.Attach(entity);
-            Context.Entry(entity).State = EntityState.Modified;
+            if (entity != null)
+            {
+                DbSet.Attach(entity);
+                Context.Entry(entity).State = EntityState.Modified;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public T Get(int id)
         {
-            var result = DbSet.Find(id);
-            return result;
+            var entity = DbSet.Find(id);
+            if (entity != null)
+            {
+                return entity;
+            }
+            throw new Exception();
         }
 
         public IQueryable<T> GetAll()
         {
-            return DbSet;
+            var entities = DbSet;
+            if (entities != null)
+            {
+                return entities;
+            }
+            throw new Exception();
         }
     }
 }
