@@ -5,16 +5,18 @@
         url: "/Gift/EnableLikes/",
         success: function(data) {
             if (data == 'True') {
-                $('.myCustomLikeButton').bind('click', UpdateLikes);
+                $('.myCustomLikeButton').bind('click', function() { 
+                    UpdateLikes(this);
+                });
             } else {
                 $('.myCustomLikeButton')._addClass("disabled");
             }
         }
     });
-    var UpdateLikes = function() {
-        var element = this;
-        element.disabled = true;
-        var likeId = element.attributes["name"].value;
+    var UpdateLikes = function(el) {
+        var $el = $(el);
+        $el.disabled = true;
+        var likeId = $el.attr('name');
         $.ajax({
             type: "POST",
             url: "/Gift/ChangeLikesCount/" + likeId.toString(),
@@ -22,7 +24,7 @@
             success: function(data) {
                 $('#' + likeId.toString()).empty();
                 $('#' + likeId.toString()).append(data);
-                element.disabled = false;
+                $el.disabled = false;
             }
         });
     };

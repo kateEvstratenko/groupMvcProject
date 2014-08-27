@@ -19,5 +19,6 @@ namespace WishList.ViewModels
         public int UserId { get; set; }
 
         public int GiftId { get; set; }
+        public int WishListId { get; set; }
     }
 }

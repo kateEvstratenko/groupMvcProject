@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BLL.Models;
 
 namespace BLL.Interfaces
@@ -15,5 +16,7 @@ namespace BLL.Interfaces
         IQueryable<DomainWishList> GetAllWishListsOfUser(int userId);
         IQueryable<DomainWishList> GetAllUsersWishListsOfGift(int giftId, int userId);
         IQueryable<DomainWishList> GetUsersWishListsWithoutGift(int giftId, int userId);
+        List<int> ChangeVotesCount(string id, int userId);
+        int GetVotesCount(string wishListId, string giftId);
     }
 }
