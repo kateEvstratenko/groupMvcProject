@@ -72,6 +72,10 @@
                                         })
                                 </td>
                                 <td>
+                                    <button class="myCustomVoteButton btn-default" name="@gift.Id-@Model.Id">
+                                        Vote
+                                        <p id="@gift.Id-@Model.Id">@Html.Action("GetVotesCount", new{wishListId = @Model.Id, giftId = @gift.Id})</p>
+                                    </button>
                                     <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
                                         <img src="/Content/images/like.png" width="10px" height="10px" />
                                         <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
@@ -88,3 +92,4 @@
 @Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "wishList" })
 
 @Html.Action("CreateComment", "Comment", new { id = Model.Id, kind="wishList" })
+<script src="/Scripts/VoteManager.js"></script>
