@@ -36,7 +36,7 @@ namespace BLL.Services
                 }
             }*/
             
-            Uow.CommentRepository.Insert(comment);   
+            Uow.CommentRepository.Insert(comment);
             Uow.Commit();
         }
 
