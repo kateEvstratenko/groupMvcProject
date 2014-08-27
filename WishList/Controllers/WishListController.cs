@@ -6,6 +6,7 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using WebGrease.Css.Extensions;
 using WishList.ViewModels;
 
@@ -124,6 +125,27 @@ namespace WishList.Controllers
                 DropDownList = new SelectList(wishLists, "Id", "Name")
             };
             return PartialView("_GetDropDownWishLists", model);
+        }
+
+        public ActionResult GetVotesCount(string wishListId, string giftId)
+        {
+            return PartialView("_VotesCountPartial", wishListService.GetVotesCount(wishListId, giftId));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public string ChangeVotesCount(string id)
+        {
+            var json =
+                JsonConvert.SerializeObject(
+                    wishListService.ChangeVotesCount(id, Int32.Parse(User.Identity.GetUserId())).ToArray());
+            return json;
+        }
+
+        [HttpPost]
+        public bool EnableVotes()
+        {
+            return User.Identity.IsAuthenticated;
         }
     }
 }

@@ -21,5 +21,8 @@ namespace WishList.ViewModels
         public string UserName { get; set; }
         public string UserAvatar { get; set; }
         public int? GiftId { get; set; }
+
+        public int? WishListId { get; set; }
+
     }
 }
