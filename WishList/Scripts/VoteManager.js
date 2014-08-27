@@ -15,7 +15,7 @@
     });
     var UpdateVotes = function (el) {
         var $el = $(el);
-        $el.disabled = true;
+        $el.prop('disabled', true);
         var voteId = $el.attr('name');
         $.ajax({
             type: "POST",
@@ -27,7 +27,7 @@
                 $('#' + voteId.toString()).append(newData[0]);
                 $('#' + newData[1] + '-' + newData[2]).empty();
                 $('#' + newData[1] + '-' + newData[2]).append(newData[3]);
-                $el.disabled = false;
+                $el.prop('disabled', false);
             }
         });
     };
