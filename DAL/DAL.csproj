@@ -86,8 +86,13 @@
     <Compile Include="Migrations\201408261606517_nullableWishListId.Designer.cs">
       <DependentUpon>201408261606517_nullableWishListId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408272012100_AddedCommentLikes.cs" />
+    <Compile Include="Migrations\201408272012100_AddedCommentLikes.Designer.cs">
+      <DependentUpon>201408272012100_AddedCommentLikes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentLike.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\Identity.cs" />
@@ -126,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408261606517_nullableWishListId.resx">
       <DependentUpon>201408261606517_nullableWishListId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408272012100_AddedCommentLikes.resx">
+      <DependentUpon>201408272012100_AddedCommentLikes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -108,5 +108,22 @@ namespace WishList.Controllers
             return PartialView("_DisplaySingleCommentPartial",model);
         }
 
+        public ActionResult GetCommentLikesCount(int id)
+        {
+            return PartialView("_CommentLikesCount",commentService.GetLikesCount(id));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public int ChangeLikesCount(string id)
+        {
+            return commentService.ChangeLikesCount(id, CurrentUser.Id);
+        }
+
+        [HttpPost]
+        public bool EnableLikes()
+        {
+            return User.Identity.IsAuthenticated;
+        }
     }
 }

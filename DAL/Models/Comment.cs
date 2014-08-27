@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace DAL.Models
 {
@@ -22,5 +23,6 @@ namespace DAL.Models
         public virtual User User { get; set; }
         public virtual WishList WishList { get; set; }
         public virtual Gift Gift { get; set; }
+        public virtual IQueryable<CommentLike> CommentLike { get; set; } 
     }
 }

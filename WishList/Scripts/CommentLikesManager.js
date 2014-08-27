@@ -2,26 +2,26 @@
     'use strict';
     $.ajax({
         type: "POST",
-        url: "/Gift/EnableLikes/",
-        success: function(data) {
+        url: "/Comment/EnableLikes/",
+        success: function (data) {
             if (data == 'True') {
-                $('.myCustomLikeButton').bind('click', function() { 
+                $('.myCustomCommentLikeButton').bind('click', function () {
                     UpdateLikes(this);
                 });
             } else {
-                $('.myCustomLikeButton')._addClass("disabled");
+                $('.myCustomCommentLikeButton')._addClass("disabled");
             }
         }
     });
-    var UpdateLikes = function(el) {
+    var UpdateLikes = function (el) {
         var $el = $(el);
         $el.prop('disabled', true);
         var likeId = $el.attr('name');
         $.ajax({
             type: "POST",
-            url: "/Gift/ChangeLikesCount/" + likeId.toString(),
+            url: "/Comment/ChangeLikesCount/" + likeId.toString(),
             data: likeId,
-            success: function(data) {
+            success: function (data) {
                 $('#' + likeId.toString()).empty();
                 $('#' + likeId.toString()).append(data);
                 $el.prop('disabled', false);
