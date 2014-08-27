@@ -234,3 +234,7 @@ a.editButton {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.buttonMarginRight {
+    margin-right: 20px;
+}
