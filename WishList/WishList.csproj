@@ -54,7 +54,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -212,7 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-WishList-20140816162216.mdf" />
-    <Content Include="App_Data\aspnet-WishList-20140816162216_log.ldf" />
+    <Content Include="App_Data\aspnet-WishList-20140816162216_log.ldf">
+      <DependentUpon>aspnet-WishList-20140816162216.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Gift.css" />
     <Content Include="Content\GiftImages\f3595eb2-b7bf-49d0-85b9-c4e467a7176d.png" />
     <Content Include="Content\GiftImages\LavaLampa.jpg" />
