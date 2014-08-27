@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
+using DAL.Models;
 using Microsoft.AspNet.Identity;
 using WishList.ViewModels;
 
@@ -82,6 +84,25 @@ namespace WishList.Controllers
                     {
                         WishListId = id
                     });
+        }
+        [HttpPost]
+        public ActionResult DeleteComment(string id)
+        {
+            commentService.Delete(Int32.Parse(id));
+            return PartialView("_DeleteCommentSuccess");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateComment(string id)
+        {
+            var comment = Mapper.Map<CommentViewModel>(commentService.Get(Int32.Parse(id)));
+            return PartialView("_UpdateCommentPartial", comment);
+        }
+        [HttpPost]
+        public ActionResult UpdateComment(CommentViewModel model)
+        {
+            commentService.Update(Mapper.Map<DomainComment>(model));
+            return PartialView("_DisplaySingleCommentPartial",model);
         }
 
     }

@@ -377,6 +377,8 @@
     <Content Include="Views\Friend\_FriendAlredyInYourListPartial.cshtml" />
     <Content Include="Views\Friend\_DeleteFriendSuccessPartial.cshtml" />
     <Content Include="Views\WishList\_VotesCountPartial.cshtml" />
+    <Content Include="Views\Comment\_DeleteCommentSuccess.cshtml" />
+    <Content Include="Views\Comment\_UpdateCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

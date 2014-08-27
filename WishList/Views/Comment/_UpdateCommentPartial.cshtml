@@ -1,0 +1,29 @@
+﻿@model WishList.ViewModels.CommentViewModel
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.GiftId)
+        @Html.HiddenFor(model => model.WishListId)
+        @Html.HiddenFor(model => model.Date)
+    <h3>Change message</h3>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary createButton" value="Save" />
+            </div>
+        </div>
+}
