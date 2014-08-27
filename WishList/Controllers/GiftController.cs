@@ -13,11 +13,11 @@ using WebGrease.Css.Extensions;
 
 namespace WishList.Controllers
 {
-    public class GiftController : Controller
+    public class GiftController : BaseController
     {
         private readonly IGiftService giftService;
 
-        public GiftController(IGiftService iGiftService)
+        public GiftController(IUserService iUserService, IGiftService iGiftService) : base(iUserService)
         {
             giftService = iGiftService;
         }
@@ -33,11 +33,6 @@ namespace WishList.Controllers
                x.About.Substring(0, CustomConstants.AboutGiftsLettersCount) + CustomConstants.Dots);
 
             return View(model);
-        }
-
-        public ActionResult TagPartial()
-        {
-            return PartialView();
         }
 
         public ActionResult CreateGift()
@@ -76,7 +71,7 @@ namespace WishList.Controllers
                 return RedirectToAction("CreateGiftSuccess");
             }
 
-            ModelState.AddModelError("", "Invalid model");
+            ModelState.AddModelError("", @"Invalid model");
             return View();
         }
 
@@ -108,7 +103,7 @@ namespace WishList.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Invalid model");
+                ModelState.AddModelError("", @"Invalid model");
             }
             return PartialView("_UdateGiftPartialView");
         }
@@ -135,7 +130,7 @@ namespace WishList.Controllers
         [Authorize]
         public int ChangeLikesCount(string id)
         {
-            return giftService.ChangeLikesCount(id, Int32.Parse(User.Identity.GetUserId()));
+            return giftService.ChangeLikesCount(id, CurrentUser.Id);
         }
 
         [HttpPost]

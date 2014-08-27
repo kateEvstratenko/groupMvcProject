@@ -11,20 +11,21 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
-    public class FriendController : Controller
+    public class FriendController : BaseController
     {
         //
         // GET: /Friend/
         private readonly IFriendService friendService;
 
-        public FriendController(IFriendService iFriendService)
+        public FriendController(IUserService iUserService,IFriendService iFriendService) : base(iUserService)
         {
             friendService = iFriendService;
         }
+
         [Authorize]
         public ActionResult AddFriend(int friendId)
         {
-            var check = friendService.Create(Int32.Parse(User.Identity.GetUserId()), friendId);
+            var check = friendService.Create(CurrentUser.Id, friendId);
             if (check)
             {
                 return PartialView("_AddedFriendSuccessPartial", friendId);
@@ -33,13 +34,13 @@ namespace WishList.Controllers
         }
         public ActionResult DeleteFriend(int id)
         {
-            friendService.Delete(Int32.Parse(User.Identity.GetUserId()), id);
+            friendService.Delete(CurrentUser.Id, id);
             return PartialView("_DeleteFriendSuccessPartial", id);
         }
         [Authorize]
         public ActionResult FriendList()
         {
-            var friends = friendService.GetAll(Int32.Parse(User.Identity.GetUserId())).Select(Mapper.Map<DomainUser, UserViewModel>);
+            var friends = friendService.GetAll(CurrentUser.Id).Select(Mapper.Map<DomainUser, UserViewModel>);
             return PartialView("_FriendListPartial", friends.AsEnumerable());
         }
 

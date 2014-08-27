@@ -12,11 +12,11 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
-    public class WishListController : Controller
+    public class WishListController : BaseController
     {
         private readonly IWishListService wishListService;
 
-        public WishListController(IWishListService iWishListService)
+        public WishListController(IUserService iUserService, IWishListService iWishListService) : base(iUserService)
         {
             wishListService = iWishListService;
         }
@@ -26,7 +26,7 @@ namespace WishList.Controllers
         {
             var model = new CreateWishListViewModel()
             {
-                UserId = Int32.Parse(User.Identity.GetUserId())
+                UserId = CurrentUser.Id
             };
             return PartialView("_Create", model);
         }
@@ -72,7 +72,7 @@ namespace WishList.Controllers
 
         public ActionResult GetAllWishListsOfUser()
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
+            var userId = CurrentUser.Id;
             var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
             var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
             return PartialView("_UsersWishLists", model);
@@ -80,7 +80,7 @@ namespace WishList.Controllers
 
         public ActionResult GetAllUsersWishListsOfGift(int giftId)
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
+            var userId = CurrentUser.Id;
             var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
 
             if (wishListsOfGift.Count < 1)
@@ -115,7 +115,7 @@ namespace WishList.Controllers
 
         public ActionResult GetDropDownWishLists(int giftId)
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
+            var userId = CurrentUser.Id;
 
             var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId);
 

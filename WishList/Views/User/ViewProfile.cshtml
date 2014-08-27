@@ -41,7 +41,7 @@
                 </dl>
             </p>
 
-            @if (Model.Id == Int32.Parse(User.Identity.GetUserId()))
+            @if (Model.Id == User.Identity.GetUserId<int>())
             {
                 @Html.ActionLink("Edit", "EditProfile")
             }

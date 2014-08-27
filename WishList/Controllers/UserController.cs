@@ -17,17 +17,13 @@ using WishList.ViewModels;
 namespace WishList.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
-        private readonly IUserService userService;
 
-        public UserController(IUserService iUserService)
+        public UserController(IUserService iUserService) : base(iUserService)
         {
-            userService = iUserService;
         }
 
-        //
-        // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -35,8 +31,6 @@ namespace WishList.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -47,7 +41,7 @@ namespace WishList.Controllers
                 return View(model);
             }
 
-            var user = await userService.FindAsync(model.UserName, model.Password);
+            var user = await UserService.FindAsync(model.UserName, model.Password);
             if (user != null)
             {
                 if (user.EmailConfirmed == true)
@@ -57,33 +51,28 @@ namespace WishList.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Не подтвержден email.");
+                    ModelState.AddModelError("", @"Email is not confirmed.");
                     return View(model);
                 }
             }
 
-            ModelState.AddModelError("", "Invalid username or password.");
+            ModelState.AddModelError("", @"Invalid username or password.");
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
         private async Task SignInAsync(DomainUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await userService.GenerateClaimAsync(user));
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await UserService.GenerateClaimAsync(user));
         }
 
-        //
-        // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
-        //
-        // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -112,22 +101,21 @@ namespace WishList.Controllers
             model.Avatar = StringResources.UsersAvatarsPath + avatarPath;
 
             var domainModel = Mapper.Map<DomainUser>(model);
-            var result = userService.Register(domainModel, model.Password, AuthenticationManager);
+            var result = UserService.Register(domainModel, model.Password, AuthenticationManager);
             if (result != null)
             {
-                string code = await userService.GenerateEmailConfirmationTokenAsync(result.Id);
+                string code = await UserService.GenerateEmailConfirmationTokenAsync(result.Id);
                 var callbackUrl = Url.Action("ConfirmEmail", "User", new { userId = result.Id, code = code }, protocol: Request.Url.Scheme);
-                await userService.SendEmailAsync(result.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                await UserService.SendEmailAsync(result.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return View("CheckEmail");
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
         public ActionResult ViewProfile(int id)
         {
-            var user = userService.GetUser(id);
+            var user = UserService.GetUser(id);
             var userModel = Mapper.Map<ViewProfileViewModel>(user);
             return View(userModel);
         }
@@ -140,7 +128,7 @@ namespace WishList.Controllers
                 return View("Error");
             }
 
-            IdentityResult result = await userService.ConfirmEmailAsync(userId, code);
+            IdentityResult result = await UserService.ConfirmEmailAsync(userId, code);
             if (result.Succeeded)
             {
                 return View("ConfirmEmail");
@@ -149,22 +137,18 @@ namespace WishList.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/EditProfile
         public ActionResult EditProfile(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.EditProfileSuccess ? "You profile data has been updated"
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
-            var user = userService.GetUser(Int32.Parse(User.Identity.GetUserId()));
+            var user = UserService.GetUser(CurrentUser.Id);
             var model = Mapper.Map<EditUserViewModel>(user);
 
             return View(model);
         }
 
-        //
-        // POST: /Account/EditProfile
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditProfile(EditUserViewModel model)
@@ -174,9 +158,9 @@ namespace WishList.Controllers
                 return View(model);
             }
 
-            var user = userService.GetUser(Int32.Parse(User.Identity.GetUserId()));
+            var user = UserService.GetUser(CurrentUser.Id);
             user = Mapper.Map<DomainUser>(model);
-            var result = await userService.UpdateUserAsync(Int32.Parse(User.Identity.GetUserId()), user);
+            var result = await UserService.UpdateUserAsync(CurrentUser.Id, user);
             if (result.Succeeded)
             {
                 return RedirectToAction("ViewProfile", new { id = model.Id});
@@ -190,13 +174,11 @@ namespace WishList.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            userService.SignOut(AuthenticationManager);
+            UserService.SignOut(AuthenticationManager);
 
             return RedirectToAction("Index", "Home");
         }
@@ -236,7 +218,7 @@ namespace WishList.Controllers
 
         public ActionResult UsersList()
         {
-            var users = userService.GetAll().Select(Mapper.Map < DomainUser, UserViewModel>).AsEnumerable();
+            var users = UserService.GetAll().Select(Mapper.Map < DomainUser, UserViewModel>).AsEnumerable();
             return View(users);
         }
     }
