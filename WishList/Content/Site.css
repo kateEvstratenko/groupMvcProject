@@ -121,11 +121,6 @@ img.avatar {
     width: 86px;
 }
 
-table td {
-    padding-top: 20px;
-    word-break: break-all;
-}
-
 .widthTable {
     width: 100%;
 }
@@ -239,20 +234,6 @@ a.editButton {
 .buttonMarginRight {
     margin-right: 20px;
 }
-
-.gendalf {
-    height: 500px;
-    width: 329px;
-    margin: 0 auto;
-}
-
-    .gendalf img {
-        height: 500px;
-    }
-
-    .gendalf a {
-        margin: 5px 0 0 95.5px;
-    }
 
 .spinner {
     width: 40px;

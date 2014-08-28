@@ -29,11 +29,7 @@ namespace WishList.Controllers
         {
             if (filterContext.HttpContext.Request.IsAuthenticated)
             {
-                string authUrl = this.redirectUrl; //passed from attribute
-
-                //if null, get it from config
-                if (String.IsNullOrEmpty(authUrl))
-                    authUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["RolesAuthRedirectUrl"];
+                string authUrl = "http://localhost:52994/Home/NotFound"; //passed from attribute
 
                 if (!String.IsNullOrEmpty(authUrl))
                     filterContext.HttpContext.Response.Redirect(authUrl);

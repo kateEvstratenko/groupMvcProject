@@ -1,7 +1,7 @@
 ﻿(function() {
     'use strict';
 
-    $("#datepicker").datepicker({
+    $('#datepicker').datepicker({
         minDate: new Date(1910, 0, 1),
         maxDate: new Date(2010, 0, 1),
         defaultDate:'-104y -8m -23d',

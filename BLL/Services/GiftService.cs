@@ -11,14 +11,14 @@ using DAL.Models;
 
 namespace BLL.Services
 {
-    public class GiftService: BaseService, IGiftService
+    public class GiftService : BaseService, IGiftService
     {
         public GiftService(IUnitOfWork uow) : base(uow) { }
 
         public void Create(DomainGift domainGift)
         {
             var gift = Mapper.Map<Gift>(domainGift);
-            Uow.GiftRepository.Insert(gift);   
+            Uow.GiftRepository.Insert(gift);
             Uow.Commit();
         }
 
@@ -38,6 +38,10 @@ namespace BLL.Services
         public DomainGift Get(int id)
         {
             var gift = Uow.GiftRepository.Get(id);
+            if (gift == null)
+            {
+                return null;
+            }
             var domainGift = Mapper.Map<DomainGift>(gift);
             return domainGift;
         }
@@ -53,7 +57,7 @@ namespace BLL.Services
         {
             var gifts = Uow.GiftRepository.GetAll();
             var domainGifts = gifts.Select(Mapper.Map<Gift, DomainGift>);
-            return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable(); 
+            return domainGifts.OrderByDescending(x => x.LikesCount).ToList().Take(count).AsQueryable();
         }
 
         public int ChangeLikesCount(string id, int userId)
@@ -71,7 +75,7 @@ namespace BLL.Services
             else
             {
                 gift.LikesCount++;
-                Uow.LikeRepository.Insert(new Like() { GiftId = gift.Id, UserId = userId});
+                Uow.LikeRepository.Insert(new Like() { GiftId = gift.Id, UserId = userId });
             }
             Uow.GiftRepository.Update(gift);
             Uow.Commit();

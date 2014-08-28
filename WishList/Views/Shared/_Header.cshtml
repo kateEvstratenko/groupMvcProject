@@ -1,5 +1,4 @@
-﻿
-<div class="navbar navbar-inverse navbar-fixed-top">
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -12,7 +11,10 @@
         <div class="navbar-collapse  navbar-inverse-collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Gift List", "Catalog", "Gift")</li>
-                <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
+                @if (User.IsInRole("Moderator"))
+                {
+                  <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
+                }
                 <li>@Html.ActionLink("Users List", "UsersList", "User")</li>
             </ul>
             <div id="globalSearch">
