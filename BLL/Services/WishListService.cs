@@ -149,7 +149,7 @@ namespace BLL.Services
         {
             var wishList = Get(wishListId);
             var friend = wishList.Friends.Where(u => u.FriendId == id);
-            return friend.Count() != 0;
+            return (friend.Count() != 0) || wishList.UserId == id;
         }
     }
 }

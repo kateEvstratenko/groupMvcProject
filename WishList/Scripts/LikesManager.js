@@ -22,8 +22,7 @@
             url: "/Gift/ChangeLikesCount/" + likeId.toString(),
             data: likeId,
             success: function(data) {
-                $('#' + likeId.toString()).empty();
-                $('#' + likeId.toString()).append(data);
+                $('#' + likeId.toString()).empty().append(data);
                 $el.prop('disabled', false);
             }
         });
