@@ -49,14 +49,11 @@ namespace WishList.Controllers
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
-                else
-                {
-                    ModelState.AddModelError("", @"Email is not confirmed.");
-                    return View(model);
-                }
+                ModelState.AddModelError("", "Email is not confirmed.");
+                return View(model);
             }
 
-            ModelState.AddModelError("", @"Invalid username or password.");
+            ModelState.AddModelError("", "Invalid username or password.");
 
             return View(model);
         }
@@ -105,8 +102,8 @@ namespace WishList.Controllers
             if (result != null)
             {
                 string code = await UserService.GenerateEmailConfirmationTokenAsync(result.Id);
-                var callbackUrl = Url.Action("ConfirmEmail", "User", new { userId = result.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserService.SendEmailAsync(result.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                var callbackUrl = Url.Action("ConfirmEmail", "User", new { userId = result.Id, code }, Request.Url.Scheme);
+                await UserService.SendEmailAsync(result.Id, "Confirm your account", "You almost completed registration on our site. Please click <a href=\"" + callbackUrl + "\">here</a>");
                 return View("CheckEmail");
             }
 
@@ -128,7 +125,7 @@ namespace WishList.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(int userId, string code)
         {
-            if (userId == null || code == null)
+            if (userId == 0 || code == null)
             {
                 return View("Error");
             }
@@ -186,11 +183,6 @@ namespace WishList.Controllers
             UserService.SignOut(AuthenticationManager);
 
             return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult NoAccess()
-        {
-            return View();
         }
 
         public ActionResult RedirectToMain()

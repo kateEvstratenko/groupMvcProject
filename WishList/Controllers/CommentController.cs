@@ -70,7 +70,7 @@ namespace WishList.Controllers
                             .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
                 }
             }
-            ModelState.AddModelError("", @"invalid comment");
+            ModelState.AddModelError("", "invalid comment");
             return PartialView("_CreateCommentPartial");
         }
 

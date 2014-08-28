@@ -29,15 +29,10 @@
 
                 <tr>
                     <td>
-                        @Html.ActionLink("Edit", "ViewGift", "Gift",
-                        new
+                        @if (User.IsInRole("Moderator"))
                         {
-                            id = @Model.Id
-                        },
-                        new
-                        {
-                            @class = "btn btn-info editButton"
-                        })
+                            @Ajax.ActionLink("Edit", "UpdateGift", new {id = Model.Id}, new AjaxOptions {UpdateTargetId = "gift"}, new {@class = "btn btn-info editButton"})
+                        }
                     </td>
                     <td>
                         <button class="myCustomLikeButton btn" name="giftLikeId-@Model.Id">
@@ -51,7 +46,6 @@
     </div>
 </div>
 <p>
-    @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
     @Html.ActionLink("Back to Catalog", "Catalog")
 </p>
 

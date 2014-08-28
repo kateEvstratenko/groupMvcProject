@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -11,8 +12,6 @@ namespace WishList.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
         private readonly IGiftService giftService;
 
         public HomeController(IGiftService iGiftService)
@@ -30,6 +29,11 @@ namespace WishList.Controllers
                 x.About.Substring(0, CustomConstants.AboutGiftsLettersCount) + CustomConstants.Dots);
 
             return View(model);
+        }
+
+        public ActionResult NotFound()
+        {
+            return View();
         }
 
     }
