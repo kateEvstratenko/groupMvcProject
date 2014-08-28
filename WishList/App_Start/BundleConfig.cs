@@ -27,7 +27,8 @@ namespace WishList
                         "~/Content/bootstrap.css",
                         "~/Content/Gift.css",
                         "~/Content/jquery-ui.css",
-                        "~/Content/bootstrap-multiselect.css"));
+                        "~/Content/bootstrap-multiselect.css",
+                        "~/Content/button.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
