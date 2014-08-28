@@ -1,0 +1,29 @@
+﻿.deleteButton {
+    padding: 0;
+}
+
+
+.myCustomLikeButton, .myCustomCommentLikeButton {
+    display: inline-block;
+    float: right;
+    left: 95%;
+    min-width: 3%;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.myCustomLikeButton img, .myCustomLikeButton p,
+ .myCustomCommentLikeButton img, .myCustomCommentLikeButton p {
+    color: #05bb03;
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 0;
+}
+button.myCustomLikeButton, button.myCustomCommentLikeButton {
+    background-color: #ffffff;
+    padding: 3px;
+    border: 1px solid #c0d4f0;
+}
+.myCustomLikeButton:active, .myCustomCommentLikeButton:active {
+     background-color: #c0d4f0;
+}

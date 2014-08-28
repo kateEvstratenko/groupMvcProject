@@ -31,7 +31,7 @@
                     <td>
                         @if (User.IsInRole("Moderator"))
                         {
-                            @Ajax.ActionLink("Edit", "UpdateGift", new {id = Model.Id}, new AjaxOptions {UpdateTargetId = "gift"}, new {@class = "btn btn-info editButton"})
+                            @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" }, new { @class = "btn btn-info editButton" })
                         }
                     </td>
                     <td>
@@ -49,7 +49,6 @@
     @Html.ActionLink("Back to Catalog", "Catalog")
 </p>
 
-<div class="myCustomCommentsDiv" name="gift @Model.Id"></div>
 
 @if (Request.IsAuthenticated)
 {
@@ -77,6 +76,11 @@
                 @class = "btn btn-info"
             })
     </div>
+
+}
+<div class="myCustomCommentsDiv" data-item="gift @Model.Id"></div>
+@if (Request.IsAuthenticated)
+{
     @Html.Action("CreateComment", "Comment", new { id = Model.Id, kind = "gift" })
 }
 <script src="/Scripts/showComments.js"></script>

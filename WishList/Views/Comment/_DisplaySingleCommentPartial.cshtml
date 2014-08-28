@@ -1,15 +1,25 @@
 ﻿@model WishList.ViewModels.CommentViewModel
 
-<li class="list-group-item">
-    <img alt="photo" src="@Url.Content(Model.UserAvatar)" class="commentUserAvatar" />
-    <div class="inlineElement">
+<li class="list-group-item comment" id="WishList-@Model.Id">
+    <div class="commentInfo">
         <p class="commentUserName">@Model.UserName</p>
-        <div>@Model.Message</div>
-        <div>
-            <button class="myCustomCommentLikeButton btn" name="commentId-@Model.Id">
-                <img src="/Content/images/like.png" width="10px" height="10px" />
-                <p id="commentId-@Model.Id">@Html.Action("GetCommentLikesCount", @Model.Id)</p>
+        <img alt="photo" src="@Url.Content(Model.UserAvatar)" class="commentUserAvatar" />
+    </div>
+    <pre>@Model.Message</pre>
+    <div class="like">
+        <button class="myCustomCommentLikeButton btn" name="commentId-@Model.Id">
+            <img src="/Content/images/like.png" width="10px" height="10px" />
+            <p id="commentId-@Model.Id">@Html.Action("GetCommentLikesCount", @Model.Id)</p>
+        </button>
+        @if (User.IsInRole("Moderator"))
+        {
+            <button class="btn btn-danger deleteButton">
+                @Ajax.ActionLink("delete", "DeleteComment", "Comment", new { id = @Model.Id }, new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "WishList-" + @Model.Id
+                    }, new { @class = "btn" })
             </button>
-        </div>
+        }
     </div>
 </li>

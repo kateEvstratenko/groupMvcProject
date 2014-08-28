@@ -28,27 +28,6 @@
     width: 100%;
 }
 
-.myCustomLikeButton {
-    display: inline-block;
-    float: right;
-    left: 95%;
-    min-width: 3%;
-    padding: 0;
-}
-
-.myCustomLikeButton img, .myCustomLikeButton p {
-    color: #05bb03;
-    display: inline-block;
-    margin: 0 0 0 5px;
-    padding: 0;
-}
-button.myCustomLikeButton {
-    background-color: #ffffff;
-    padding: 3px;
-    border: 1px solid #c0d4f0;
-}
-.myCustomLikeButton:active { background-color: #c0d4f0; }
-
 .searchGiftResultImg {
     width: 30px;
     height: 30px;
@@ -69,4 +48,33 @@ button.myCustomLikeButton {
 }
 .resultPartial {
     background-color: rgba(66, 107, 151, 1);
+}
+.comment {
+    background-color: #e4e3e3;
+    margin: 1% 0 1% 0;
+    min-height: 150px;
+    padding: 10px 10px 35px 10px;
+    width: 100%;
+}
+
+    .comment pre {
+        min-height: inherit;
+        box-shadow: inset 1px 2px 5px 1px rgba(0, 0, 0, 0.55);
+        margin: 0;
+    }
+
+.commentInfo {
+    background-color: rgb(233, 234, 235);
+    color: #000000;
+    display: inline-block;
+    float: left;
+    max-width: 20%;
+    min-height: inherit;
+    text-align: center;
+}
+.comment .like {
+display: block;
+float: right;
+left: 95%;
+padding: 0;
 }

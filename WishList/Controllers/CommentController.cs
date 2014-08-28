@@ -28,7 +28,6 @@ namespace WishList.Controllers
         [AllowAnonymous]
         public ActionResult DisplayComments(int id, string kind)
         {
-
             if (kind == "gift")
             {
                 return PartialView("_DisplayCommentsPartial",
@@ -43,8 +42,6 @@ namespace WishList.Controllers
                    .Where(c => c.WishListId == id)
                    .Select(Mapper.Map<DomainComment, CommentViewModel>)
                    .AsEnumerable());
-
-
         }
 
         [HttpPost]
@@ -90,9 +87,9 @@ namespace WishList.Controllers
                     });
         }
         [HttpPost]
-        public ActionResult DeleteComment(string id)
+        public ActionResult DeleteComment(int id)
         {
-            commentService.Delete(Int32.Parse(id));
+            commentService.Delete(id);
             return PartialView("_DeleteCommentSuccess");
         }
 

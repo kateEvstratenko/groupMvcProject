@@ -219,10 +219,12 @@
       <DependentUpon>aspnet-WishList-20140816162216.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-multiselect.css" />
+    <Content Include="Content\button.css" />
     <Content Include="Content\Gift.css" />
     <Content Include="Content\GiftImages\f3595eb2-b7bf-49d0-85b9-c4e467a7176d.png" />
     <Content Include="Content\GiftImages\LavaLampa.jpg" />
     <Content Include="Content\GiftImages\noImage.png" />
+    <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\jquery-ui.css" />

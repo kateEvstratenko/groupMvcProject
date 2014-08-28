@@ -142,7 +142,7 @@ img.avatar {
 .commentUserName {
     font-size: 24px;
     font-family: serif;
-    color: rgb(0, 53, 100);
+    color: #000000;
     font-weight: bold;
 }
 
@@ -296,3 +296,4 @@ a.editButton {
     position: relative;
     display: inline-block;
 }
+
