@@ -48,6 +48,25 @@ button.myCustomLikeButton {
     border: 1px solid #c0d4f0;
 }
 .myCustomLikeButton:active { background-color: #c0d4f0; }
+
+.searchGiftResultImg {
+    width: 30px;
+    height: 30px;
+}
+.searchGiftResultItem {
+    display: inline-block;
+}
 .searchButton {
     padding: 0;
+}
+.giftResultItem {
+    padding: 3px;
+        border: 1px solid #ffffff;  
+}
+.giftResultItem a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.resultPartial {
+    background-color: rgba(66, 107, 151, 1);
 }

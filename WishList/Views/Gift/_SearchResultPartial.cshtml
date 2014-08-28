@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<WishList.ViewModels.GiftViewModel>
-           
-@foreach (var item in Model)
-{
-    <div class="searchResultItem">
-        @Html.ActionLink(item.Name,"ViewGift","Gift", new {id = item.Id}, null)
-    </div>
-}
 
-
+    @foreach (var item in Model)
+    {
+        <div class="giftResultItem resultPartial">
+            <img class="searchGiftResultImg" src="@item.Logo" />
+            <div class="searchGiftResultItem">
+                @Html.ActionLink(item.Name, "ViewGift", "Gift", new { id = item.Id }, null)
+            </div>
+        </div>
+    }

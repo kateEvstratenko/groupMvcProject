@@ -282,10 +282,10 @@ a.editButton {
         -o-transition: all .2s ease-out;
         transition: all .2s ease-out;
         padding: 0 30px 0 6px;
-        background-image: url("/Content/images/search.png"), -moz-linear-gradient(#BCBCBC, #EBEBEB);
-        background-image: url("/Content/images/search.png"), -ms-linear-gradient(#BCBCBC, #EBEBEB);
-        background-image: url("/Content/images/search.png"), -o-linear-gradient(#BCBCBC, #EBEBEB);
-        background-image: url("/Content/images/search.png"), -webkit-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: -moz-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: -ms-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: -o-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: -webkit-linear-gradient(#BCBCBC, #EBEBEB);
         background-repeat: no-repeat;
         background-position: 100% 50%, 100% 100%;
         border: 1px solid #747474;
@@ -296,10 +296,10 @@ a.editButton {
         .form-search input:focus {
             width: 180px;
             color: #000000;
-            background-image: url("/Content/images/search.png"), -moz-linear-gradient(#BCBCBC, #EBEBEB);
-            background-image: url("/Content/images/search.png"), -ms-linear-gradient(#BCBCBC, #EBEBEB);
-            background-image: url("/Content/images/search.png"), -o-linear-gradient(#BCBCBC, #EBEBEB);
-            background-image: url("/Content/images/search.png"), -webkit-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: -moz-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: -ms-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: -o-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: -webkit-linear-gradient(#BCBCBC, #EBEBEB);
         }
 
 #giftSearchResult {
