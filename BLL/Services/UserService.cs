@@ -124,5 +124,7 @@ namespace BLL.Services
             var domainUsers = users.Select(Mapper.Map<User, DomainUser>);
             return domainUsers.OrderBy(u => u.UserName).AsQueryable();
         }
+
+
     }
 }

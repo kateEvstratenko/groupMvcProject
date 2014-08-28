@@ -15,18 +15,22 @@ namespace WishList.Controllers
     public class WishListController : BaseController
     {
         private readonly IWishListService wishListService;
+        private readonly IFriendService friendService;
 
-        public WishListController(IUserService iUserService, IWishListService iWishListService) : base(iUserService)
+        public WishListController(IUserService iUserService, IWishListService iWishListService, IFriendService iFriendService) : base(iUserService)
         {
             wishListService = iWishListService;
+            friendService = iFriendService;
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            var friends = friendService.GetAll(CurrentUser.Id).ToList();
             var model = new CreateWishListViewModel()
             {
-                UserId = CurrentUser.Id
+                UserId = CurrentUser.Id,
+                FriendsList = new MultiSelectList(friends, "Id", "UserName")
             };
             return PartialView("_Create", model);
         }
@@ -36,13 +40,14 @@ namespace WishList.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var friends = friendService.GetAll(CurrentUser.Id).ToList();
+                model.FriendsList = new MultiSelectList(friends, "Id", "UserName", model.FriendsId);
                 return PartialView("_Create", model);
             }
 
             var domainWishList = Mapper.Map<DomainWishList>(model);
             wishListService.Create(domainWishList);
             return Json(new { success = true });
-            //return RedirectToAction("GetAllWishListsOfUser", new {userId = Int32.Parse(User.Identity.GetUserId())});
         }
 
         public ActionResult Delete(int id)
@@ -119,12 +124,12 @@ namespace WishList.Controllers
         {
             var userId = CurrentUser.Id;
 
-            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId);
+            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId).ToList();
 
             var model = new WishListDropDownViewModel()
             {
                 GiftId = giftId,
-                DropDownList = new SelectList(wishLists, "Id", "Name")
+                DropDownList = new SelectList(wishLists, "Id", "Name"),
             };
             return PartialView("_GetDropDownWishLists", model);
         }

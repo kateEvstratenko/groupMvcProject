@@ -25,6 +25,18 @@
                         @Html.ValidationMessageFor(model => model.Name)
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <h5>Select your wish list:</h5>
+                        @Html.DropDownListFor(m => m.FriendsId, Model.FriendsList,
+                        new
+                        {
+                            @class = "form-control btn btn-primary multiselect",
+                            multiple = "multiple"
+                        })
+                    </div>
+                </div>
             </div>
 
             <div class="modal-footer">
@@ -36,6 +48,12 @@
 </div>
 
 
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
 
-
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.multiselect').multiselect({
+            includeSelectAllOption: true
+        });
+    });
+</script>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WishList.ViewModels
 {
@@ -14,5 +15,7 @@ namespace WishList.ViewModels
 
         [Required]
         public int UserId { get; set; }
+        public IEnumerable<string> FriendsId { get; set; }
+        public MultiSelectList FriendsList { get; set; }
     }
 }
