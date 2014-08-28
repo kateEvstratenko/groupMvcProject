@@ -84,9 +84,7 @@ namespace BLL.Services
 
         public IQueryable<DomainGift> SearchGiftsByName(string namePart)
         {
-            var expr = @"\s*?" + namePart + @"\s*?";
-            var rgx = new Regex(expr);
-            return GetAll().Where(u => rgx.IsMatch(u.Name));
+            return GetAll().Where(u => u.Name.Contains(namePart));
         }
     }
 }

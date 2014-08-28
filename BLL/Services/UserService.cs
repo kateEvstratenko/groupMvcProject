@@ -128,9 +128,7 @@ namespace BLL.Services
 
         public IQueryable<DomainUser> SearchUsersByName(string namePart)
         {
-            var expr = @"\s*?"+namePart + @"\s*?";
-            var rgx = new Regex(expr);
-            return GetAll().Where(u => rgx.IsMatch(u.UserName));
+            return GetAll().Where(u => u.UserName.Contains(namePart));
         }
 
     }
