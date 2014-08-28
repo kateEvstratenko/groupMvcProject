@@ -11,7 +11,7 @@
             <h2>ViewProfile</h2>
             <h4>@Model.UserName</h4>
 
-            @if (Model.Id == User.Identity.GetUserId<int>())
+            @if (Model.IsProfileOfCurrentUser)
             {
                 @Html.ActionLink("Edit", "EditProfile")
             }
