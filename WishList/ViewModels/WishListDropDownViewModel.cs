@@ -11,6 +11,7 @@ namespace WishList.ViewModels
     {
        // public int Id { get; set; }
         public string WishListId { get; set; }
+
         public int GiftId { get; set; }
 
         public SelectList DropDownList { get; set; }

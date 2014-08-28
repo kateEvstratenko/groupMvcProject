@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
+using DAL.Models;
 using Microsoft.AspNet.Identity;
 using WishList.ViewModels;
 
@@ -46,5 +47,11 @@ namespace WishList.Controllers
             return PartialView("_FriendListPartial", friends.AsEnumerable());
         }
 
+        /*public IEnumerable<DomainFriend> GetAll()
+        {
+            var friends = friendService.GetAll(CurrentUser.Id).Select(Mapper.Map<DomainUser, UserViewModel>);
+            var model = Mapper.Map<IEnumerable<DomainFriend>>(friends);
+            return model;
+        }*/
     }
 }

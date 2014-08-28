@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WishList.ViewModels
 {
@@ -17,11 +18,6 @@ namespace WishList.ViewModels
 
         public int UserId { get; set; }
 
-        //public UserViewModel User { get; set; }
-
         public ICollection<GiftViewModel> Gifts { get; set; }
-        //public ICollection<View> Views { get; set; }
-        //public ICollection<Vote> Votes { get; set; }
-        //public ICollection<Comment> Comments { get; set; }
     }
 }
