@@ -81,6 +81,7 @@
     </div>
 }
 
-@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "gift" })
+<div class="myCustomCommentsDiv" name="gift @Model.Id"></div>
 
 @Html.Action("CreateComment", "Comment", new { id = Model.Id, kind="gift" })
+<script src="/Scripts/showComments.js"></script>
