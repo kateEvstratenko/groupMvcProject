@@ -311,6 +311,7 @@ a.editButton {
 }
 
 #globalSearch {
+    width: 188px;
     position: relative;
     display: inline-block;
 }
