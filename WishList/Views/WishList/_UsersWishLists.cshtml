@@ -1,21 +1,12 @@
-﻿@using WishList.ViewModels;
+﻿@using Microsoft.AspNet.Identity
+@using WishList.ViewModels;
 @model IEnumerable<WishListViewModel>
-
-<div id="contentId">
-    <h2>My wish lists</h2>
-    <p>
-        @Ajax.ActionLink("Add new", "Create", "WishList",
-                    new AjaxOptions
-                    {
-                        UpdateTargetId = "contentId",
-                    }, new { @class = "btn btn-info" })
-    </p>
 
     <div class="row">
         <table class="table-condensed table-hover customTable">
             @foreach (var wishList in Model)
             {
-                <tr>
+                <tr id="wishListId_@wishList.Id">
                     <td>
                         <h4>
                             @Html.ActionLink(wishList.Name, "ViewWishList", "WishList",
@@ -42,7 +33,7 @@
                             @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = wishList.Id },
                                         new AjaxOptions
                                         {
-                                            UpdateTargetId = "contentId",
+                                            UpdateTargetId = string.Format("wishListId_{0}", wishList.Id) 
                                         }, new { @class = "btn btn-danger" })
                         </div>
                     </td>
@@ -50,5 +41,4 @@
             }
         </table>
     </div>
-</div>
 

@@ -306,6 +306,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\closeModalWindow.js" />
     <Content Include="Scripts\CommentLikesManager.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\addListeners.js" />

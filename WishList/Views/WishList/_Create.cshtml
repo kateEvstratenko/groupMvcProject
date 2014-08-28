@@ -1,23 +1,41 @@
-﻿@using WishList.ViewModels
+﻿@using Microsoft.AspNet.Identity
+@using WishList.ViewModels
 @model CreateWishListViewModel
 
-@using (Ajax.BeginForm("Create", "WishList", new AjaxOptions
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>New wish list</h3>
+        </div>
+
+        @using (Ajax.BeginForm("Create", "WishList", null, new AjaxOptions
 {
     UpdateTargetId = "contentId",
-    HttpMethod = "POST"
-}))
-{
-    @Html.HiddenFor(model => model.UserId)
+    HttpMethod = "POST",
+    OnSuccess = "closeModalWindow"
+}, new { @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(model => model.UserId)
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+            </div>
 
-    <h3>New wish list</h3>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" data-dismiss="modal">Close</a>
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        }
     </div>
-    @Ajax.ActionLink("Close", "GetAllWishListsOfUser", "WishList", null, new AjaxOptions { UpdateTargetId = "contentId" }, new { @class = "btn" })
-    <input type="submit" class="btn btn-info" value="Save" />
-}
+</div>
+
+
+
+
+

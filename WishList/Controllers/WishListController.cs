@@ -41,13 +41,15 @@ namespace WishList.Controllers
 
             var domainWishList = Mapper.Map<DomainWishList>(model);
             wishListService.Create(domainWishList);
-            return RedirectToAction("GetAllWishListsOfUser");
+            return Json(new { success = true });
+            //return RedirectToAction("GetAllWishListsOfUser", new {userId = Int32.Parse(User.Identity.GetUserId())});
         }
 
         public ActionResult Delete(int id)
         {
             wishListService.Delete(id);
-            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile
+            return new EmptyResult();
+            //return RedirectToAction("GetAllWishListsOfUser", new { userId = Int32.Parse(User.Identity.GetUserId())});//ManageProfile
         }
 
         public ActionResult Update(WishListViewModel model)
@@ -70,9 +72,9 @@ namespace WishList.Controllers
             return RedirectToAction("ViewWishList", new { id = id });
         }
 
-        public ActionResult GetAllWishListsOfUser()
+        public ActionResult GetAllWishListsOfUser(int userId)
         {
-            var userId = CurrentUser.Id;
+            //var userId = CurrentUser.Id;
             var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
             var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
             return PartialView("_UsersWishLists", model);
