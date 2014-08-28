@@ -318,6 +318,7 @@
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\addListeners.js" />
     <Content Include="Scripts\giftSearch.js" />
+    <Content Include="Scripts\googleAnalytics.js" />
     <Content Include="Scripts\jquery.multiple.select.js" />
     <Content Include="Scripts\LikesManager.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

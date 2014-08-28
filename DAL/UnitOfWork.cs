@@ -24,7 +24,6 @@ namespace DAL
         private Repository<Friend> friendRepository;
         private Repository<WishList> wishListRepository;
         private Repository<Gift> giftRepository;
-        private Repository<Tag> tagRepository;
         private Repository<View> viewRepository;
         private Repository<Vote> voteRepository;
         private Repository<Comment> commentRepository;
@@ -34,7 +33,6 @@ namespace DAL
         public DbSet<Friend> Friends { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Gift> Gifts { get; set; }
-        public DbSet<Tag> Tags { get; set; }
         public DbSet<View> Views { get; set; }
         public DbSet<Vote> Votes { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -58,11 +56,6 @@ namespace DAL
         public IRepository<Gift> GiftRepository
         {
             get { return giftRepository ?? (giftRepository = new Repository<Gift>(Gifts, this)); }
-        }
-
-        public IRepository<Tag> TagRepository
-        {
-            get { return tagRepository ?? (tagRepository = new Repository<Tag>(Tags, this)); }
         }
 
         public IRepository<View> ViewRepository
