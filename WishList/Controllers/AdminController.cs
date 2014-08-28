@@ -43,6 +43,8 @@ namespace WishList.Controllers
     [RoleAuthorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        const int UsersPerPage = 3;
+
         private readonly IAdminService adminService;
 
         public AdminController(IAdminService iAdminService)
@@ -50,14 +52,17 @@ namespace WishList.Controllers
             adminService = iAdminService;
         }
 
-        public ActionResult ShowAllUsers()
+        public ActionResult ShowAllUsers(int pageNum = 0)
         {
             var users = adminService.GetUsers();
-            var viewmodels = users.Select(Mapper.Map<DomainUser, UserViewModel>).ToList();
+            var viewmodels = users.Select(Mapper.Map<DomainUser, UserViewModel>).Skip(UsersPerPage*pageNum).Take(UsersPerPage).ToList();
+            int usersPageNum = users.ToList().Count % UsersPerPage != 0 ? (users.ToList().Count / UsersPerPage + 1) : users.ToList().Count/UsersPerPage;
             foreach (var item in viewmodels)
             {
                 item.Roles = adminService.GetRoles(item.RoleId);
             }
+            viewmodels[0].NumberOfPages = usersPageNum;
+            viewmodels[0].CurrentPage = pageNum;
             return View(viewmodels);
         }
 
