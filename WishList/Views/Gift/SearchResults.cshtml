@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WishList.ViewModels.GiftViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+@foreach (var gift in Model)
+{
+    <div class="panel panel-primary mostPopular">
+        <div class="panel-heading">
+            @gift.Name
+        </div>
+
+        <div class="panel-body">
+            <table class="widthTable">
+                <tr>
+                    <td class="tdGiftImage">
+                        <img class="giftImage" src="@Url.Content(@gift.Logo)" alt="image" />
+                    </td>
+                    <td>
+                        <textarea class="form-control aboutGift" readonly="readonly">@gift.About</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.ActionLink("More", "ViewGift", "Gift",
+                        new
+                        {
+                            id = gift.Id
+                        },
+                        new
+                        {
+                            @class = "btn btn-info"
+                        })
+                    </td>
+                    <td>
+                        <button class="myCustomLikeButton btn" name="giftLikeId-@gift.Id">
+                            <img src="/Content/images/like.png" width="10px" height="10px" />
+                            <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}

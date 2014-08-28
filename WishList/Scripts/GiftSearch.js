@@ -1,5 +1,12 @@
 ﻿(function () {
     'use strict';
+    $('#myCustomSearchButton').on('click', function () {
+        var val = $('#searchGiftInput')[0].value;
+        if (val) {
+            window.location.href = '/Gift/SearchResults/' + val;
+        }
+    });
+
     $('#searchGiftInput').keypress(function (e) {
         var key = e.which;
         if (key == 13) {
@@ -30,19 +37,17 @@
         $this.data('focusOut', setTimeout(function () {
             $this.removeData('focusOut');
 
-            $('#giftSearchResult').show();
-            $('#giftSearchResult').empty();
+            $('#giftSearchResult').show().empty();
         }, delay));
     });
 
     var UpdateGiftsList = function (namePart) {
-        $('#giftSearchResult').show();
-        $('#giftSearchResult').empty();
-        $('#giftSearchResult').append('<img class="spinner" src="/Content/images/spinner.gif"></img>');
+        var $element = $('#giftSearchResult');
+        $element.show().empty().append('<img class="spinner" src="/Content/images/spinner.gif"></img>');;
 
         $.ajax({
-            type: "POST",
-            url: "/Gift/GiftsSearch/" + namePart.toString(),
+            type: 'POST',
+            url: '/Gift/GiftsSearch/' + namePart.toString(),
             data: { namePart: namePart },
             success: function (data) {
                 $('#giftSearchResult').empty();

@@ -147,5 +147,10 @@ namespace WishList.Controllers
         {
             return PartialView("_SearchResultPartial", giftService.SearchGiftsByName(namePart).Select(Mapper.Map<DomainGift, GiftViewModel>).Take(5).AsEnumerable());
         }
+
+        public ActionResult SearchResults(string id)
+        {
+            return View(giftService.SearchGiftsByName(id).Select(Mapper.Map<DomainGift, GiftViewModel>).AsEnumerable());
+        }
     }
 }

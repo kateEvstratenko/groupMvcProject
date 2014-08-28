@@ -16,11 +16,12 @@
                 <li>@Html.ActionLink("Users List", "UsersList", "User")</li>
             </ul>
             <div id="globalSearch">
-                <form class="form-search" method="POST" action="/Gift/SearchResults/">
+                <form class="form-search" onsubmit="return false;">
                     <input autocomplete="off" type="text" id="searchGiftInput" placeholder="Find gift">
                 </form>
                 <div id="giftSearchResult" class="searchResultItem"></div>
             </div>
+            <button id="myCustomSearchButton" class="btn btn-primary"></button>
             <ul class="nav navbar-nav navbar-right">
                 @Html.Partial("_LoginPartial")
             </ul>

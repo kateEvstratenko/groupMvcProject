@@ -403,6 +403,7 @@
     <Content Include="Views\User\NoAccess.cshtml" />
     <Content Include="Views\Gift\_SearchResultPartial.cshtml" />
     <Content Include="Views\Gift\_SearchResultItemPartial.cshtml" />
+    <Content Include="Views\Gift\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
