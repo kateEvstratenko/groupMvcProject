@@ -239,5 +239,10 @@ namespace WishList.Controllers
             var users = userService.GetAll().Select(Mapper.Map < DomainUser, UserViewModel>).AsEnumerable();
             return View(users);
         }
+        [HttpPost]
+        public ActionResult UsersSearch(string namePart)
+        {
+            return PartialView("_UsersSearchResultPartial", userService.SearchUsersByName(namePart).Select(Mapper.Map<DomainUser, UserViewModel>).AsEnumerable());
+        }
     }
 }

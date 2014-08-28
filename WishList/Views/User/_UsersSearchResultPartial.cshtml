@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+@model System.Collections.Generic.IEnumerable<WishList.ViewModels.UserViewModel>
+
+
+@foreach (var item in Model)
+{
+    <div class="userInList">
+        <h2>@item.UserName</h2>
+        @if (User.Identity.GetUserId() != item.Id.ToString())
+        {
+            <div id="UsersList-@item.Id">
+                <h5>
+                    @Ajax.ActionLink("add to friends", "AddFriend", "Friend", new { friendId = item.Id },
+                        new AjaxOptions { UpdateTargetId = "UsersList-" + @item.Id })
+            </h5>
+        </div>
+        }
+    </div>
+}

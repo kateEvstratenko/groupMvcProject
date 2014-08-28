@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using AutoMapper;
@@ -123,6 +124,13 @@ namespace BLL.Services
             var users = Uow.UserRepository.GetAll();
             var domainUsers = users.Select(Mapper.Map<User, DomainUser>);
             return domainUsers.OrderBy(u => u.UserName).AsQueryable();
+        }
+
+        public IQueryable<DomainUser> SearchUsersByName(string namePart)
+        {
+            var expr = @"\s*?"+namePart + @"\s*?";
+            var rgx = new Regex(expr);
+            return GetAll().Where(u => rgx.IsMatch(u.UserName));
         }
     }
 }
