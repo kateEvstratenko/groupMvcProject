@@ -142,5 +142,10 @@ namespace WishList.Controllers
         {
             return User.Identity.IsAuthenticated;
         }
+        [HttpPost]
+        public ActionResult GiftsSearch(string namePart)
+        {
+            return PartialView("_SearchResultPartial", giftService.SearchGiftsByName(namePart).Select(Mapper.Map<DomainGift, GiftViewModel>).Take(5).AsEnumerable());
+        }
     }
 }

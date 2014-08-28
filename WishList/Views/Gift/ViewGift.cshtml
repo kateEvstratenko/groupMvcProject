@@ -54,6 +54,9 @@
     @Ajax.ActionLink("Edit", "UpdateGift", new { id = Model.Id }, new AjaxOptions { UpdateTargetId = "gift" })
     @Html.ActionLink("Back to Catalog", "Catalog")
 </p>
+
+<div class="myCustomCommentsDiv" name="gift @Model.Id"></div>
+
 @if (Request.IsAuthenticated)
 {
     <div id="wishListsOfUser">
@@ -82,8 +85,5 @@
     </div>
     @Html.Action("CreateComment", "Comment", new { id = Model.Id, kind = "gift" })
 }
-
-<div class="myCustomCommentsDiv" name="gift @Model.Id"></div>
-
 <script src="/Scripts/showComments.js"></script>
 
