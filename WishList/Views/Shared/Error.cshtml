@@ -1,18 +1,25 @@
-﻿@model HandleErrorInfo
-@{
+﻿@{
     Layout = null;
+    ViewBag.Title = "Page Not Found";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/screen.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 </head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
+<body id="e404">
+    <div id="root">
+        <div id="content">
+            <div class="outer">
+                <div id="error">
+                    <h2>Something gone wrong ...</h2>
+                    @Html.ActionLink("Go home", "Index", "Home", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

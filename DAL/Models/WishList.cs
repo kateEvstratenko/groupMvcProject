@@ -18,7 +18,6 @@ namespace DAL.Models
 
         public virtual ICollection<Gift> Gifts { get; set; }
         public virtual ICollection<Friend> Friends { get; set; }
-        public virtual ICollection<View> Views { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }

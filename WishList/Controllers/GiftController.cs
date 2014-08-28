@@ -132,6 +132,10 @@ namespace WishList.Controllers
             {
                 throw new HttpException(404, "Category not found");
             }
+            if (CurrentUser != null)
+            {
+                gift.ViewsCount = giftService.ChangeViewsCount(gift.Id, CurrentUser.Id);
+            }
             var model = Mapper.Map<GiftViewModel>(gift);
             return View(model);
         }
