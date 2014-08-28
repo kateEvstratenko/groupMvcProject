@@ -10,5 +10,6 @@ namespace BLL.Interfaces
         void Update(DomainFriend domainFriend);
         DomainFriend Get(int id);
         IQueryable<DomainUser> GetAll(int id);
+        IQueryable<DomainFriend> GetAllFriends(int id);
     }
 }

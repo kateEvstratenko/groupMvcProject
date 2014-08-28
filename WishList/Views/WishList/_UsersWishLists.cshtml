@@ -2,43 +2,10 @@
 @using WishList.ViewModels;
 @model IEnumerable<WishListViewModel>
 
-    <div class="row">
-        <table class="table-condensed table-hover customTable">
-            @foreach (var wishList in Model)
-            {
-                <tr id="wishListId_@wishList.Id">
-                    <td>
-                        <h4>
-                            @Html.ActionLink(wishList.Name, "ViewWishList", "WishList",
-                            new
-                            {
-                                id = wishList.Id
-                            },
-                            new
-                            {
-                                @class = "btn btn-lg"
-                            })
-                        </h4>
-                    </td>
-                    <td>
-                        <h4>
-                            Gifts:
-                            <span class="badge">
-                                @wishList.Gifts.Count
-                            </span>
-                        </h4>
-                    </td>
-                    <td>
-                        <div class="col-md-offset-5">
-                            @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = wishList.Id },
-                                        new AjaxOptions
-                                        {
-                                            UpdateTargetId = string.Format("wishListId_{0}", wishList.Id) 
-                                        }, new { @class = "btn btn-danger" })
-                        </div>
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
+<div class="row" id="wishListsTable">
+    @foreach (var wishList in Model)
+    {
+        @Html.Action("ViewWishListPartial", "WishList", new { id = @wishList.Id })
+    }
+</div>
 

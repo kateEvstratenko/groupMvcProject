@@ -18,6 +18,7 @@ namespace BLL.Models
         public DomainUser User { get; set; }
 
         public ICollection<DomainGift> Gifts { get; set; }
+        public ICollection<DomainFriend> Friends { get; set; }
         public ICollection<DomainView> Views { get; set; }
         public ICollection<DomainVote> Votes { get; set; }
         public ICollection<DomainComment> Comments { get; set; }

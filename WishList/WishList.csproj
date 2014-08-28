@@ -392,6 +392,7 @@
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
     <Content Include="Views\Comment\_CommentLikesCount.cshtml" />
+    <Content Include="Views\WishList\_ViewWishListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
