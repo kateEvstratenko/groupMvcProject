@@ -113,10 +113,15 @@ namespace WishList.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult ViewProfile(int id)
         {
             var user = UserService.GetUser(id);
             var userModel = Mapper.Map<ViewProfileViewModel>(user);
+            if (CurrentUser != null && userModel.Id == CurrentUser.Id)
+            {
+                userModel.IsProfileOfCurrentUser = true;
+            }
             return View(userModel);
         }
 
@@ -181,6 +186,16 @@ namespace WishList.Controllers
             UserService.SignOut(AuthenticationManager);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult NoAccess()
+        {
+            return View();
+        }
+
+        public ActionResult RedirectToMain()
+        {
+            return RedirectToAction("Index","Home");
         }
 
         #region Helpers

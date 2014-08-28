@@ -24,5 +24,7 @@ namespace WishList.ViewModels
         public string FormattedBirthday { get; set; }
 
         public string Avatar { get; set; }
+
+        public bool IsProfileOfCurrentUser { get; set; }
     }
 }
