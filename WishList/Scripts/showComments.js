@@ -11,7 +11,7 @@
             url: "/Comment/DisplayComments/",
             data: { id: +myParams[1], kind: myParams[0] },
             success: function (data) {
-                $('.myCustomCommentsDiv').append(data);
+                $('.myCustomCommentsDiv').prepend(data);
             }
         });
     });

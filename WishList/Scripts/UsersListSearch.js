@@ -8,7 +8,7 @@
     });
     $('#usersSearchInput').on('input', function () {
         var $this = $(this);
-        var delay = 2000; // 2 seconds delay after last input
+        var delay = 1000;
 
         clearTimeout($this.data('timer'));
         $this.data('timer', setTimeout(function () {
@@ -18,7 +18,6 @@
         }, delay));
     }
 );
-
 
     var UpdateUsersList = function (namePart) {
         $('#usersList').empty();
@@ -31,7 +30,6 @@
             success: function (data) {
                 $('#usersList').empty();
                 $('#usersList').append(data);
-                
             }
         });
     };

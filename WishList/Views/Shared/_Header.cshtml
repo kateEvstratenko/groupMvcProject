@@ -15,12 +15,17 @@
                 <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
                 <li>@Html.ActionLink("Users List", "UsersList", "User")</li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <input type="text" class="form-control col-lg-8" placeholder="Enter Gift Name">
-            </form>
+            <div id="globalSearch">
+                <form class="form-search" onsubmit="return false;">
+                    <input autocomplete="off" type="text" id="searchGiftInput" placeholder="Find gift">
+                </form>
+                <div id="giftSearchResult" class="searchResultItem"></div>
+            </div>
+            <button id="myCustomSearchButton" class="searchButton btn btn-primary"><img src="/Content/images/search.png"/></button>
             <ul class="nav navbar-nav navbar-right">
                 @Html.Partial("_LoginPartial")
             </ul>
         </div>
     </div>
 </div>
+<script src="/Scripts/giftSearch.js"></script>

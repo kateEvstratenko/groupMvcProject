@@ -78,5 +78,11 @@ namespace BLL.Services
             return gift.LikesCount;
         }
 
+        public IQueryable<DomainGift> SearchGiftsByName(string namePart)
+        {
+            var expr = @"\s*?" + namePart + @"\s*?";
+            var rgx = new Regex(expr);
+            return GetAll().Where(u => rgx.IsMatch(u.Name));
+        }
     }
 }

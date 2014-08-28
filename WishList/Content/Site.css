@@ -246,15 +246,72 @@ a.editButton {
     margin: 0 auto;
 }
 
-.gendalf img {
+    .gendalf img {
         height: 500px;
-}
+    }
 
-.gendalf a {
-    margin: 5px 0 0 95.5px;
+    .gendalf a {
+        margin: 5px 0 0 95.5px;
+    }
 
-}
 .spinner {
     width: 40px;
     height: 40px;
+}
+
+.form-search {
+    position: relative;
+    margin-top: 5px;
+    display: inline-block;
+    background: -moz-linear-gradient(#adc1f9, #556be2 50%, #556be2 50%, #556be2);
+    background: -ms-linear-gradient(#adc1f9, #556be2 50%, #556be2 50%, #556be2);
+    background: -o-linear-gradient(#adc1f9, #556be2 50%, #556be2 50%, #556be2);
+    background: -webkit-linear-gradient(#adc1f9, #556be2 50%, #556be2 50%, #556be2);
+    border-radius: 5px;
+    padding: 4px;
+}
+
+    .form-search input {
+        width: 120px;
+        height: 32px;
+        line-height: 32px;
+        font: 13px Helvetica, Arial, sans-serif;
+        color: #000000;
+        -moz-transition: all .2s ease-out;
+        -webkit-transition: all .2s ease-out;
+        -o-transition: all .2s ease-out;
+        transition: all .2s ease-out;
+        padding: 0 30px 0 6px;
+        background-image: url("/Content/images/search.png"), -moz-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: url("/Content/images/search.png"), -ms-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: url("/Content/images/search.png"), -o-linear-gradient(#BCBCBC, #EBEBEB);
+        background-image: url("/Content/images/search.png"), -webkit-linear-gradient(#BCBCBC, #EBEBEB);
+        background-repeat: no-repeat;
+        background-position: 100% 50%, 100% 100%;
+        border: 1px solid #747474;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 1px #575555, 0 1px 0 #FFF;
+    }
+
+        .form-search input:focus {
+            width: 180px;
+            color: #000000;
+            background-image: url("/Content/images/search.png"), -moz-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: url("/Content/images/search.png"), -ms-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: url("/Content/images/search.png"), -o-linear-gradient(#BCBCBC, #EBEBEB);
+            background-image: url("/Content/images/search.png"), -webkit-linear-gradient(#BCBCBC, #EBEBEB);
+        }
+
+#giftSearchResult {
+    position: absolute;
+}
+
+.searchResultItem {
+    width: 188px;
+}
+
+#globalSearch {
+    width: 188px;
+    position: relative;
+    display: inline-block;
 }
