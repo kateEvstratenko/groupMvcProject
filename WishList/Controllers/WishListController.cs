@@ -12,6 +12,7 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
+    [Authorize]
     public class WishListController : BaseController
     {
         private readonly IWishListService wishListService;
@@ -72,12 +73,17 @@ namespace WishList.Controllers
             return RedirectToAction("ViewWishList", new { id = id });
         }
 
-        public ActionResult GetAllWishListsOfUser(int userId)
+        [AllowAnonymous]
+        public ActionResult GetAllWishListsOfUser()
         {
-            //var userId = CurrentUser.Id;
-            var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
-            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-            return PartialView("_UsersWishLists", model);
+            if (CurrentUser != null)
+            {
+                var userId = CurrentUser.Id;
+                var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
+                var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
+                return PartialView("_UsersWishLists", model);
+            }
+            return new EmptyResult();
         }
 
         public ActionResult GetAllUsersWishListsOfGift(int giftId)

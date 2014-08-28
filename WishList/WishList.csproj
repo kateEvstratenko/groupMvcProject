@@ -334,7 +334,9 @@
     <Content Include="Scripts\showComments.js" />
     <Content Include="Scripts\VoteManager.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -388,6 +390,7 @@
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
     <Content Include="Views\Comment\_CommentLikesCount.cshtml" />
+    <Content Include="Views\User\NoAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

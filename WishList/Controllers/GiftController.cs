@@ -35,6 +35,7 @@ namespace WishList.Controllers
             return View(model);
         }
 
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult CreateGift()
         {
             if (Request.IsAjaxRequest())
@@ -80,6 +81,7 @@ namespace WishList.Controllers
             return View("CreateGiftSuccess");
         }
 
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult UpdateGift(int id)
         {
             if (Request.IsAjaxRequest())
@@ -108,6 +110,7 @@ namespace WishList.Controllers
             return PartialView("_UdateGiftPartialView");
         }
 
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult DeleteGift(int id)
         {
             if (Request.IsAjaxRequest())
@@ -119,6 +122,7 @@ namespace WishList.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult ViewGift(int id)
         {
             var gift = giftService.Get(id);
