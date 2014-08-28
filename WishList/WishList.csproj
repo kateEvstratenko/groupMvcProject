@@ -243,6 +243,7 @@
     <Content Include="Content\images\ui-icons_fcd113_256x240.png" />
     <Content Include="Content\multiple-select.css" />
     <Content Include="Content\multiple-select.png" />
+    <Content Include="Content\screen.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -395,7 +396,7 @@
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />
     <Content Include="Views\Comment\_CommentLikesCount.cshtml" />
-    <Content Include="Views\User\NoAccess.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

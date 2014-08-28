@@ -48,7 +48,7 @@
                 @Html.ActionLink("Edit", "EditProfile")
             }
 
-            @if (Int32.Parse(User.Identity.GetUserId()) == Model.Id)
+            @if (Model.IsProfileOfCurrentUser)
             {
                 <div id="addGiftToWishListForm">
                     <hr />

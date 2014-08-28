@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using BLL;
@@ -17,7 +18,8 @@ namespace WishList.Controllers
     {
         private readonly IGiftService giftService;
 
-        public GiftController(IUserService iUserService, IGiftService iGiftService) : base(iUserService)
+        public GiftController(IUserService iUserService, IGiftService iGiftService)
+            : base(iUserService)
         {
             giftService = iGiftService;
         }
@@ -72,7 +74,7 @@ namespace WishList.Controllers
                 return RedirectToAction("CreateGiftSuccess");
             }
 
-            ModelState.AddModelError("", @"Invalid model");
+            ModelState.AddModelError("", "Invalid model");
             return View();
         }
 
@@ -90,7 +92,7 @@ namespace WishList.Controllers
 
                 return PartialView("_UdateGiftPartialView", Mapper.Map<GiftViewModel>(gift));
             }
-                return View();
+            return View();
         }
 
         [HttpPost]
@@ -105,7 +107,7 @@ namespace WishList.Controllers
             }
             else
             {
-                ModelState.AddModelError("", @"Invalid model");
+                ModelState.AddModelError("", "Invalid model");
             }
             return PartialView("_UdateGiftPartialView");
         }
@@ -126,6 +128,10 @@ namespace WishList.Controllers
         public ActionResult ViewGift(int id)
         {
             var gift = giftService.Get(id);
+            if (gift == null)
+            {
+                throw new HttpException(404, "Category not found");
+            }
             var model = Mapper.Map<GiftViewModel>(gift);
             return View(model);
         }

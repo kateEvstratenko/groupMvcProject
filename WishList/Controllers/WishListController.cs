@@ -151,7 +151,7 @@ namespace WishList.Controllers
         {
             var json =
                 JsonConvert.SerializeObject(
-                    wishListService.ChangeVotesCount(id, Int32.Parse(User.Identity.GetUserId())).ToArray());
+                    wishListService.ChangeVotesCount(id, CurrentUser.Id).ToArray());
             return json;
         }
 

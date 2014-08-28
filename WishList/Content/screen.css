@@ -1,0 +1,12 @@
+html { font-size: 100%; min-height: 100%; margin-bottom: 1px; height: 100%; }
+body { margin: 0; padding: 0; background: #14121d; color: #fff; font: 12px Georgia,serif; }
+
+ #content { width: 100%; background: #8fb7c1 url(404/bg-content-a.jpg) repeat-x; }
+  #content div.outer { width: 100%; background: url(404/bg-content-b.jpg) 50% 0 no-repeat; }
+
+  #e404 { height: 100%; margin: 0; padding: 0; }
+ #e404 #root { height: 100%; margin: 0; padding: 0; }
+  #e404 #content { height: 100%; margin: 0; padding: 0; }
+   #e404 #content div.outer { overflow: hidden; height: 100%; margin: 0; padding: 0; }
+    #e404 #error { width: 550px; min-height: 135px; margin: 100px auto 0; padding: 105px 0 110px 344px; background: url(404/shinobi.png) no-repeat; color: #fff; }
+     #e404 #error h1 { margin: 0 0 5px -2px; }

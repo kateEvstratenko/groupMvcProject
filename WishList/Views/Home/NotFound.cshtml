@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Page Not Found";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <link rel="stylesheet" href="~/Content/screen.css">
+        <link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
+</head>
+<body id="e404">
+    <div id="root">
+        <div id="content">
+            <div class="outer">
+                <div id="error">
+                    <h2 class="a sIFR-replaced">Shinobi.. 404!</h2>
+                    <p>The page you were looking for appears to have been moved, deleted or does not exist.</p>
+                     @Html.ActionLink("Go home","Index","Home", null ,new {@class="btn btn-primary"})
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

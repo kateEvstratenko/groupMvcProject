@@ -63,7 +63,7 @@ namespace DAL
             {
                 return entity;
             }
-            throw new Exception();
+            return null;
         }
 
         public IQueryable<T> GetAll()
@@ -73,7 +73,7 @@ namespace DAL
             {
                 return entities;
             }
-            throw new Exception();
+            return null;
         }
     }
 }

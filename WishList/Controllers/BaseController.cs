@@ -24,7 +24,7 @@ namespace WishList.Controllers
         {
             get
             {
-                if (!isUserInitialized)
+                if (!isUserInitialized && Request.IsAuthenticated)
                 {
                     currentUser = UserService.GetUser(User.Identity.GetUserId<int>());
                     isUserInitialized = true;
@@ -35,27 +35,11 @@ namespace WishList.Controllers
 
         public class RoleAuthorizeAttribute : AuthorizeAttribute
         {
-            private string redirectUrl = "";
-            public RoleAuthorizeAttribute()
-                : base()
-            {
-            }
-
-            public RoleAuthorizeAttribute(string redirectUrl)
-                : base()
-            {
-                this.redirectUrl = redirectUrl;
-            }
-
             protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
             {
                 if (filterContext.HttpContext.Request.IsAuthenticated)
                 {
-                    string authUrl = redirectUrl; //passed from attribute
-
-                    //if null, get it from config
-                    if (String.IsNullOrEmpty(authUrl))
-                        authUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["RolesAuthRedirectUrl"];
+                    const string authUrl = "http://localhost:52994/Home/NotFound";
 
                     if (!String.IsNullOrEmpty(authUrl))
                         filterContext.HttpContext.Response.Redirect(authUrl);
