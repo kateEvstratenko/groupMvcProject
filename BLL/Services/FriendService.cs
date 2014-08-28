@@ -81,6 +81,14 @@ namespace BLL.Services
             }
 
             return domainFriends.AsQueryable();
+        }
+
+        public IQueryable<DomainFriend> GetAllFriends(int id)
+        {
+            var friends = Uow.FriendRepository.GetAll().Where(f => f.UserId == id);
+            var domainFriends = friends.Select(Mapper.Map<Friend, DomainFriend>);
+
+            return domainFriends.AsQueryable();
         } 
     }
 }

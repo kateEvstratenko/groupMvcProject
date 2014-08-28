@@ -7,7 +7,6 @@ using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
-//using DAL.Models;
 using System.Web.Mvc;
 using DAL.Models;
 using Microsoft.AspNet.Identity;
@@ -18,11 +17,15 @@ namespace BLL.Services
     {
         public WishListService(IUnitOfWork uow) : base(uow) { }
 
-        public void Create(DomainWishList domainWishList)
+        public int Create(DomainWishList domainWishList)
         {
             var wishList = Mapper.Map<WishList>(domainWishList);
+
+            wishList.Friends = wishList.Friends.Select(x => Uow.FriendRepository.Get(x.Id)).ToList();
             Uow.WishListRepository.Insert(wishList);
             Uow.Commit();
+
+            return wishList.Id;
         }
 
         public void Delete(int id)
@@ -35,6 +38,8 @@ namespace BLL.Services
         {
             var currentWishList = Uow.WishListRepository.Get(domainWishList.Id);
             Mapper.Map<DomainWishList, WishList>(domainWishList, currentWishList);
+
+
             Uow.WishListRepository.Update(currentWishList);
             Uow.Commit();
         }

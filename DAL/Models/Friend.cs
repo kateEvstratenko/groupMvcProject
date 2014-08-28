@@ -12,11 +12,13 @@ namespace DAL.Models
     {
         
         [Required]
-        
         public int UserId { get; set; }
 
         [Required]
         public int FriendId { get; set; }
+
         public virtual User User { get; set; }
+
+        public ICollection<WishList> WishLists { get; set; } 
     }
 }

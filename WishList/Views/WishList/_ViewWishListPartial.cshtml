@@ -1,0 +1,35 @@
+﻿@using WishList.ViewModels
+@model WishListViewModel
+
+@{
+    Layout = null;
+}
+
+<div id="wishListId_@Model.Id">
+    <h4 class="col-md-2">
+        @Html.ActionLink(Model.Name, "ViewWishList", "WishList",
+        new
+        {
+            id = Model.Id
+        },
+        new
+        {
+            @class = "btn-lg"
+        })
+    </h4>
+
+    <h4 class="col-md-2">
+        Gifts:
+        <span class="badge">
+            @Model.Gifts.Count
+        </span>
+    </h4>
+
+    <p class="col-md-8">
+        @Ajax.ActionLink("Delete", "Delete", "WishList", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = string.Format("wishListId_{0}", Model.Id)
+            }, new { @class = "btn btn-danger" })
+    </p>
+</div>

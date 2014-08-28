@@ -404,6 +404,7 @@
     <Content Include="Views\Gift\_SearchResultPartial.cshtml" />
     <Content Include="Views\Gift\_SearchResultItemPartial.cshtml" />
     <Content Include="Views\Gift\SearchResults.cshtml" />
+    <Content Include="Views\WishList\_ViewWishListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

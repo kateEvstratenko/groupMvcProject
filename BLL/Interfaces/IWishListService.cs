@@ -6,7 +6,7 @@ namespace BLL.Interfaces
 {
     public interface IWishListService
     {
-        void Create(DomainWishList domainWishList);
+        int Create(DomainWishList domainWishList);
         void Delete(int id);
         void Update(DomainWishList domainWishList);
         DomainWishList Get(int id);

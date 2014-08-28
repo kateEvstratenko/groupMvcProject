@@ -47,7 +47,8 @@
             {
                 @Html.ActionLink("Edit", "EditProfile")
             }
-
+            
+            <h2>Wish lists:</h2>
             @if (Int32.Parse(User.Identity.GetUserId()) == Model.Id)
             {
                 <div id="addGiftToWishListForm">
@@ -74,16 +75,7 @@
 
             @Html.Action("GetAllWishListsOfUser", "WishList", new { userId = @Model.Id })
         </div>
-
     </div>
 </div>
 
-
-<script>
-    function closeModalWindow(data) {
-        if (data.success) {
-            $('#newWishList').modal('hide');
-            location.reload();
-        }
-    }
-</script>
+<script src="~/Scripts/closeModalWindow.js"></script>

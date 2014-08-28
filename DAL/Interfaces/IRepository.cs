@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using DAL.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.Interfaces
 {

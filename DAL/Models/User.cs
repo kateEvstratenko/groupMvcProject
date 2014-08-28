@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.Models
 {
-    public class User: IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>
+    public class User : IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be maximum {1} characters long.")]

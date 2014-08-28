@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL.Models;
 
 namespace WishList.ViewModels
 {
@@ -17,5 +18,6 @@ namespace WishList.ViewModels
         public int UserId { get; set; }
         public IEnumerable<string> FriendsId { get; set; }
         public MultiSelectList FriendsList { get; set; }
+        public IEnumerable<DomainFriend> Friends { get; set; }
     }
 }

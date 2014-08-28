@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201408272012100_AddedCommentLikes.Designer.cs">
       <DependentUpon>201408272012100_AddedCommentLikes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408280936418_WishListFriendsManyToMany.cs" />
+    <Compile Include="Migrations\201408280936418_WishListFriendsManyToMany.Designer.cs">
+      <DependentUpon>201408280936418_WishListFriendsManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentLike.cs" />
@@ -134,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408272012100_AddedCommentLikes.resx">
       <DependentUpon>201408272012100_AddedCommentLikes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408280936418_WishListFriendsManyToMany.resx">
+      <DependentUpon>201408280936418_WishListFriendsManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

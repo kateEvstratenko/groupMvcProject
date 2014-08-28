@@ -10,11 +10,11 @@
         </div>
 
         @using (Ajax.BeginForm("Create", "WishList", null, new AjaxOptions
-{
-    UpdateTargetId = "contentId",
-    HttpMethod = "POST",
-    OnSuccess = "closeModalWindow"
-}, new { @class = "form-horizontal" }))
+        {
+            UpdateTargetId = "contentId",
+            HttpMethod = "POST",
+            OnSuccess = "closeModalWindow"
+        }, new { @class = "form-horizontal" }))
         {
             @Html.HiddenFor(model => model.UserId)
             <div class="modal-body">

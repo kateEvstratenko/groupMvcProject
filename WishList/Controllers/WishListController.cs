@@ -47,15 +47,25 @@ namespace WishList.Controllers
             }
 
             var domainWishList = Mapper.Map<DomainWishList>(model);
-            wishListService.Create(domainWishList);
-            return Json(new { success = true });
+
+            if (model.FriendsId != null)
+            {
+                var friendsList =
+                    friendService.GetAllFriends(model.UserId)
+                        .Where(x => model.FriendsId.Contains(x.Id.ToString()))
+                        .ToList();
+                domainWishList.Friends = friendsList;
+            }
+
+            var id = wishListService.Create(domainWishList);
+
+            return Json(new { success = true, newWishListId = id });
         }
 
         public ActionResult Delete(int id)
         {
             wishListService.Delete(id);
             return new EmptyResult();
-            //return RedirectToAction("GetAllWishListsOfUser", new { userId = Int32.Parse(User.Identity.GetUserId())});//ManageProfile
         }
 
         public ActionResult Update(WishListViewModel model)
@@ -70,6 +80,13 @@ namespace WishList.Controllers
             var wishList = wishListService.Get(id);
             var wishListViewModel = Mapper.Map<WishListViewModel>(wishList);
             return View(wishListViewModel);
+        }
+
+        public ActionResult ViewWishListPartial(int id)
+        {
+            var wishList = wishListService.Get(id);
+            var wishListViewModel = Mapper.Map<WishListViewModel>(wishList);
+            return View("_ViewWishListPartial", wishListViewModel);
         }
 
         public ActionResult GenerateLink(int id, string url)
@@ -107,7 +124,6 @@ namespace WishList.Controllers
 
         public ActionResult AddGiftToWishList(WishListDropDownViewModel model)
         {
-
             wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
             //return GetAllUsersWishListsOfGift(model.GiftId);
             return Json(new { success = true });
