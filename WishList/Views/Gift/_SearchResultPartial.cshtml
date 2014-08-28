@@ -3,7 +3,7 @@
     @foreach (var item in Model)
     {
         <div class="giftResultItem resultPartial">
-            <img class="searchGiftResultImg" src="@item.Logo" />
+            <img class="searchGiftResultImg" src="@item.Logo.Substring(1)" />
             <div class="searchGiftResultItem">
                 @Html.ActionLink(item.Name, "ViewGift", "Gift", new { id = item.Id }, null)
             </div>

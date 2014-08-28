@@ -169,9 +169,9 @@ namespace WishList.Controllers
         }
 
         [HttpPost]
-        public bool EnableVotes()
+        public bool EnableVotes(string id)
         {
-            return User.Identity.IsAuthenticated;
+            return User.Identity.IsAuthenticated && wishListService.CheckCurrentUserInWishList(CurrentUser.Id, Int32.Parse(id));
         }
     }
 }

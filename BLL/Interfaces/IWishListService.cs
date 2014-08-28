@@ -18,5 +18,6 @@ namespace BLL.Interfaces
         IQueryable<DomainWishList> GetUsersWishListsWithoutGift(int giftId, int userId);
         List<int> ChangeVotesCount(string id, int userId);
         int GetVotesCount(string wishListId, string giftId);
+        bool CheckCurrentUserInWishList(int id, int wishListid);
     }
 }
