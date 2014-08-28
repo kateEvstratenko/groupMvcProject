@@ -223,6 +223,7 @@
     <Content Include="Content\GiftImages\f3595eb2-b7bf-49d0-85b9-c4e467a7176d.png" />
     <Content Include="Content\GiftImages\LavaLampa.jpg" />
     <Content Include="Content\GiftImages\noImage.png" />
+    <Content Include="Content\images\spinner.gif" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\images\like.png" />
     <Content Include="Content\images\ui-bg_flat_55_999999_40x100.png" />
@@ -336,6 +337,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\UsersListSearch.js" />
     <Content Include="Scripts\showComments.js" />
     <Content Include="Scripts\VoteManager.js" />
     <Content Include="Scripts\_references.js" />
@@ -391,6 +393,7 @@
     <Content Include="Views\WishList\_VotesCountPartial.cshtml" />
     <Content Include="Views\Comment\_DeleteCommentSuccess.cshtml" />
     <Content Include="Views\Comment\_UpdateCommentPartial.cshtml" />
+    <Content Include="Views\User\_UsersSearchResultPartial.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
     <Content Include="Views\Admin\ShowAllUsers.cshtml" />
     <Content Include="Views\Admin\Success.cshtml" />

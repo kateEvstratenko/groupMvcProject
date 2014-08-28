@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -34,5 +35,6 @@ namespace BLL.Interfaces
         void SignOut(IAuthenticationManager authenticationManager);
 
         IQueryable<DomainUser> GetAll();
+        IQueryable<DomainUser> SearchUsersByName(string namePart);
     }
 }

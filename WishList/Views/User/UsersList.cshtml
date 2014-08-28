@@ -5,35 +5,41 @@
     ViewBag.Title = "UsersList";
 }
 
+
+<div class="gift-form-group form-group">
+    <div class="col-md-10">
+        <input id="usersSearchInput" type="text" class="form-control col-lg-8" placeholder="Enter part of user name">
+    </div>
+</div>
 <h2>UsersList</h2>
+<div id="usersList">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                @item.UserName
+            </div>
 
-@foreach (var item in Model)
-{
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            @item.UserName
-        </div>
-
-        <div class="panel-body">
-            <div class="userInList">
-                <div>
-                    <img alt="photo" src="@Url.Content(item.Avatar)" class="commentUserAvatar" />
-                </div>
-
-                @if (User.Identity.GetUserId() != item.Id.ToString())
-                {
-                    <div id="UsersList-@item.Id">
-                        <h5>
-                            @Ajax.ActionLink("add to friends", "AddFriend", "Friend", new { friendId = item.Id },
-                            new AjaxOptions { UpdateTargetId = "UsersList-" + @item.Id })
-                        </h5>
+            <div class="panel-body">
+                <div class="userInList">
+                    <div>
+                        <img alt="photo" src="@Url.Content(item.Avatar)" class="commentUserAvatar" />
                     </div>
-                }
-                @Html.ActionLink("View Profile", "ViewProfile", "User", new { id = @item.Id}, null)
+
+                    @if (User.Identity.GetUserId() != item.Id.ToString())
+                    {
+                        <div id="UsersList-@item.Id">
+                            <h5>
+                                @Ajax.ActionLink("add to friends", "AddFriend", "Friend", new { friendId = item.Id },
+                                    new AjaxOptions { UpdateTargetId = "UsersList-" + @item.Id })
+                            </h5>
+                        </div>
+                    }
+                    @Html.ActionLink("View Profile", "ViewProfile", "User", new { id = @item.Id }, null)
+                </div>
             </div>
         </div>
-    </div>
-}
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    }
+</div>
+
+<script src="/Scripts/UsersListSearch.js"></script>
