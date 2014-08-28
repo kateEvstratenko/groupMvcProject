@@ -1,20 +1,17 @@
 ﻿@model WishList.ViewModels.GiftViewModel
 
-<script src="~/Scripts/jquery-1.8.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
 <div id="gift">
-    @using (Ajax.BeginForm("UpdateGift", new AjaxOptions { UpdateTargetId = "gift" }))
+    @using (Ajax.BeginForm("UpdateGift", null,new AjaxOptions { UpdateTargetId = "gift" }, new {@class="form-horizontal"}))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
             @Html.HiddenFor(model => model.Id)
+        
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Name)
                 </div>
             </div>
@@ -22,7 +19,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Logo, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Logo, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Logo, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Logo)
                 </div>
             </div>
@@ -30,7 +27,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.About, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.About, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.About, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.About)
                 </div>
             </div>

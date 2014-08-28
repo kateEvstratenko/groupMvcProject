@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
@@ -36,7 +37,7 @@ namespace BLL.Services
                 }
             }*/
             
-            Uow.CommentRepository.Insert(comment);   
+            Uow.CommentRepository.Insert(comment);
             Uow.Commit();
         }
 
@@ -65,6 +66,30 @@ namespace BLL.Services
             var comments = Uow.CommentRepository.GetAll();
             var domainComments = comments.Include(c => c.User).Select(Mapper.Map<Comment, DomainComment>).AsQueryable();
             return domainComments;
-        } 
+        }
+
+        public int GetLikesCount(int id)
+        {
+            return Uow.CommentLikeRepository.GetAll().Count(l => l.CommentId == id);
+        }
+
+        public int ChangeLikesCount(string id, int userId)
+        {
+            var getId = new Regex("[0-9]+");
+            var m = getId.Match(id);
+            var commentId = Int32.Parse(m.Value);
+            var like =
+                Uow.CommentLikeRepository.GetAll().Where(l => l.CommentId == commentId).FirstOrDefault(l => l.UserId == userId);
+            if (like != null)
+            {
+                Uow.CommentLikeRepository.Delete(like.Id);
+            }
+            else
+            {
+                Uow.CommentLikeRepository.Insert(new CommentLike() { CommentId = commentId, UserId = userId });
+            }
+            Uow.Commit();
+            return Uow.CommentLikeRepository.GetAll().Count(c => c.CommentId == commentId);
+        }
     }
 }

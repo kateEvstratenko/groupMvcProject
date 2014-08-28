@@ -14,5 +14,7 @@ namespace BLL.Interfaces
         void Update(DomainComment domainTag);
         DomainComment Get(int id);
         IQueryable<DomainComment> GetAll();
+        int GetLikesCount(int id);
+        int ChangeLikesCount(string id, int userId);
     }
 }

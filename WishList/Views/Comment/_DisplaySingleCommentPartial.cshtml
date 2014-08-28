@@ -5,5 +5,11 @@
     <div class="inlineElement">
         <p class="commentUserName">@Model.UserName</p>
         <div>@Model.Message</div>
+        <div>
+            <button class="myCustomCommentLikeButton btn" name="commentId-@Model.Id">
+                <img src="/Content/images/like.png" width="10px" height="10px" />
+                <p id="commentId-@Model.Id">@Html.Action("GetCommentLikesCount", @Model.Id)</p>
+            </button>
+        </div>
     </div>
 </li>

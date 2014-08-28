@@ -1,4 +1,6 @@
-﻿@using WishList.ViewModels
+﻿@using BLL.Models
+@using Microsoft.AspNet.Identity
+@using WishList.ViewModels
 @model WishListDropDownViewModel
 
 
@@ -8,25 +10,29 @@
             <a class="close" data-dismiss="modal">×</a>
             <h3>Add gift to wish list</h3>
         </div>
-        @using (Ajax.BeginForm("AddGiftToWishList", "WishList", new {giftId = Model.GiftId}, new AjaxOptions
+        @using (Ajax.BeginForm("AddGiftToWishList", "WishList", new { giftId = Model.GiftId }, new AjaxOptions
         {
             UpdateTargetId = "contentId",
             HttpMethod = "POST",
             OnSuccess = "closeModalWindow"
-        }, new {@class = "form-horizontal"}))
+        }, new { @class = "form-horizontal" }))
         {
             <div class="modal-body">
                 <div class="form-group">
                     <div class="col-md-10">
                         <h5>Select your wish list:</h5>
-                        @Html.DropDownListFor(m => m.WishListId, Model.DropDownList, new {@class = "form-control btn btn-primary"})
+                        @Html.DropDownListFor(m => m.WishListId, Model.DropDownList,
+                        new
+                        {
+                            @class = "form-control btn btn-primary"
+                        })
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
                 <a class="btn btn-default" data-dismiss="modal">Close</a>
-                <input type="submit" class="btn btn-primary" value="Save"  />
+                <input type="submit" class="btn btn-primary" value="Save" />
             </div>
         }
     </div>

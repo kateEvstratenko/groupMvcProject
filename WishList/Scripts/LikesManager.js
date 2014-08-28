@@ -15,7 +15,7 @@
     });
     var UpdateLikes = function(el) {
         var $el = $(el);
-        $el.disabled = true;
+        $el.prop('disabled', true);
         var likeId = $el.attr('name');
         $.ajax({
             type: "POST",
@@ -24,7 +24,7 @@
             success: function(data) {
                 $('#' + likeId.toString()).empty();
                 $('#' + likeId.toString()).append(data);
-                $el.disabled = false;
+                $el.prop('disabled', false);
             }
         });
     };

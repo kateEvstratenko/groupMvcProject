@@ -30,29 +30,20 @@ namespace WishList
             Mapper.CreateMap<DomainWishList, WishListDropDownViewModel>();
 
             Mapper.CreateMap<DomainWishList, UsersWishListsOfGiftViewModel>();
-
+             
             Mapper.CreateMap<DomainUser, UserViewModel>();
             Mapper.CreateMap<DomainUser, EditUserViewModel>().AfterMap((user, viewmodel) =>
             {
-                CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
-                Thread.CurrentThread.CurrentCulture = originalCulture;
+                viewmodel.FormattedBirthday = String.Format("{0:d/M/yyyy}", user.Birthday);
             });
             Mapper.CreateMap<DomainUser, ViewProfileViewModel>().AfterMap((user, viewmodel) =>
             {
-                CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
-                Thread.CurrentThread.CurrentCulture = originalCulture;
+                viewmodel.FormattedBirthday = String.Format("{0:d/M/yyyy}", user.Birthday);
             });
             Mapper.CreateMap<DomainGift, GiftViewModel>();
             Mapper.CreateMap<DomainUser, UserViewModel>().AfterMap((user, viewmodel) =>
             {
-                CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
-                viewmodel.FormattedBirthday = user.Birthday.ToShortDateString();
-                Thread.CurrentThread.CurrentCulture = originalCulture;
+                viewmodel.FormattedBirthday = String.Format("{0:d/M/yyyy}", user.Birthday);
             });
             #endregion
 
@@ -61,9 +52,7 @@ namespace WishList
             
             Mapper.CreateMap<EditUserViewModel, DomainUser>().AfterMap((viewmodel, user) =>
             {
-                IFormatProvider culture = new CultureInfo("fr-FR", true);
-                user.Birthday = new DateTime();
-                user.Birthday = DateTime.Parse(viewmodel.FormattedBirthday, culture, DateTimeStyles.AssumeLocal);
+                user.Birthday = DateTime.Parse(viewmodel.FormattedBirthday, new CultureInfo("fr-FR", true), DateTimeStyles.AssumeLocal);
             });
             Mapper.CreateMap<CreateUserViewModel, DomainUser>().AfterMap((viewmodel, user) =>
             {

@@ -27,8 +27,8 @@ namespace DAL
         private Repository<View> viewRepository;
         private Repository<Vote> voteRepository;
         private Repository<Comment> commentRepository;
-        private Repository<Like> likeRepository; 
-
+        private Repository<Like> likeRepository;
+        private Repository<CommentLike> commentLikeRepository;
 
         public DbSet<Friend> Friends { get; set; }
         public DbSet<WishList> WishLists { get; set; }
@@ -38,6 +38,7 @@ namespace DAL
         public DbSet<Vote> Votes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<CommentLike> CommentLikes { get; set; }
 
         public IRepository<User> UserRepository
         {
@@ -83,6 +84,10 @@ namespace DAL
             get { return likeRepository ?? (likeRepository = new Repository<Like>(Likes, this)); }
         }
 
+        public IRepository<CommentLike> CommentLikeRepository
+        {
+            get { return commentLikeRepository ?? (commentLikeRepository = new Repository<CommentLike>(CommentLikes, this)); }
+        }
 
         public void Commit()
         {

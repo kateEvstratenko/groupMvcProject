@@ -132,5 +132,6 @@ namespace BLL.Services
             var rgx = new Regex(expr);
             return GetAll().Where(u => rgx.IsMatch(u.UserName));
         }
+
     }
 }

@@ -91,7 +91,9 @@
     </div>
 </div>
 
-@Html.Action("DisplayComments", "Comment", new { id = Model.Id, kind = "wishList" })
+<div class="myCustomCommentsDiv" name="wishList @Model.Id"></div>
+
 @Html.Action("CreateComment", "Comment", new { id = Model.Id, kind = "wishList" })
 
 <script src="/Scripts/VoteManager.js"></script>
+<script src="/Scripts/showComments.js"></script>

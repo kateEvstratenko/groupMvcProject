@@ -14,16 +14,18 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
-    public class CommentController : Controller
+    [Authorize]
+    public class CommentController : BaseController
     {
         //
         // GET: /Comment/
         private readonly ICommentService commentService;
 
-        public CommentController(ICommentService iCommentService)
+        public CommentController(IUserService iUserService, ICommentService iCommentService): base(iUserService)
         {
             commentService = iCommentService;
         }
+        [AllowAnonymous]
         public ActionResult DisplayComments(int id, string kind)
         {
 
@@ -52,7 +54,7 @@ namespace WishList.Controllers
             {
                 if (model.GiftId != 0)
                 {
-                    commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()),
+                    commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
                         "gift");
 
                     var ccc = commentService.GetAll().Where(c => c.GiftId == model.GiftId).Include(c => c.User).ToList();
@@ -61,14 +63,14 @@ namespace WishList.Controllers
                 }
                 else
                 {
-                    commentService.Create(Mapper.Map<DomainComment>(model), Int32.Parse(User.Identity.GetUserId()),
+                    commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
                         "wishList");
                     return PartialView("_DisplayCommentsPartial",
                         commentService.GetAll().Where(c => c.WishListId == model.WishListId)
                             .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
                 }
             }
-            ModelState.AddModelError("", "invalid comment");
+            ModelState.AddModelError("", @"invalid comment");
             return PartialView("_CreateCommentPartial");
         }
 
@@ -107,5 +109,22 @@ namespace WishList.Controllers
             return PartialView("_DisplaySingleCommentPartial",model);
         }
 
+        public ActionResult GetCommentLikesCount(int id)
+        {
+            return PartialView("_CommentLikesCount",commentService.GetLikesCount(id));
+        }
+
+        [HttpPost]
+        [Authorize]
+        public int ChangeLikesCount(string id)
+        {
+            return commentService.ChangeLikesCount(id, CurrentUser.Id);
+        }
+
+        [HttpPost]
+        public bool EnableLikes()
+        {
+            return User.Identity.IsAuthenticated;
+        }
     }
 }

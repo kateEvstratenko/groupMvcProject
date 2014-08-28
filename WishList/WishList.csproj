@@ -180,10 +180,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +218,7 @@
     <Content Include="App_Data\aspnet-WishList-20140816162216_log.ldf">
       <DependentUpon>aspnet-WishList-20140816162216.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\Gift.css" />
     <Content Include="Content\GiftImages\f3595eb2-b7bf-49d0-85b9-c4e467a7176d.png" />
     <Content Include="Content\GiftImages\LavaLampa.jpg" />
@@ -239,6 +242,8 @@
     <Content Include="Content\images\ui-icons_f5e175_256x240.png" />
     <Content Include="Content\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="Content\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\multiple-select.css" />
+    <Content Include="Content\multiple-select.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -304,9 +309,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\closeModalWindow.js" />
+    <Content Include="Scripts\CommentLikesManager.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\addListeners.js" />
+    <Content Include="Scripts\jquery.multiple.select.js" />
     <Content Include="Scripts\LikesManager.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -329,9 +338,12 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\UsersListSearch.js" />
+    <Content Include="Scripts\showComments.js" />
     <Content Include="Scripts\VoteManager.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -382,6 +394,11 @@
     <Content Include="Views\Comment\_DeleteCommentSuccess.cshtml" />
     <Content Include="Views\Comment\_UpdateCommentPartial.cshtml" />
     <Content Include="Views\User\_UsersSearchResultPartial.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\ShowAllUsers.cshtml" />
+    <Content Include="Views\Admin\Success.cshtml" />
+    <Content Include="Views\Comment\_CommentLikesCount.cshtml" />
+    <Content Include="Views\User\NoAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -404,6 +421,7 @@
       <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

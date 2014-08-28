@@ -12,21 +12,26 @@ using WishList.ViewModels;
 
 namespace WishList.Controllers
 {
-    public class WishListController : Controller
+    [Authorize]
+    public class WishListController : BaseController
     {
         private readonly IWishListService wishListService;
+        private readonly IFriendService friendService;
 
-        public WishListController(IWishListService iWishListService)
+        public WishListController(IUserService iUserService, IWishListService iWishListService, IFriendService iFriendService) : base(iUserService)
         {
             wishListService = iWishListService;
+            friendService = iFriendService;
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            var friends = friendService.GetAll(CurrentUser.Id).ToList();
             var model = new CreateWishListViewModel()
             {
-                UserId = Int32.Parse(User.Identity.GetUserId())
+                UserId = CurrentUser.Id,
+                FriendsList = new MultiSelectList(friends, "Id", "UserName")
             };
             return PartialView("_Create", model);
         }
@@ -36,18 +41,21 @@ namespace WishList.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var friends = friendService.GetAll(CurrentUser.Id).ToList();
+                model.FriendsList = new MultiSelectList(friends, "Id", "UserName", model.FriendsId);
                 return PartialView("_Create", model);
             }
 
             var domainWishList = Mapper.Map<DomainWishList>(model);
             wishListService.Create(domainWishList);
-            return RedirectToAction("GetAllWishListsOfUser");
+            return Json(new { success = true });
         }
 
         public ActionResult Delete(int id)
         {
             wishListService.Delete(id);
-            return RedirectToAction("GetAllWishListsOfUser");//ManageProfile
+            return new EmptyResult();
+            //return RedirectToAction("GetAllWishListsOfUser", new { userId = Int32.Parse(User.Identity.GetUserId())});//ManageProfile
         }
 
         public ActionResult Update(WishListViewModel model)
@@ -70,17 +78,22 @@ namespace WishList.Controllers
             return RedirectToAction("ViewWishList", new { id = id });
         }
 
+        [AllowAnonymous]
         public ActionResult GetAllWishListsOfUser()
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
-            var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
-            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-            return PartialView("_UsersWishLists", model);
+            if (CurrentUser != null)
+            {
+                var userId = CurrentUser.Id;
+                var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
+                var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
+                return PartialView("_UsersWishLists", model);
+            }
+            return new EmptyResult();
         }
 
         public ActionResult GetAllUsersWishListsOfGift(int giftId)
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
+            var userId = CurrentUser.Id;
             var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
 
             if (wishListsOfGift.Count < 1)
@@ -115,14 +128,14 @@ namespace WishList.Controllers
 
         public ActionResult GetDropDownWishLists(int giftId)
         {
-            var userId = Int32.Parse(User.Identity.GetUserId());
+            var userId = CurrentUser.Id;
 
-            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId);
+            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId).ToList();
 
             var model = new WishListDropDownViewModel()
             {
                 GiftId = giftId,
-                DropDownList = new SelectList(wishLists, "Id", "Name")
+                DropDownList = new SelectList(wishLists, "Id", "Name"),
             };
             return PartialView("_GetDropDownWishLists", model);
         }

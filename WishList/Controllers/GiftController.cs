@@ -13,11 +13,11 @@ using WebGrease.Css.Extensions;
 
 namespace WishList.Controllers
 {
-    public class GiftController : Controller
+    public class GiftController : BaseController
     {
         private readonly IGiftService giftService;
 
-        public GiftController(IGiftService iGiftService)
+        public GiftController(IUserService iUserService, IGiftService iGiftService) : base(iUserService)
         {
             giftService = iGiftService;
         }
@@ -35,11 +35,7 @@ namespace WishList.Controllers
             return View(model);
         }
 
-        public ActionResult TagPartial()
-        {
-            return PartialView();
-        }
-
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult CreateGift()
         {
             if (Request.IsAjaxRequest())
@@ -76,7 +72,7 @@ namespace WishList.Controllers
                 return RedirectToAction("CreateGiftSuccess");
             }
 
-            ModelState.AddModelError("", "Invalid model");
+            ModelState.AddModelError("", @"Invalid model");
             return View();
         }
 
@@ -85,6 +81,7 @@ namespace WishList.Controllers
             return View("CreateGiftSuccess");
         }
 
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult UpdateGift(int id)
         {
             if (Request.IsAjaxRequest())
@@ -108,11 +105,12 @@ namespace WishList.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Invalid model");
+                ModelState.AddModelError("", @"Invalid model");
             }
             return PartialView("_UdateGiftPartialView");
         }
 
+        [RoleAuthorize(Roles = "Moderator")]
         public ActionResult DeleteGift(int id)
         {
             if (Request.IsAjaxRequest())
@@ -124,6 +122,7 @@ namespace WishList.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult ViewGift(int id)
         {
             var gift = giftService.Get(id);
@@ -135,7 +134,7 @@ namespace WishList.Controllers
         [Authorize]
         public int ChangeLikesCount(string id)
         {
-            return giftService.ChangeLikesCount(id, Int32.Parse(User.Identity.GetUserId()));
+            return giftService.ChangeLikesCount(id, CurrentUser.Id);
         }
 
         [HttpPost]

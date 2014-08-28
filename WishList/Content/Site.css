@@ -4,6 +4,7 @@
     color: #232323;
     background-color: #fff;
     padding-bottom: 2%;
+    margin: 0;
 }
 
 header, footer, nav, section {
@@ -233,6 +234,25 @@ textarea.noResizable {
 a.editButton {
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.buttonMarginRight {
+    margin-right: 20px;
+}
+
+.gendalf {
+    height: 500px;
+    width: 329px;
+    margin: 0 auto;
+}
+
+.gendalf img {
+        height: 500px;
+}
+
+.gendalf a {
+    margin: 5px 0 0 95.5px;
+
 }
 .spinner {
     width: 40px;
