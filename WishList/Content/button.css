@@ -3,7 +3,7 @@
 }
 
 
-.myCustomLikeButton, .myCustomCommentLikeButton {
+.myCustomLikeButton, .myCustomCommentLikeButton, .myCustomVoteButton {
     display: inline-block;
     float: right;
     left: 95%;
@@ -13,17 +13,18 @@
 }
 
 .myCustomLikeButton img, .myCustomLikeButton p,
- .myCustomCommentLikeButton img, .myCustomCommentLikeButton p {
+ .myCustomCommentLikeButton img, .myCustomCommentLikeButton p,
+.myCustomVoteButton img, .myCustomVoteButton p {
     color: #05bb03;
     display: inline-block;
     margin: 0 0 0 5px;
     padding: 0;
 }
-button.myCustomLikeButton, button.myCustomCommentLikeButton {
+button.myCustomLikeButton, button.myCustomCommentLikeButton, button.myCustomVoteButton {
     background-color: #ffffff;
     padding: 3px;
     border: 1px solid #c0d4f0;
 }
-.myCustomLikeButton:active, .myCustomCommentLikeButton:active {
+.myCustomLikeButton:active, .myCustomCommentLikeButton:active, .myCustomVoteButton:active {
      background-color: #c0d4f0;
 }
