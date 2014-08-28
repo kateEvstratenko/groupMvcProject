@@ -18,7 +18,8 @@ namespace WishList.Controllers
         private readonly IWishListService wishListService;
         private readonly IFriendService friendService;
 
-        public WishListController(IUserService iUserService, IWishListService iWishListService, IFriendService iFriendService) : base(iUserService)
+        public WishListController(IUserService iUserService, IWishListService iWishListService, IFriendService iFriendService)
+            : base(iUserService)
         {
             wishListService = iWishListService;
             friendService = iFriendService;
@@ -96,16 +97,12 @@ namespace WishList.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult GetAllWishListsOfUser()
+        public ActionResult GetAllWishListsOfUser(int userId)
         {
-            if (CurrentUser != null)
-            {
-                var userId = CurrentUser.Id;
-                var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
-                var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
-                return PartialView("_UsersWishLists", model);
-            }
-            return new EmptyResult();
+            //var userId = CurrentUser.Id;
+            var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
+            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
+            return PartialView("_UsersWishLists", model);
         }
 
         public ActionResult GetAllUsersWishListsOfGift(int giftId)
