@@ -227,6 +227,7 @@
     <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\spinner.gif" />
+    <Content Include="Content\images\startImage.jpg" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\images\like.png" />
     <Content Include="Content\images\ui-bg_flat_55_999999_40x100.png" />
