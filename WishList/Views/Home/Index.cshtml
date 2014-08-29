@@ -25,15 +25,16 @@
 
                 <tr>
                     <td>
+                    <td>
                         @Html.ActionLink("More", "ViewGift", "Gift",
-                        new
-                        {
-                            id = gift.Id
-                        },
-                        new
-                        {
-                            @class = "btn btn-info"
-                        })
+                            new
+                            {
+                                id = gift.Id
+                            },
+                            new
+                            {
+                                @class = "btn btn-info"
+                            })
                     </td>
                     <td>
                         <button class="myCustomLikeButton btn" name="giftLikeId-@gift.Id">
@@ -43,6 +44,8 @@
                     </td>
                 </tr>
             </table>
+
+            @Html.Action("GetPopularComment", "Comment", new {giftId = @gift.Id})
         </div>
     </div>
 }

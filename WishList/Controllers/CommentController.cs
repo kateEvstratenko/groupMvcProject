@@ -25,6 +25,19 @@ namespace WishList.Controllers
         {
             commentService = iCommentService;
         }
+
+        public ActionResult GetPopularComment(int giftId)
+        {
+            var comments = commentService.GetAll()
+                .Where(x => x.GiftId == giftId)
+                .OrderByDescending(x => commentService.GetLikesCount(x.Id))
+                .Take(1)
+                .ToList();
+
+            var model = Mapper.Map<IEnumerable<CommentViewModel>>(comments);
+            return View("_DisplayCommentsPartial", model);
+        }
+
         [AllowAnonymous]
         public ActionResult DisplayComments(int id, string kind)
         {

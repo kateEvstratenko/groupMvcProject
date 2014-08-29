@@ -16,6 +16,8 @@ namespace WishList.ViewModels
 
         [Required]
         public int UserId { get; set; }
+
+        [Display(Name = "Select your friends")]
         public IEnumerable<string> FriendsId { get; set; }
         public MultiSelectList FriendsList { get; set; }
         public IEnumerable<DomainFriend> Friends { get; set; }
