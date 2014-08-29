@@ -25,6 +25,8 @@ namespace WishList.ViewModels
 
         public int ViewsCount { get; set; }
 
+        public bool DoesUserHaveWishlists { get; set; }
+
         public int NumberOfPages { get; set; }
 
         public int CurrentPage { get; set; }

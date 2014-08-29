@@ -97,6 +97,12 @@ namespace BLL.Services
             return gift.ViewsCount;
         }
 
+        public bool HaveWishlists(int userId)
+        {
+            var f = Uow.WishListRepository.GetAll().Where(x => x.UserId == userId);
+            return true;
+        }
+
         public IQueryable<DomainGift> SearchGiftsByName(string namePart)
         {
             return GetAll().Where(u => u.Name.ToLower().Contains(namePart.ToLower()));

@@ -13,6 +13,7 @@ namespace BLL.Interfaces
         IQueryable<DomainGift> GetPolular(int count);
         int ChangeLikesCount(string id, int userId);
         int ChangeViewsCount(int id, int userId);
+        bool HaveWishlists(int userId);
         IQueryable<DomainGift> SearchGiftsByName(string namePart);
     }
 }
