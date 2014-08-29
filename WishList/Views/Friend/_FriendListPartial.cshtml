@@ -1,12 +1,23 @@
-﻿@model System.Collections.Generic.IEnumerable<WishList.ViewModels.UserViewModel>
+﻿@using Microsoft.AspNet.Identity
+@model System.Collections.Generic.IEnumerable<WishList.ViewModels.UserViewModel>
 
-@foreach (var md in Model)
+@foreach (var item in Model)
 {
-    <div id="UsersList-@md.Id">
-        <h4>@md.FirstName</h4>
-        <h4>@md.LastName</h4>
-        <h4>@md.FormattedBirthday</h4>
-        <h4>@md.Avatar</h4>
-        @Ajax.ActionLink("delete", "DeleteFriend", "Friend",  new { id = md.Id }, new AjaxOptions{ UpdateTargetId = "UsersList-" + md.Id})
+    <div id="UsersList-@item.Id">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                @item.UserName
+            </div>
+
+            <div class="panel-body">
+                <div class="userInList">
+                    <div>
+                        <img alt="photo" src="@Url.Content(item.Avatar)" class="commentUserAvatar" />
+                    </div>
+                    @Ajax.ActionLink("delete", "DeleteFriend", "Friend", new { id = item.Id }, new AjaxOptions { UpdateTargetId = "UsersList-" + item.Id })
+                    @Html.ActionLink("View Profile", "ViewProfile", "User", new { id = @item.Id }, null)
+                </div>
+            </div>
+        </div>
     </div>
 }
