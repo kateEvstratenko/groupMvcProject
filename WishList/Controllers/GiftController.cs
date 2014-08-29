@@ -16,6 +16,7 @@ namespace WishList.Controllers
 {
     public class GiftController : BaseController
     {
+        private const int GiftsPerPage = 10;
         private readonly IGiftService giftService;
 
         public GiftController(IUserService iUserService, IGiftService iGiftService)
@@ -24,9 +25,12 @@ namespace WishList.Controllers
             giftService = iGiftService;
         }
 
-        public ActionResult Catalog()
+        public ActionResult Catalog(int pageNum = 0)
         {
             var gifts = giftService.GetAll().ToList();
+            var giftsCount = gifts.Count();
+            gifts = gifts.Skip(GiftsPerPage*pageNum).Take(GiftsPerPage).ToList();
+            int giftsPageNum = giftsCount % GiftsPerPage != 0 ? (giftsCount / GiftsPerPage + 1) : giftsCount / GiftsPerPage;
             var model = Mapper.Map<IEnumerable<GiftViewModel>>(gifts);
 
             model.ForEach(x => x.About =
@@ -34,6 +38,8 @@ namespace WishList.Controllers
                x.About :
                x.About.Substring(0, CustomConstants.AboutGiftsLettersCount) + CustomConstants.Dots);
 
+            model.First().NumberOfPages = giftsPageNum;
+            model.First().CurrentPage = pageNum;
             return View(model);
         }
 
@@ -131,6 +137,10 @@ namespace WishList.Controllers
             if (gift == null)
             {
                 throw new HttpException(404, "Category not found");
+            }
+            if (CurrentUser != null)
+            {
+                gift.ViewsCount = giftService.ChangeViewsCount(gift.Id, CurrentUser.Id);
             }
             var model = Mapper.Map<GiftViewModel>(gift);
             return View(model);

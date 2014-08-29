@@ -92,7 +92,6 @@
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IWishListService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Interfaces\ITag.cs" />
     <Compile Include="Interfaces\IGiftService.cs" />
     <Compile Include="Interfaces\IFriendService.cs" />
     <Compile Include="Models\DomainComment.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="Models\DomainGift.cs" />
     <Compile Include="Models\DomainIdentity.cs" />
     <Compile Include="Models\DomainRole.cs" />
-    <Compile Include="Models\DomainTag.cs" />
     <Compile Include="Models\DomainUser.cs" />
     <Compile Include="Models\DomainView.cs" />
     <Compile Include="Models\DomainVote.cs" />
@@ -112,7 +110,6 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\FriendService.cs" />
-    <Compile Include="Services\TagService.cs" />
     <Compile Include="Services\WishListService.cs" />
     <Compile Include="Services\GiftService.cs" />
   </ItemGroup>

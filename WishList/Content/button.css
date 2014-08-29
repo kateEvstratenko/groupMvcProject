@@ -1,6 +1,11 @@
-﻿.deleteButton {
+﻿.deleteButtonWrap {
+    padding: 0;
+    margin: 5px 5px 0 0;
+}
+.deleteButton {
     padding: 0;
 }
+
 
 
 .myCustomLikeButton, .myCustomCommentLikeButton, .myCustomVoteButton {

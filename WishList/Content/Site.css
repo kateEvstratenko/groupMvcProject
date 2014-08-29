@@ -298,3 +298,6 @@ a.editButton {
     display: inline-block;
 }
 
+ul {
+    list-style: none;
+}

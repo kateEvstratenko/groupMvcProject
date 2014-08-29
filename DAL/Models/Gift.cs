@@ -22,8 +22,9 @@ namespace DAL.Models
 
         public int LikesCount { get; set; }
 
+        public int ViewsCount { get; set; }
+
         public virtual ICollection<WishList> WishLists { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }

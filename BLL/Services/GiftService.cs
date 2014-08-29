@@ -82,9 +82,24 @@ namespace BLL.Services
             return gift.LikesCount;
         }
 
+        public int ChangeViewsCount(int giftId, int userId)
+        {
+            var gift = Uow.GiftRepository.Get(giftId);
+            var views =
+                Uow.ViewRepository.GetAll().Where(l => l.GiftId == giftId).FirstOrDefault(l => l.UserId == userId);
+            if (views == null)
+            {
+                gift.ViewsCount++;
+                Uow.ViewRepository.Insert(new View() {GiftId = giftId, UserId = userId});
+                Uow.GiftRepository.Update(gift);
+                Uow.Commit();
+            }
+            return gift.ViewsCount;
+        }
+
         public IQueryable<DomainGift> SearchGiftsByName(string namePart)
         {
-            return GetAll().Where(u => u.Name.Contains(namePart));
+            return GetAll().Where(u => u.Name.ToLower().Contains(namePart.ToLower()));
         }
     }
 }

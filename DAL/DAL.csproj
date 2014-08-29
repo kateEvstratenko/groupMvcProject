@@ -94,6 +94,14 @@
     <Compile Include="Migrations\201408280936418_WishListFriendsManyToMany.Designer.cs">
       <DependentUpon>201408280936418_WishListFriendsManyToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408282149480_VotesChanges.cs" />
+    <Compile Include="Migrations\201408282149480_VotesChanges.Designer.cs">
+      <DependentUpon>201408282149480_VotesChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408282205119_DeleteVotesFromWishlist.cs" />
+    <Compile Include="Migrations\201408282205119_DeleteVotesFromWishlist.Designer.cs">
+      <DependentUpon>201408282205119_DeleteVotesFromWishlist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentLike.cs" />
@@ -101,7 +109,6 @@
     <Compile Include="Models\Gift.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\Like.cs" />
-    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\View.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -141,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408280936418_WishListFriendsManyToMany.resx">
       <DependentUpon>201408280936418_WishListFriendsManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408282149480_VotesChanges.resx">
+      <DependentUpon>201408282149480_VotesChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408282205119_DeleteVotesFromWishlist.resx">
+      <DependentUpon>201408282205119_DeleteVotesFromWishlist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

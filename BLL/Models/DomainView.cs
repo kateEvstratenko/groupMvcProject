@@ -6,9 +6,5 @@ namespace BLL.Models
         public int UserId { get; set; }
 
         public int GiftId { get; set; }
-
-        public int WishListId { get; set; }
-
-        public DomainWishList WishList { get; set; }
     }
 }

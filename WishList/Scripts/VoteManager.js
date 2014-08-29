@@ -1,15 +1,19 @@
 ﻿(function () {
     'use strict';
+    var wishListId = $('#currentWishList').attr('data-item');
     $.ajax({
         type: "POST",
-        url: "/WishList/EnableVotes/",
+        url: "/WishList/EnableVotes/" ,
+        data: { id: wishListId },
         success: function (data) {
             if (data == 'True') {
                 $('.myCustomVoteButton').bind('click', function () {
                     UpdateVotes(this);
                 });
             } else {
-                $('.myCustomVoteButton')._addClass("disabled");
+                var cantVote = '<h2 style="color:red">You Can\'t Vote!</h2>';
+                $('.myCustomVoteButton')._addClass("disabled").css('color','red');
+                $('.alert').after(cantVote);
             }
         }
     });

@@ -67,7 +67,6 @@ namespace WishList
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IFriendService>().To<FriendService>();
             kernel.Bind<IGiftService>().To<GiftService>();
-            kernel.Bind<ITagService>().To<TagService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IWishListService>().To<WishListService>();
             kernel.Bind<IAdminService>().To<AdminService>();

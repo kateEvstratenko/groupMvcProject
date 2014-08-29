@@ -12,8 +12,5 @@ namespace DAL.Models
 
         public int GiftId { get; set; }
 
-        public int WishListId { get; set; }
-
-        public virtual WishList WishList { get; set; }
     }
 }
