@@ -1,5 +1,10 @@
 ﻿@using WishList.ViewModels
 @model IEnumerable<CommentViewModel>
+
+@{
+    Layout = null;
+}
+
 <div id="allMessages">
     <h2>Comments:</h2>
     <ul class="list-group">
@@ -11,4 +16,3 @@
         }
     </ul>
 </div>
-<script src="/Scripts/commentLikesManager.js"></script>

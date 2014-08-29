@@ -13,7 +13,7 @@
         clearTimeout($this.data('timer'));
         $this.data('timer', setTimeout(function () {
             $this.removeData('timer');
-
+            $('.hideMe').hide();
             UpdateUsersList($this[0].value);
         }, delay));
     }

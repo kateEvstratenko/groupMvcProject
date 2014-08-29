@@ -24,5 +24,9 @@ namespace WishList.ViewModels
         public int LikesCount { get; set; }
 
         public int ViewsCount { get; set; }
+
+        public int NumberOfPages { get; set; }
+
+        public int CurrentPage { get; set; }
     }
 }

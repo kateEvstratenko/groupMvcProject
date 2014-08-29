@@ -55,8 +55,9 @@ namespace WishList.Controllers
         public ActionResult ShowAllUsers(int pageNum = 0)
         {
             var users = adminService.GetUsers();
+            var usersCount = users.ToList().Count;
             var viewmodels = users.Select(Mapper.Map<DomainUser, UserViewModel>).Skip(UsersPerPage*pageNum).Take(UsersPerPage).ToList();
-            int usersPageNum = users.ToList().Count % UsersPerPage != 0 ? (users.ToList().Count / UsersPerPage + 1) : users.ToList().Count/UsersPerPage;
+            int usersPageNum = usersCount % UsersPerPage != 0 ? (usersCount / UsersPerPage + 1) : usersCount/UsersPerPage;
             foreach (var item in viewmodels)
             {
                 item.Roles = adminService.GetRoles(item.RoleId);
