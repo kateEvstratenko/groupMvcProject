@@ -99,7 +99,7 @@ namespace BLL.Services
 
         public IQueryable<DomainGift> SearchGiftsByName(string namePart)
         {
-            return GetAll().Where(u => u.Name.Contains(namePart));
+            return GetAll().Where(u => u.Name.ToLower().Contains(namePart.ToLower()));
         }
     }
 }

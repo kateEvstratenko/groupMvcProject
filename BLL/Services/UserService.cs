@@ -128,7 +128,7 @@ namespace BLL.Services
 
         public IQueryable<DomainUser> SearchUsersByName(string namePart)
         {
-            return GetAll().Where(u => u.UserName.Contains(namePart));
+            return GetAll().Where(u => u.UserName.ToLower().Contains(namePart.ToLower()));
         }
 
     }
