@@ -99,8 +99,8 @@ namespace BLL.Services
 
         public bool HaveWishlists(int userId)
         {
-            var f = Uow.WishListRepository.GetAll().Where(x => x.UserId == userId);
-            return true;
+            var f = Uow.WishListRepository.GetAll().Where(x => x.UserId == userId).ToList();
+            return (f.Count != 0);
         }
 
         public IQueryable<DomainGift> SearchGiftsByName(string namePart)
