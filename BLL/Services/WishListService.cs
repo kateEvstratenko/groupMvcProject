@@ -144,5 +144,12 @@ namespace BLL.Services
                 Uow.VoteRepository.GetAll()
                     .Where(v => v.WishListId == intWishListId).Count(v => v.GiftId == intGiftId);
         }
+
+        public bool CheckCurrentUserInWishList(int id, int wishListId)
+        {
+            var wishList = Get(wishListId);
+            var friend = wishList.Friends.Where(u => u.FriendId == id);
+            return (friend.Count() != 0) || wishList.UserId == id;
+        }
     }
 }

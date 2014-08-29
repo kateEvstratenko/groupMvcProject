@@ -42,8 +42,9 @@
     });
 
     var UpdateGiftsList = function (namePart) {
+        var spinnerImg = '<img class="spinner" src="/Content/images/spinner.gif"></img>';
         var $element = $('#giftSearchResult');
-        $element.show().empty().append('<img class="spinner" src="/Content/images/spinner.gif"></img>');;
+        $element.show().empty().append(spinnerImg);
 
         $.ajax({
             type: 'POST',
