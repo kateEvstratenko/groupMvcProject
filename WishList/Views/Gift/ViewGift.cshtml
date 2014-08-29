@@ -52,7 +52,7 @@
 </p>
 
 
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated && Model.DoesUserHaveWishlists)
 {
     <div id="wishListsOfUser">
         @Html.Action("GetAllUsersWishListsOfGift", "WishList", new { giftId = Model.Id })

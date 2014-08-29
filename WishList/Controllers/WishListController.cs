@@ -53,7 +53,7 @@ namespace WishList.Controllers
             {
                 var friendsList =
                     friendService.GetAllFriends(model.UserId)
-                        .Where(x => model.FriendsId.Contains(x.Id.ToString()))
+                        .Where(x => model.FriendsId.Contains(x.FriendId.ToString()))
                         .ToList();
                 domainWishList.Friends = friendsList;
             }
