@@ -410,6 +410,7 @@
     <Content Include="Views\Gift\SearchResults.cshtml" />
     <Content Include="Views\WishList\_ViewWishListPartial.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Friend\FriendList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

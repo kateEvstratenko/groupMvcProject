@@ -8,6 +8,7 @@ using BLL.Interfaces;
 using BLL.Models;
 using DAL.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.Provider;
 using WishList.ViewModels;
 
 namespace WishList.Controllers
@@ -39,6 +40,11 @@ namespace WishList.Controllers
         {
             friendService.Delete(CurrentUser.Id, id);
             return PartialView("_DeleteFriendSuccessPartial", id);
+        }
+
+        public ActionResult CurrentUserFriendList()
+        {
+            return View("FriendList");
         }
 
         public ActionResult FriendList()
