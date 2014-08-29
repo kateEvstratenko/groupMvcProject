@@ -99,9 +99,13 @@ namespace WishList.Controllers
         [AllowAnonymous]
         public ActionResult GetAllWishListsOfUser(int userId)
         {
-            //var userId = CurrentUser.Id;
-            var wishLists = wishListService.GetAllWishListsOfUser(userId).ToList();
-            var model = Mapper.Map<IEnumerable<WishListViewModel>>(wishLists);
+            var allWishLists = wishListService.GetAllWishListsOfUser(userId);
+            if (userId != CurrentUser.Id)
+            {
+                allWishLists = allWishLists.Where(w => w.Friends.Count(f => f.FriendId == CurrentUser.Id) != 0);
+            }
+
+            var model = Mapper.Map<IEnumerable<WishListViewModel>>(allWishLists.ToList());
             return PartialView("_UsersWishLists", model);
         }
 
