@@ -33,8 +33,12 @@ namespace WishList.Controllers
                 .OrderByDescending(x => commentService.GetLikesCount(x.Id))
                 .Take(1)
                 .ToList();
-
+            if (comments.Count < 1)
+            {
+                return new EmptyResult();
+            }
             var model = Mapper.Map<IEnumerable<CommentViewModel>>(comments);
+
             return View("_DisplayPopularCommentsPartial", model);
         }
 
