@@ -11,7 +11,7 @@
     </div>
     <pre>@Model.Message</pre>
     <div class="like">
-        <button class="myCustomCommentLikeButton btn" name="commentId-@Model.Id">
+        <button class="myCustomCommentLikeButton btn pull-right" name="commentId-@Model.Id">
             <img src="/Content/images/like.png" width="10px" height="10px" />
             <p id="commentId-@Model.Id">@Html.Action("GetCommentLikesCount", "Comment", new{id = @Model.Id})</p>
         </button>
@@ -19,10 +19,6 @@
         {
             <button class="btn btn-danger deleteButtonWrap">
                 @Ajax.ActionLink("delete", "DeleteComment", "Comment", new { id = @Model.Id }, new AjaxOptions
-                {
-                    HttpMethod = "POST",
-                    UpdateTargetId = "WishList-" + @Model.Id
-                }, new { @class = "btn" })
                     {
                         HttpMethod = "POST",
                         UpdateTargetId = "WishList-" + @Model.Id

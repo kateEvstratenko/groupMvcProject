@@ -412,6 +412,7 @@
     <Content Include="Views\WishList\_ViewWishListPartial.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Friend\FriendList.cshtml" />
+    <Content Include="Views\Comment\_DisplayPopularCommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -10,7 +10,6 @@
 
 .myCustomLikeButton, .myCustomCommentLikeButton, .myCustomVoteButton {
     display: inline-block;
-    float: right;
     left: 95%;
     min-width: 3%;
     padding: 0;

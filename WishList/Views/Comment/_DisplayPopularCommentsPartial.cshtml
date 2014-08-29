@@ -1,0 +1,53 @@
+﻿@using WishList.ViewModels
+@model IEnumerable<CommentViewModel>
+
+@{
+    Layout = null;
+}
+
+<div id="allMessages">
+    <hr/>
+    <h2>Popular comments:</h2>
+    <ul class="list-group">
+        @{
+            foreach (var comment in Model)
+            {
+                <li class="list-group-item" id="WishList-@comment.Id">
+                    <p class="commentUserName inlineElement">@comment.UserName</p>
+
+                    <button class="myCustomCommentLikeButton btn pull-right" name="commentId-@comment.Id">
+                        <img src="/Content/images/like.png" width="10px" height="10px" />
+                        <p id="commentId-@comment.Id">
+                            @Html.Action("GetCommentLikesCount", "Comment", new { id = @comment.Id })
+                        </p>
+                    </button>
+
+                    <p>@comment.Message</p>
+                    <div>
+                        @if (User.IsInRole("Moderator"))
+                        {
+                            <button class="btn btn-danger deleteButtonWrap">
+                                @Ajax.ActionLink("delete", "DeleteComment", "Comment",
+                                    new
+                                    {
+                                        id = @comment.Id
+                                    },
+                                    new AjaxOptions
+                                    {
+                                        HttpMethod = "POST",
+                                        UpdateTargetId = "WishList-" + @comment.Id
+                                    },
+                                    new
+                                    {
+                                        @class = "btn deleteButton"
+                                    })
+                            </button>
+                        }
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+
