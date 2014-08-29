@@ -77,7 +77,7 @@
                                         <span>Vote: </span>
                                         <span id="@gift.Id-@Model.Id">@Html.Action("GetVotesCount", new{wishListId = @Model.Id, giftId = @gift.Id})</span>
                                     </button>
-                                    <button class="myCustomLikeButton btn-default" name="giftLikeId-@gift.Id">
+                                    <button class="myCustomLikeButton btn-default pull-right" name="giftLikeId-@gift.Id">
                                         <img src="/Content/images/like.png" width="10px" height="10px" />
                                         <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
                                     </button>
