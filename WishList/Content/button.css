@@ -32,3 +32,8 @@ button.myCustomLikeButton, button.myCustomCommentLikeButton, button.myCustomVote
 .myCustomLikeButton:active, .myCustomCommentLikeButton:active, .myCustomVoteButton:active {
      background-color: #c0d4f0;
 }
+.profileButton {
+    float: right;
+    padding: 0;
+    padding: 0;
+}

@@ -1,0 +1,3 @@
+﻿@using Microsoft.AspNet.Identity
+@Html.Action("FriendList","Friend")
+@Html.ActionLink("Back to profile", "ViewProfile", "User", new { id = User.Identity.GetUserId() }, null)
