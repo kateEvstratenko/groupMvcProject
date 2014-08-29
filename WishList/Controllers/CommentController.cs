@@ -25,7 +25,7 @@ namespace WishList.Controllers
         {
             commentService = iCommentService;
         }
-
+        [AllowAnonymous]
         public ActionResult GetPopularComment(int giftId)
         {
             var comments = commentService.GetAll()
@@ -119,6 +119,7 @@ namespace WishList.Controllers
             return PartialView("_DisplaySingleCommentPartial",model);
         }
 
+        [AllowAnonymous]
         public ActionResult GetCommentLikesCount(int id)
         {
             return PartialView("_CommentLikesCount",commentService.GetLikesCount(id));
