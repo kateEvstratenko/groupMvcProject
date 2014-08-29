@@ -1,19 +1,19 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             @Html.ActionLink("Wish List", "Index", "Home", null, new { @class = "navbar-brand" })
         </div>
-        <div class="navbar-collapse  navbar-inverse-collapse">
+        <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Gift List", "Catalog", "Gift")</li>
                 @if (User.IsInRole("Moderator"))
                 {
-                  <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
+                    <li>@Html.ActionLink("Create Gift", "CreateGift", "Gift")</li>
                 }
                 <li>@Html.ActionLink("Users List", "UsersList", "User")</li>
             </ul>
@@ -23,7 +23,7 @@
                 </form>
                 <div id="giftSearchResult" class="searchResultItem"></div>
             </div>
-            <button id="myCustomSearchButton" class="searchButton btn btn-primary"><img src="/Content/images/search.png"/></button>
+            <button id="myCustomSearchButton" class="searchButton btn btn-primary"><img src="/Content/images/search.png" /></button>
             <ul class="nav navbar-nav navbar-right">
                 @Html.Partial("_LoginPartial")
             </ul>
@@ -31,3 +31,4 @@
     </div>
 </div>
 <script src="/Scripts/giftSearch.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
