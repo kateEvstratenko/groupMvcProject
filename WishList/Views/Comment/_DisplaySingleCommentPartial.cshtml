@@ -19,10 +19,6 @@
         {
             <button class="btn btn-danger deleteButtonWrap">
                 @Ajax.ActionLink("delete", "DeleteComment", "Comment", new { id = @Model.Id }, new AjaxOptions
-                {
-                    HttpMethod = "POST",
-                    UpdateTargetId = "WishList-" + @Model.Id
-                }, new { @class = "btn" })
                     {
                         HttpMethod = "POST",
                         UpdateTargetId = "WishList-" + @Model.Id

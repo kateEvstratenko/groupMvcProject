@@ -35,7 +35,7 @@ namespace WishList.Controllers
                 .ToList();
 
             var model = Mapper.Map<IEnumerable<CommentViewModel>>(comments);
-            return View("_DisplayCommentsPartial", model);
+            return View("_DisplayPopularCommentsPartial", model);
         }
 
         [AllowAnonymous]

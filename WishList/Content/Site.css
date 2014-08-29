@@ -301,3 +301,7 @@ a.editButton {
 ul {
     list-style: none;
 }
+
+.moreButton {
+    margin-top: 20px;
+}
