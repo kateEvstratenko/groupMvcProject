@@ -19,6 +19,7 @@ namespace WishList.Controllers
     [Authorize]
     public class UserController : BaseController
     {
+        private const int UsersPerPage = 10;
 
         public UserController(IUserService iUserService) : base(iUserService)
         {
@@ -223,9 +224,14 @@ namespace WishList.Controllers
         }
         #endregion
 
-        public ActionResult UsersList()
+        public ActionResult UsersList(int pageNum = 0)
         {
             var users = UserService.GetAll().Select(Mapper.Map < DomainUser, UserViewModel>).AsEnumerable();
+            var usersCount = users.Count();
+            users = users.Skip(UsersPerPage*pageNum).Take(UsersPerPage).ToList();
+            int usersPageNum = usersCount % UsersPerPage != 0 ? (usersCount / UsersPerPage + 1) : usersCount / UsersPerPage;
+            users.First().NumberOfPages = usersPageNum;
+            users.First().CurrentPage = pageNum;
             return View(users);
         }
         [HttpPost]

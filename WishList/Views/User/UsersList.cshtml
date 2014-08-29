@@ -12,6 +12,28 @@
     </div>
 </div>
 <h2>UsersList</h2>
+@if (Model.First().NumberOfPages > 1)
+{
+    <div class="hideMe">
+        <ul>
+            <li>
+                <ul class="pagination">
+                    @for (int i = 0; i < Model.First().NumberOfPages; i++)
+                    {
+                        if (i == Model.First().CurrentPage)
+                        {
+                            <li class="active"><a href="@Url.Action("UsersList", new { pageNum = i})">@(i + 1)</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("UsersList", new { pageNum = i})">@(i + 1)</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+}
 <div id="usersList">
     @foreach (var item in Model)
     {
