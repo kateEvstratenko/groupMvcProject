@@ -31,5 +31,9 @@ namespace WishList.ViewModels
         public List<SelectListItem> Roles { get; set; } 
         
         public int RoleId { get; set; }
+
+        public int NumberOfPages { get; set; }
+
+        public int CurrentPage { get; set; }
     }
 }

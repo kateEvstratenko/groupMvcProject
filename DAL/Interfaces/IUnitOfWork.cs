@@ -11,8 +11,7 @@ namespace DAL.Interfaces
         IRepository<User> UserRepository { get; }
         IRepository<Friend> FriendRepository { get; }
         IRepository<WishList> WishListRepository { get; }
-        IRepository<Gift> GiftRepository { get;}
-        IRepository<Tag> TagRepository { get; }
+        IRepository<Gift> GiftRepository { get; }
         IRepository<View> ViewRepository { get; }
         IRepository<Vote> VoteRepository { get; }
         IRepository<Comment> CommentRepository { get; }

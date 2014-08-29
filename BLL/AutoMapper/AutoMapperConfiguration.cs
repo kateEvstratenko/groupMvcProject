@@ -16,7 +16,6 @@ namespace BLL.AutoMapper
             Mapper.CreateMap<WishList, DomainWishList>().ForMember(c => c.User, opt => opt.Ignore());
             Mapper.CreateMap<Comment,DomainComment>();
             Mapper.CreateMap<Friend, DomainFriend>();
-            Mapper.CreateMap<Tag, DomainTag>();
             Mapper.CreateMap<User, DomainUser>().AfterMap((user, domain) =>
             {
                 domain.RoleId = user.Roles.First().RoleId;
@@ -33,7 +32,6 @@ namespace BLL.AutoMapper
             Mapper.CreateMap<DomainWishList, WishList>().ForMember(c => c.User, opt => opt.Ignore());
             Mapper.CreateMap<DomainView, View>();
             Mapper.CreateMap<DomainUser, User>();
-            Mapper.CreateMap<DomainTag, Tag>();
             Mapper.CreateMap<DomainFriend, Friend>();
             Mapper.CreateMap<DomainComment, Comment>();
             #endregion

@@ -18,10 +18,11 @@ namespace BLL.Models
 
         public int LikesCount { get; set; }
 
+        public int ViewsCount { get; set; }
+
         public int WishListId { get; set; }
 
         public DomainWishList WishList { get; set; }
-        public ICollection<DomainTag> Tags { get; set; }
         public ICollection<DomainComment> Comments { get; set; }
     }
 }
