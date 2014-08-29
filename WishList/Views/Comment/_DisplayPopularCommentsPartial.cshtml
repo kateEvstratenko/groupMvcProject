@@ -26,7 +26,6 @@
                     <div>
                         @if (User.IsInRole("Moderator"))
                         {
-                            <button class="btn btn-danger deleteButtonWrap">
                                 @Ajax.ActionLink("delete", "DeleteComment", "Comment",
                                     new
                                     {
@@ -39,9 +38,8 @@
                                     },
                                     new
                                     {
-                                        @class = "btn deleteButton"
+                                        @class = "btn btn-danger btn-sm"
                                     })
-                            </button>
                         }
                     </div>
                 </li>

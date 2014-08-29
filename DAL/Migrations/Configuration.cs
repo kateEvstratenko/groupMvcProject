@@ -21,13 +21,12 @@ namespace DAL.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-                context.Roles.AddOrUpdate(
-                  p => p.Name,
-                  new CustomRole { Name = "User" },
-                  new CustomRole { Name = "Moderator" },
-                  new CustomRole { Name = "Admin" }
-                );
-            //
+            context.Roles.AddOrUpdate(
+              p => p.Name,
+              new CustomRole { Name = "User" },
+              new CustomRole { Name = "Moderator" },
+              new CustomRole { Name = "Admin" }
+            );
         }
     }
 }
