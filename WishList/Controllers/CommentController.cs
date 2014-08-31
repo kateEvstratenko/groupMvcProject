@@ -19,18 +19,18 @@ namespace WishList.Controllers
     {
         //
         // GET: /Comment/
-        private readonly ICommentService commentService;
+        private readonly ICommentService _commentService;
 
         public CommentController(IUserService iUserService, ICommentService iCommentService): base(iUserService)
         {
-            commentService = iCommentService;
+            _commentService = iCommentService;
         }
         [AllowAnonymous]
         public ActionResult GetPopularComment(int giftId)
         {
-            var comments = commentService.GetAll()
+            var comments = _commentService.GetAll()
                 .Where(x => x.GiftId == giftId)
-                .OrderByDescending(x => commentService.GetLikesCount(x.Id))
+                .OrderByDescending(x => _commentService.GetLikesCount(x.Id))
                 .Take(1)
                 .ToList();
             if (comments.Count < 1)
@@ -48,14 +48,14 @@ namespace WishList.Controllers
             if (kind == "gift")
             {
                 return PartialView("_DisplayCommentsPartial",
-                    commentService.GetAll()
+                    _commentService.GetAll()
                         .Where(c => c.GiftId == id)
                         .Select(Mapper.Map<DomainComment, CommentViewModel>)
                         .AsEnumerable());
             }
 
             return PartialView("_DisplayCommentsPartial",
-               commentService.GetAll()
+               _commentService.GetAll()
                    .Where(c => c.WishListId == id)
                    .Select(Mapper.Map<DomainComment, CommentViewModel>)
                    .AsEnumerable());
@@ -68,19 +68,19 @@ namespace WishList.Controllers
             {
                 if (model.GiftId != 0)
                 {
-                    commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
+                    _commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
                         "gift");
 
-                    var ccc = commentService.GetAll().Where(c => c.GiftId == model.GiftId).Include(c => c.User).ToList();
-                    var commentViewModel = Mapper.Map<IEnumerable<CommentViewModel>>(ccc);
+                    var comments = _commentService.GetAll().Where(c => c.GiftId == model.GiftId).Include(c => c.User).ToList();
+                    var commentViewModel = Mapper.Map<IEnumerable<CommentViewModel>>(comments);
                     return PartialView("_DisplayCommentsPartial", commentViewModel);
                 }
                 else
                 {
-                    commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
+                    _commentService.Create(Mapper.Map<DomainComment>(model), CurrentUser.Id,
                         "wishList");
                     return PartialView("_DisplayCommentsPartial",
-                        commentService.GetAll().Where(c => c.WishListId == model.WishListId)
+                        _commentService.GetAll().Where(c => c.WishListId == model.WishListId)
                             .Select(Mapper.Map<DomainComment, CommentViewModel>).AsEnumerable());
                 }
             }
@@ -106,34 +106,34 @@ namespace WishList.Controllers
         [HttpPost]
         public ActionResult DeleteComment(int id)
         {
-            commentService.Delete(id);
+            _commentService.Delete(id);
             return PartialView("_DeleteCommentSuccess");
         }
 
         [HttpPost]
         public ActionResult UpdateComment(string id)
         {
-            var comment = Mapper.Map<CommentViewModel>(commentService.Get(Int32.Parse(id)));
+            var comment = Mapper.Map<CommentViewModel>(_commentService.Get(Int32.Parse(id)));
             return PartialView("_UpdateCommentPartial", comment);
         }
         [HttpPost]
         public ActionResult UpdateComment(CommentViewModel model)
         {
-            commentService.Update(Mapper.Map<DomainComment>(model));
+            _commentService.Update(Mapper.Map<DomainComment>(model));
             return PartialView("_DisplaySingleCommentPartial",model);
         }
 
         [AllowAnonymous]
         public ActionResult GetCommentLikesCount(int id)
         {
-            return PartialView("_CommentLikesCount",commentService.GetLikesCount(id));
+            return PartialView("_CommentLikesCount",_commentService.GetLikesCount(id));
         }
 
         [HttpPost]
         [Authorize]
         public int ChangeLikesCount(string id)
         {
-            return commentService.ChangeLikesCount(id, CurrentUser.Id);
+            return _commentService.ChangeLikesCount(id, CurrentUser.Id);
         }
 
         [HttpPost]

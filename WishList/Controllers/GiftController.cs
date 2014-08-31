@@ -17,17 +17,17 @@ namespace WishList.Controllers
     public class GiftController : BaseController
     {
         private const int GiftsPerPage = 10;
-        private readonly IGiftService giftService;
+        private readonly IGiftService _giftService;
 
         public GiftController(IUserService iUserService, IGiftService iGiftService)
             : base(iUserService)
         {
-            giftService = iGiftService;
+            _giftService = iGiftService;
         }
 
         public ActionResult Catalog(int pageNum = 0)
         {
-            var gifts = giftService.GetAll().ToList();
+            var gifts = _giftService.GetAll().ToList();
             var giftsCount = gifts.Count();
             gifts = gifts.Skip(GiftsPerPage*pageNum).Take(GiftsPerPage).ToList();
             int giftsPageNum = giftsCount % GiftsPerPage != 0 ? (giftsCount / GiftsPerPage + 1) : giftsCount / GiftsPerPage;
@@ -76,7 +76,7 @@ namespace WishList.Controllers
                 createGiftViewModel.Logo = StringResources.GiftsLogoPath + logoPath;
 
                 var newGift = Mapper.Map<DomainGift>(createGiftViewModel);
-                giftService.Create(newGift);
+                _giftService.Create(newGift);
                 return RedirectToAction("CreateGiftSuccess");
             }
 
@@ -94,7 +94,7 @@ namespace WishList.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                var gift = giftService.Get(id);
+                var gift = _giftService.Get(id);
 
                 return PartialView("_UdateGiftPartialView", Mapper.Map<GiftViewModel>(gift));
             }
@@ -108,7 +108,7 @@ namespace WishList.Controllers
             if (ModelState.IsValid)
             {
                 var newGift = Mapper.Map<DomainGift>(giftViewModel);
-                giftService.Update(newGift);
+                _giftService.Update(newGift);
                 return PartialView("_UpdateGiftSuccessPartial", giftViewModel.Name);
             }
             else
@@ -123,8 +123,8 @@ namespace WishList.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-                var giftName = giftService.Get(id).Name;
-                giftService.Delete(id);
+                var giftName = _giftService.Get(id).Name;
+                _giftService.Delete(id);
                 return PartialView("_DeleteGiftSuccessPartial", giftName);
             }
             return View();
@@ -133,7 +133,7 @@ namespace WishList.Controllers
         [AllowAnonymous]
         public ActionResult ViewGift(int id)
         {
-            var gift = giftService.Get(id);
+            var gift = _giftService.Get(id);
             if (gift == null)
             {
                 throw new HttpException(404, "Category not found");
@@ -141,8 +141,8 @@ namespace WishList.Controllers
             var model = Mapper.Map<GiftViewModel>(gift);
             if (CurrentUser != null)
             {
-                model.ViewsCount = giftService.ChangeViewsCount(gift.Id, CurrentUser.Id);
-                model.DoesUserHaveWishlists = giftService.HaveWishlists(CurrentUser.Id);
+                model.ViewsCount = _giftService.ChangeViewsCount(gift.Id, CurrentUser.Id);
+                model.DoesUserHaveWishlists = _giftService.HaveWishlists(CurrentUser.Id);
             }
             return View(model);
         }
@@ -151,7 +151,7 @@ namespace WishList.Controllers
         [Authorize]
         public int ChangeLikesCount(string id)
         {
-            return giftService.ChangeLikesCount(id, CurrentUser.Id);
+            return _giftService.ChangeLikesCount(id, CurrentUser.Id);
         }
 
         [HttpPost]
@@ -162,12 +162,12 @@ namespace WishList.Controllers
         [HttpPost]
         public ActionResult GiftsSearch(string namePart)
         {
-            return PartialView("_SearchResultPartial", giftService.SearchGiftsByName(namePart).Select(Mapper.Map<DomainGift, GiftViewModel>).Take(5).AsEnumerable());
+            return PartialView("_SearchResultPartial", _giftService.SearchGiftsByName(namePart).Select(Mapper.Map<DomainGift, GiftViewModel>).Take(5).AsEnumerable());
         }
 
         public ActionResult SearchResults(string id)
         {
-            return View(giftService.SearchGiftsByName(id).Select(Mapper.Map<DomainGift, GiftViewModel>).AsEnumerable());
+            return View(_giftService.SearchGiftsByName(id).Select(Mapper.Map<DomainGift, GiftViewModel>).AsEnumerable());
         }
     }
 }

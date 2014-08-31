@@ -15,20 +15,20 @@ namespace WishList.Controllers
     [Authorize]
     public class WishListController : BaseController
     {
-        private readonly IWishListService wishListService;
-        private readonly IFriendService friendService;
+        private readonly IWishListService _wishListService;
+        private readonly IFriendService _friendService;
 
         public WishListController(IUserService iUserService, IWishListService iWishListService, IFriendService iFriendService)
             : base(iUserService)
         {
-            wishListService = iWishListService;
-            friendService = iFriendService;
+            _wishListService = iWishListService;
+            _friendService = iFriendService;
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            var friends = friendService.GetAll(CurrentUser.Id).ToList();
+            var friends = _friendService.GetAll(CurrentUser.Id).ToList();
             var model = new CreateWishListViewModel()
             {
                 UserId = CurrentUser.Id,
@@ -42,7 +42,7 @@ namespace WishList.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var friends = friendService.GetAll(CurrentUser.Id).ToList();
+                var friends = _friendService.GetAll(CurrentUser.Id).ToList();
                 model.FriendsList = new MultiSelectList(friends, "Id", "UserName", model.FriendsId);
                 return PartialView("_Create", model);
             }
@@ -52,54 +52,54 @@ namespace WishList.Controllers
             if (model.FriendsId != null)
             {
                 var friendsList =
-                    friendService.GetAllFriends(model.UserId)
+                    _friendService.GetAllFriends(model.UserId)
                         .Where(x => model.FriendsId.Contains(x.FriendId.ToString()))
                         .ToList();
                 domainWishList.Friends = friendsList;
             }
 
-            var id = wishListService.Create(domainWishList);
+            var id = _wishListService.Create(domainWishList);
 
             return Json(new { success = true, newWishListId = id });
         }
 
         public ActionResult Delete(int id)
         {
-            wishListService.Delete(id);
+            _wishListService.Delete(id);
             return new EmptyResult();
         }
 
         public ActionResult Update(WishListViewModel model)
         {
             var domainWishList = Mapper.Map<DomainWishList>(model);
-            wishListService.Update(domainWishList);
+            _wishListService.Update(domainWishList);
             return RedirectToAction("GetAllWishListsOfUser");//ManageProfile
         }
 
         public ActionResult ViewWishList(int id)
         {
-            var wishList = wishListService.Get(id);
+            var wishList = _wishListService.Get(id);
             var wishListViewModel = Mapper.Map<WishListViewModel>(wishList);
             return View(wishListViewModel);
         }
 
         public ActionResult ViewWishListPartial(int id)
         {
-            var wishList = wishListService.Get(id);
+            var wishList = _wishListService.Get(id);
             var wishListViewModel = Mapper.Map<WishListViewModel>(wishList);
             return View("_ViewWishListPartial", wishListViewModel);
         }
 
         public ActionResult GenerateLink(int id, string url)
         {
-            wishListService.GenerateLink(id, url);
+            _wishListService.GenerateLink(id, url);
             return RedirectToAction("ViewWishList", new { id = id });
         }
 
         [AllowAnonymous]
         public ActionResult GetAllWishListsOfUser(int userId)
         {
-            var allWishLists = wishListService.GetAllWishListsOfUser(userId);
+            var allWishLists = _wishListService.GetAllWishListsOfUser(userId);
             if (userId != CurrentUser.Id)
             {
                 allWishLists = allWishLists.Where(w => w.Friends.Count(f => f.FriendId == CurrentUser.Id) != 0);
@@ -112,7 +112,7 @@ namespace WishList.Controllers
         public ActionResult GetAllUsersWishListsOfGift(int giftId)
         {
             var userId = CurrentUser.Id;
-            var wishListsOfGift = wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
+            var wishListsOfGift = _wishListService.GetAllUsersWishListsOfGift(giftId, userId).ToList();
 
             if (wishListsOfGift.Count < 1)
                 return new EmptyResult();
@@ -125,14 +125,14 @@ namespace WishList.Controllers
 
         public ActionResult AddGiftToWishList(WishListDropDownViewModel model)
         {
-            wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
+            _wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
             //return GetAllUsersWishListsOfGift(model.GiftId);
             return Json(new { success = true });
         }
 
         public ActionResult DeleteGiftFromWishList(int giftId, int wishListId, string actionName)
         {
-            wishListService.DeleteGiftFromWishList(giftId, wishListId);
+            _wishListService.DeleteGiftFromWishList(giftId, wishListId);
 
             if (actionName == "GetAllUsersWishListsOfGift")
             {
@@ -140,14 +140,13 @@ namespace WishList.Controllers
             }
 
             return new EmptyResult();
-            //return RedirectToAction("ViewWishList", new { id = wishListId });
         }
 
         public ActionResult GetDropDownWishLists(int giftId)
         {
             var userId = CurrentUser.Id;
 
-            var wishLists = wishListService.GetUsersWishListsWithoutGift(giftId, userId).ToList();
+            var wishLists = _wishListService.GetUsersWishListsWithoutGift(giftId, userId).ToList();
 
             var model = new WishListDropDownViewModel()
             {
@@ -159,7 +158,7 @@ namespace WishList.Controllers
 
         public ActionResult GetVotesCount(string wishListId, string giftId)
         {
-            return PartialView("_VotesCountPartial", wishListService.GetVotesCount(wishListId, giftId));
+            return PartialView("_VotesCountPartial", _wishListService.GetVotesCount(wishListId, giftId));
         }
 
         [HttpPost]
@@ -168,14 +167,14 @@ namespace WishList.Controllers
         {
             var json =
                 JsonConvert.SerializeObject(
-                    wishListService.ChangeVotesCount(id, CurrentUser.Id).ToArray());
+                    _wishListService.ChangeVotesCount(id, CurrentUser.Id).ToArray());
             return json;
         }
 
         [HttpPost]
         public bool EnableVotes(string id)
         {
-            return User.Identity.IsAuthenticated && wishListService.CheckCurrentUserInWishList(CurrentUser.Id, Int32.Parse(id));
+            return User.Identity.IsAuthenticated && _wishListService.CheckCurrentUserInWishList(CurrentUser.Id, Int32.Parse(id));
         }
     }
 }

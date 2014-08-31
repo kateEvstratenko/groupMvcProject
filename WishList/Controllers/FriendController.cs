@@ -18,17 +18,17 @@ namespace WishList.Controllers
     {
         //
         // GET: /Friend/
-        private readonly IFriendService friendService;
+        private readonly IFriendService _friendService;
 
         public FriendController(IUserService iUserService, IFriendService iFriendService)
             : base(iUserService)
         {
-            friendService = iFriendService;
+            _friendService = iFriendService;
         }
 
         public ActionResult AddFriend(int friendId)
         {
-            var check = friendService.Create(CurrentUser.Id, friendId);
+            var check = _friendService.Create(CurrentUser.Id, friendId);
             if (check)
             {
                 return PartialView("_AddedFriendSuccessPartial", friendId);
@@ -38,7 +38,7 @@ namespace WishList.Controllers
 
         public ActionResult DeleteFriend(int id)
         {
-            friendService.Delete(CurrentUser.Id, id);
+            _friendService.Delete(CurrentUser.Id, id);
             return PartialView("_DeleteFriendSuccessPartial", id);
         }
 
@@ -49,7 +49,7 @@ namespace WishList.Controllers
 
         public ActionResult FriendList()
         {
-            var friends = friendService.GetAll(CurrentUser.Id).Select(Mapper.Map<DomainUser, UserViewModel>);
+            var friends = _friendService.GetAll(CurrentUser.Id).Select(Mapper.Map<DomainUser, UserViewModel>);
             return PartialView("_FriendListPartial", friends.AsEnumerable());
         }
 
