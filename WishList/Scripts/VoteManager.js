@@ -27,10 +27,8 @@
             data: voteId,
             success: function (data) {
                 var newData = JSON.parse(data);
-                $('#' + voteId.toString()).empty();
-                $('#' + voteId.toString()).append(newData[0]);
-                $('#' + newData[1] + '-' + newData[2]).empty();
-                $('#' + newData[1] + '-' + newData[2]).append(newData[3]);
+                $('#' + voteId.toString()).empty().append(newData[0]);
+                $('#' + newData[1] + '-' + newData[2]).empty().append(newData[3]);
                 $el.prop('disabled', false);
             }
         });

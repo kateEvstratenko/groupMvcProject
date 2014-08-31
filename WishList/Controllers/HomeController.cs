@@ -12,16 +12,16 @@ namespace WishList.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IGiftService giftService;
+        private readonly IGiftService _giftService;
 
         public HomeController(IGiftService iGiftService)
         {
-            giftService = iGiftService;
+            _giftService = iGiftService;
         }
 
         public ActionResult Index()
         {
-            var gifts = giftService.GetPolular(CustomConstants.PopularGiftsCount).ToList();
+            var gifts = _giftService.GetPolular(CustomConstants.PopularGiftsCount).ToList();
             var model = Mapper.Map<IEnumerable<GiftViewModel>>(gifts);
             model.ForEach(x => x.About = 
                 x.About.Length < CustomConstants.AboutGiftsLettersCount ? 

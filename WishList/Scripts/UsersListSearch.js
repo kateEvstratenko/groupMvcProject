@@ -1,11 +1,6 @@
 ﻿(function () {
     'use strict';
-    
-    /*$('#usersSearchInput').keypress(function (e) {
-        var key = e.which;
-        if (key == 13) {
-        }
-    });*/
+
     $('#usersSearchInput').on('input', function () {
         var $this = $(this);
         var delay = 1000;
