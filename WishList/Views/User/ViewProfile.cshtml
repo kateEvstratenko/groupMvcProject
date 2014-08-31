@@ -17,7 +17,8 @@
                 <img alt="photo" src="@Url.Content(Model.Avatar)" class="avatar" />
                 @if (Model.IsProfileOfCurrentUser)
                 {
-                    <button class="profileButton">@Html.ActionLink("Friends", "CurrentUserFriendList", "Friend",null  , new { @class = "btn btn-primary"})</button>
+                    <button class="profileButton">@Html.ActionLink("Friends", "CurrentUserFriendList"
+                    , "Friend", null, new { @class = "btn btn-primary" })</button>
                 }
             </div>
             <p>
