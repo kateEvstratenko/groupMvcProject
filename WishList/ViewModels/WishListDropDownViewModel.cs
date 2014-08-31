@@ -9,7 +9,6 @@ namespace WishList.ViewModels
 {
     public class WishListDropDownViewModel
     {
-       // public int Id { get; set; }
         public string WishListId { get; set; }
 
         public int GiftId { get; set; }
