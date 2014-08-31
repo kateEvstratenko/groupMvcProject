@@ -305,3 +305,7 @@ ul {
 .moreButton {
     margin-top: 20px;
 }
+.likeImage {
+    width: 10px;
+    height: 10px;
+}

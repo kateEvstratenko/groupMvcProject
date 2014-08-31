@@ -17,13 +17,13 @@
         </button>
         @if (User.IsInRole("Moderator"))
         {
-            <button class="btn btn-danger deleteButtonWrap">
+            <div class="btn btn-danger deleteButtonWrap">
                 @Ajax.ActionLink("delete", "DeleteComment", "Comment", new { id = @Model.Id }, new AjaxOptions
                     {
                         HttpMethod = "POST",
                         UpdateTargetId = "WishList-" + @Model.Id
                     }, new { @class = "btn deleteButton" })
-            </button>
+            </div>
         }
     </div>
 </li>

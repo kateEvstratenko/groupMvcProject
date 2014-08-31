@@ -5,7 +5,7 @@
         document.getElementById("Message").value = "";
     }
 </script>
-<div class="createMesageForm">
+<div class="createMessageForm">
     @using (Ajax.BeginForm("CreateComment", "Comment", new AjaxOptions { UpdateTargetId = "allMessages", OnComplete = "onComplete" }))
     {
         @Html.AntiForgeryToken()

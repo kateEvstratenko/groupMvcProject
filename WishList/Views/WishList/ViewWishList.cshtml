@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id ="currentWishList" class="container" data-item="@Model.Id">
+<div id="currentWishList" class="container" data-item="@Model.Id">
     <div class="row">
         <div class="alert alert-info">
             <h3>
@@ -31,7 +31,7 @@
                 }
             </h3>
         </div>
-        
+
 
         @foreach (var gift in Model.Gifts)
         {
@@ -73,20 +73,23 @@
                                 </td>
                                 <td>
                                     <button class="myCustomVoteButton btn-default" name="@gift.Id-@Model.Id">
-                                       
+
                                         <span>Vote: </span>
-                                        <span id="@gift.Id-@Model.Id">@Html.Action("GetVotesCount", new{wishListId = @Model.Id, giftId = @gift.Id})</span>
-                                    </button>
-                                    <button class="myCustomLikeButton btn pull-right" name="giftLikeId-@gift.Id">
-                                        <img src="/Content/images/like.png" width="10px" height="10px" />
-                                        <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                        <span id="@gift.Id-@Model.Id">
+                                            @Html.Action("GetVotesCount"
+                                        , new { wishListId = @Model.Id, giftId = @gift.Id })
+                                    </span>
+                                </button>
+                                <button class="myCustomLikeButton btn pull-right" name="giftLikeId-@gift.Id">
+                                    <img src="/Content/images/like.png" width="10px" height="10px" />
+                                    <p id="giftLikeId-@gift.Id">@gift.LikesCount</p>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+        </div>
         }
     </div>
 </div>
