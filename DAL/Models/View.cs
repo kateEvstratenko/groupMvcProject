@@ -11,6 +11,5 @@ namespace DAL.Models
         public int UserId { get; set; }
 
         public int GiftId { get; set; }
-
     }
 }

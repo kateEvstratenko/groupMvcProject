@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
 using DAL.Interfaces;
-using System.Web.Mvc;
 using DAL.Models;
-using Microsoft.AspNet.Identity;
 
 namespace BLL.Services
 {
-    public class WishListService: BaseService, IWishListService
+    public class WishListService : BaseService, IWishListService
     {
         public WishListService(IUnitOfWork uow) : base(uow) { }
 
@@ -109,8 +106,10 @@ namespace BLL.Services
             var m = getId.Matches(id);
             var giftId = Int32.Parse(m[0].Value);
             var wishListId = Int32.Parse(m[1].Value);
-            var vote =
-                Uow.VoteRepository.GetAll().Where(v => v.WishListId == wishListId).FirstOrDefault(l => l.UserId == userId);
+            var vote = Uow.VoteRepository.GetAll()
+                .Where(v => v.WishListId == wishListId)
+                .FirstOrDefault(l => l.UserId == userId);
+
             var lastGiftId = 0;
             if (vote != null)
             {
@@ -118,20 +117,34 @@ namespace BLL.Services
                 Uow.VoteRepository.Delete(vote.Id);
                 if (vote.GiftId != giftId)
                 {
-                    Uow.VoteRepository.Insert(new Vote() { GiftId = giftId, UserId = userId, WishListId = wishListId });
+                    Uow.VoteRepository.Insert(new Vote
+                    {
+                        GiftId = giftId,
+                        UserId = userId,
+                        WishListId = wishListId
+                    });
                 }
             }
             else
             {
-                Uow.VoteRepository.Insert(new Vote() {  GiftId = giftId, UserId = userId, WishListId = wishListId});
+                Uow.VoteRepository.Insert(new Vote
+                {
+                    GiftId = giftId,
+                    UserId = userId,
+                    WishListId = wishListId
+                });
             }
             Uow.Commit();
             var mas = new List<int>
             {
-                Uow.VoteRepository.GetAll().Where(l => l.GiftId == giftId).Count(v => v.WishListId == wishListId),
+                Uow.VoteRepository.GetAll()
+                    .Where(l => l.GiftId == giftId)
+                    .Count(v => v.WishListId == wishListId),
                 lastGiftId, 
                 wishListId,
-                Uow.VoteRepository.GetAll().Where(l => l.GiftId == lastGiftId).Count(v => v.WishListId == wishListId)
+                Uow.VoteRepository.GetAll()
+                    .Where(l => l.GiftId == lastGiftId)
+                    .Count(v => v.WishListId == wishListId)
             };
             return mas;
         }
@@ -142,7 +155,8 @@ namespace BLL.Services
             var intGiftId = Int32.Parse(giftId);
             return
                 Uow.VoteRepository.GetAll()
-                    .Where(v => v.WishListId == intWishListId).Count(v => v.GiftId == intGiftId);
+                    .Where(v => v.WishListId == intWishListId)
+                    .Count(v => v.GiftId == intGiftId);
         }
 
         public bool CheckCurrentUserInWishList(int id, int wishListId)

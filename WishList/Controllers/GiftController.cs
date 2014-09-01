@@ -38,8 +38,11 @@ namespace WishList.Controllers
                x.About :
                x.About.Substring(0, CustomConstants.AboutGiftsLettersCount) + CustomConstants.Dots);
 
-            model.First().NumberOfPages = giftsPageNum;
-            model.First().CurrentPage = pageNum;
+            if (model.Any())
+            {
+                model.First().NumberOfPages = giftsPageNum;
+                model.First().CurrentPage = pageNum;
+            }
             return View(model);
         }
 

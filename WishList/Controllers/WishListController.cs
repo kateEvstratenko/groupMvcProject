@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
-using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using WebGrease.Css.Extensions;
 using WishList.ViewModels;
@@ -126,7 +125,6 @@ namespace WishList.Controllers
         public ActionResult AddGiftToWishList(WishListDropDownViewModel model)
         {
             _wishListService.AddGiftToWishList(model.GiftId, Int32.Parse(model.WishListId));
-            //return GetAllUsersWishListsOfGift(model.GiftId);
             return Json(new { success = true });
         }
 
@@ -165,9 +163,8 @@ namespace WishList.Controllers
         [Authorize]
         public string ChangeVotesCount(string id)
         {
-            var json =
-                JsonConvert.SerializeObject(
-                    _wishListService.ChangeVotesCount(id, CurrentUser.Id).ToArray());
+            var json = JsonConvert.SerializeObject(
+                _wishListService.ChangeVotesCount(id, CurrentUser.Id).ToArray());
             return json;
         }
 

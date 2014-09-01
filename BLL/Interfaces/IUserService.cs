@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using BLL.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;

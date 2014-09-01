@@ -1,5 +1,4 @@
-﻿
-namespace BLL
+﻿namespace BLL
 {
     public static class CustomConstants
     {
